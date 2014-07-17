@@ -9,7 +9,9 @@
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
   "permissions": [
-    "https://nfl.com"
+    "https://*.nfl.com/*"
   ]
+  
 }
