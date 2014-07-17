@@ -19,16 +19,19 @@
       - Policy documentation[1] for details and explanation.
       -
       - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
+
+      Note also that the watermarking code and all of jquery is loaded at this point as well as popup.js
      -->
     <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="jquery.watermark.min.js"></script>
     <script src="popup.js"></script>
   </head>
   <body>
-  <h1>Welcome to Brown Fantasy Football!</h1><br>
-  <p>Please login in using your assigned username and password to proceed to your manager portal</p><br>
-  <input type="text" id="username" />
-  <input type="password" id="password" /><br>
-  <input type="submit" id="submit" value="Login!" />
+	  <h1>Welcome to Brown Fantasy Football!</h1><br>
+	  <p>Please login in using your assigned username and password to proceed to your manager portal</p><br>
+	  <input type="text" id="username" />
+	  <input type="password" id="password" /><br>
+	  <!-- the onclick is set in popup.js bc the function doesn't exist yet -->
+	  <button id="login">Login!</button>
   </body>
 </html>
