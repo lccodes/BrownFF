@@ -1,5 +1,4 @@
-window.onLoad=function(){
-	$('#username').watermark('USERNAME');
-	$('#username').watermark('PASSWORD');
-	alert("Complete");
-}
+document.addEventListener('DOMContentLoaded', function () {
+    $('#username').watermark('USERNAME');
+	$('#password').watermark('PASSWORD');
+});

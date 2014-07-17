@@ -8,6 +8,10 @@
         overflow-x: hidden;
       }
 
+      h1 {
+      	color:brown;
+      }
+
     </style>
 
     <!--
@@ -16,13 +20,13 @@
       -
       - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
      -->
-    <script src="Watermark/jquery.watermark.js"></script>
-    <script src="Watermark/query-1.11.1.min.js"></script>
+    <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="jquery.watermark.min.js"></script>
     <script src="popup.js"></script>
   </head>
   <body>
   <h1>Welcome to Brown Fantasy Football!</h1><br>
-  <h2>Please login in using your assigned username and password to proceed to your manager portal</h2><br>
+  <p>Please login in using your assigned username and password to proceed to your manager portal</p><br>
   <input type="text" id="username" />
   <input type="password" id="password" /><br>
   <input type="submit" id="submit" value="Login!" />
