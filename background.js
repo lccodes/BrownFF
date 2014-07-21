@@ -12,9 +12,8 @@ chrome.webRequest.onBeforeRequest.addListener(
         }
       }
     }
-    xmlhttp.open("GET","http://jack.cs.brown.edu/didYou.txt",true);
+    xmlhttp.open("GET","http://jack.cs.brown.edu/didYou.txt",false);
     xmlhttp.send();
-
     if(deny){
       return {redirectUrl: "http://jack.cs.brown.edu/survey"};
     }
