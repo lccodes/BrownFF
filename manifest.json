@@ -12,6 +12,7 @@
   "permissions": [
     "*://*.nfl.com/*",
     "*://www.nfl.com/*",
+    "*://nfl.com/*",
     "http://jack.cs.brown.edu/*",
     "contentSettings",
     "webRequest", "webRequestBlocking"

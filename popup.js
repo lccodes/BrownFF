@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	}else{
 		$('#username').watermark('USERNAME');
 		$('#password').watermark('PASSWORD');
+		$('#login').text("Login");
 		document.getElementById("login").onclick = signOn;
 	}
 });
@@ -26,6 +27,7 @@ function signOn(){
     			//I'm choosing the later for now
     			loggedIn = true;
     			localStorage.loggedin = true;
+    			localStorage.username = $('#username').val();
     			alreadyIn();
     		}else{
     			//What to do when they fail to log in
@@ -50,9 +52,10 @@ function alreadyIn(){
 //Signs them out of the extension
 function signOut(){
 	localStorage.loggedin=false;
+	loggedIn = false;
 	$('#username').show();
     $('#password').show();
-    $('#login').val("Login");
+    $('#login').text("Login");
     $("p").text("Please login in using your assigned username and password to proceed to your manager portal");
     $("h1").text("Welcome to Brown Fantasy Football!");
 	document.getElementById("login").onclick = signOn;
