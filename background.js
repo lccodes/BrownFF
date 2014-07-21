@@ -21,9 +21,7 @@ chrome.webRequest.onBeforeRequest.addListener(
   // filters
   {
     urls: [
-      "*://*.nfl.com/*",
-      "*://www.nfl.com/*",
-      "*://nfl.com/*"
+      "https://id2.s.nfl.com/fans/login"
     ],
         types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
   },

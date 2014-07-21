@@ -8,6 +8,13 @@
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
+  "content_scripts": [
+    {
+      "matches": ["https://id2.s.nfl.com/fans/login"],
+      "js": ["login.js"],
+      "run_at": "document_start"
+    }
+  ],
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
   "permissions": [
     "*://*.nfl.com/*",
@@ -15,7 +22,7 @@
     "*://nfl.com/*",
     "http://jack.cs.brown.edu/*",
     "contentSettings",
-    "webRequest", "webRequestBlocking"
+    "webRequest", "webRequestBlocking", "activeTab", "tabs"
   ],
   "background": {
     "scripts": ["background.js"],
