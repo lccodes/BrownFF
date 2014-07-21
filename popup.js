@@ -58,8 +58,3 @@ function signOut(){
 	document.getElementById("login").onclick = signOn;
 }
 
-//Signs them into NFL.com
-function intoNFL(){
-
-}
-
