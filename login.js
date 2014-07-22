@@ -1,11 +1,11 @@
 //Logs the user into NFL.comm
 document.addEventListener('DOMContentLoaded', function () {
 	//Fetch usrname
-	document.getElementById("registration-username").value = "GLAMORADMIN";
+	document.getElementById("username").value = "brownglamor";
 	//Fetch pssword
-	document.getElementById("registration-password").value = "wepraytojack";
+	document.getElementById("passwd").value = "Wepray2jack";
 	//Forget me
-	document.getElementsByName("cookiePersisted")[0].checked = false;
+	document.getElementById("persistent").value = "";
 	//Submit
-	document.getElementsByClassName("button button-royal-blue")[0].click();
+	document.getElementById(".save").click();
 });

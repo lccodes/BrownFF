@@ -21,7 +21,30 @@ chrome.webRequest.onBeforeRequest.addListener(
   // filters
   {
     urls: [
-      "https://id2.s.nfl.com/fans/login"
+      "*://*.yahoo.com/*",
+      "*://www.yahoo.com/*",
+      "*://yahoo.com/*",
+      "https://login.yahoo.com/*"
+    ],
+        types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
+  },
+  // extraInfoSpec
+  ["blocking"]);
+
+//Block them from the manager portal
+chrome.webRequest.onBeforeRequest.addListener(
+  function(info) {
+    alert("I'm sorry but you cannot access this content. Please email football@cs.brown.edu if you believe you arrived here by mistake.");
+    return {redirectUrl: "http://football.fantasysports.yahoo.com"};
+  },
+  // filters
+  {
+    //All the stuff they can't access on yahoo
+    urls: [
+      "*://football.fantasysports.yahoo.com/*deleteteams",
+      "*://football.fantasysports.yahoo.com/*settings",
+      "*://football.fantasysports.yahoo.com/f1/reg/joinleague/*",
+      "*://football.fantasysports.yahoo.com/*createleague"
     ],
         types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
   },

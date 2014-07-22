@@ -10,16 +10,17 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://id2.s.nfl.com/fans/login"],
+      "matches": ["https://login.yahoo.com/*"],
       "js": ["login.js"],
       "run_at": "document_start"
     }
   ],
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
   "permissions": [
-    "*://*.nfl.com/*",
-    "*://www.nfl.com/*",
-    "*://nfl.com/*",
+    "*://login.yahoo.com/*",
+    "*://www.yahoo.com/*",
+    "*://yahoo.com/*",
+    "*://football.fantasysports.yahoo.com/*",
     "http://jack.cs.brown.edu/*",
     "contentSettings",
     "webRequest", "webRequestBlocking", "activeTab", "tabs"
