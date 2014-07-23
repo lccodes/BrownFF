@@ -2,12 +2,29 @@
 //Uncomment alerts to find out some userful info
 document.addEventListener('DOMContentLoaded', function () {
   //alert("Pre");
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  chrome.runtime.sendMessage({method: "getUsername"}, function(response) {
+  	var username = response.status;
+	var links = document.querySelectorAll('a');
+	for (var i = 0; i < links.length; i++) {
+		links[i].addEventListener('click', function(event){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
+			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlhttp.send("username="+username+"&click="+event.target.innerHTML);
+			//Double check on that sweet sweet data
+			//alert(username);
+		});
+	}
+  });
 
-  ga('create', 'UA-51484089-2', 'auto');
-  ga('send', 'pageview');
+  document.getElementsByName("jsubmit")[0].addEventListener('click', function(event){
+  	var done = false;
+  	while(!done){
+  		var num = parseInt(prompt("Hello, \n Please enter your current happiness on a scale of 0 (agony) to 10 (ecstasy). \n Thanks and Love, \n BrownFF", "5"), 10);
+  		if(0 <= num && 10 >= num){
+  			done = true;
+  		}
+  	}
+  });
   //alert("Post");
 });

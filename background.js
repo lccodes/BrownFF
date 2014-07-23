@@ -50,3 +50,10 @@ chrome.webRequest.onBeforeRequest.addListener(
   },
   // extraInfoSpec
   ["blocking"]);
+//Lets the content script access info
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.method == "getUsername")
+      sendResponse({status: localStorage['username']});
+    else
+      sendResponse({}); // snub them.
+});
