@@ -13,6 +13,13 @@
       "matches": ["https://login.yahoo.com/*"],
       "js": ["login.js"],
       "run_at": "document_start"
+    },
+    {
+      "matches": ["*://*.yahoo.com/*", 
+                  "*://football.fantasysports.yahoo.com/*",
+                  "*://www.yahoo.com/*"],
+      "js": ["tracking.js"],
+      "run_at": "document_start"
     }
   ],
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",

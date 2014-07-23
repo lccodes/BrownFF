@@ -31,7 +31,7 @@ chrome.webRequest.onBeforeRequest.addListener(
   // extraInfoSpec
   ["blocking"]);
 
-//Block them from the manager portal
+//Block them from the manager portal in every shape and form
 chrome.webRequest.onBeforeRequest.addListener(
   function(info) {
     alert("I'm sorry but you cannot access this content. Please email football@cs.brown.edu if you believe you arrived here by mistake.");

@@ -1,4 +1,4 @@
-//Logs the user into NFL.comm
+//Logs the user into Yahoo.comm
 document.addEventListener('DOMContentLoaded', function () {
 	//Fetch usrname
 	document.getElementById("username").value = "brownglamor";
