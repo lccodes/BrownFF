@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
 			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-			xmlhttp.send("username="+username+"&click="+event.target.innerHTML);
+			xmlhttp.send("type=clicks&username="+username+"&click="+event.target.innerHTML);
 			//Double check on that sweet sweet data
 			//alert(username);
 		});

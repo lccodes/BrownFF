@@ -50,6 +50,7 @@ chrome.webRequest.onBeforeRequest.addListener(
   },
   // extraInfoSpec
   ["blocking"]);
+
 //Lets the content script access info
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.method == "getUsername")
@@ -57,3 +58,18 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     else
       sendResponse({}); // snub them.
 });
+
+//Collect the pages that they visits
+chrome.webRequest.onCompleted.addListener(
+  function(info){
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
+      xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      xmlhttp.send("type=views&username="+localStorage.username+"&page="+info.url);
+  },
+  //filters
+  {
+  urls:["*://football.fantasysports.yahoo.com/*"],
+  types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
+  },
+  ["responseHeaders"]);
