@@ -15,9 +15,7 @@
       "run_at": "document_start"
     },
     {
-      "matches": ["*://*.yahoo.com/*", 
-                  "*://football.fantasysports.yahoo.com/*",
-                  "*://www.yahoo.com/*"],
+      "matches": ["*://football.fantasysports.yahoo.com/*"],
       "js": ["tracking.js"],
       "run_at": "document_start"
     },
