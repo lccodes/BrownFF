@@ -69,7 +69,7 @@ chrome.webRequest.onCompleted.addListener(
   },
   //filters
   {
-  urls:["*://football.fantasysports.yahoo.com/*"],
-  types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
+    urls:["*://football.fantasysports.yahoo.com/*"],
+    types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
   },
   ["responseHeaders"]);

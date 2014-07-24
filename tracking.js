@@ -17,10 +17,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
   });
 
+  //Happiness dialog box
   document.getElementsByName("jsubmit")[0].addEventListener('click', function(event){
   	var done = false;
   	while(!done){
-  		var num = parseInt(prompt("Hello, \n Please enter your current happiness on a scale of 0 (agony) to 10 (ecstasy). \n Thanks and Love, \n BrownFF", "5"), 10);
+  		var num = parseInt(prompt("Hello, \n Please enter your current happiness on a scale of 0 (agony) to 10 (ecstasy). \n Thanks and Love, \n BrownFF", ""), 10);
   		if(0 <= num && 10 >= num){
   			done = true;
   		}
