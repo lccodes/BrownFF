@@ -44,7 +44,8 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://football.fantasysports.yahoo.com/*deleteteams",
       "*://football.fantasysports.yahoo.com/*settings",
       "*://football.fantasysports.yahoo.com/f1/reg/joinleague/*",
-      "*://football.fantasysports.yahoo.com/*createleague"
+      "*://football.fantasysports.yahoo.com/*createleague",
+      "*://football.fantasysports.yahoo.com/*invitefriends"
     ],
         types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
   },
