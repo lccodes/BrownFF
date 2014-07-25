@@ -44,7 +44,10 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://football.fantasysports.yahoo.com/*deleteteams",
       "*://football.fantasysports.yahoo.com/*settings",
       "*://football.fantasysports.yahoo.com/f1/reg/joinleague/*",
-      "*://football.fantasysports.yahoo.com/*createleague"
+      "*://football.fantasysports.yahoo.com/*createleague",
+      "*://football.fantasysports.yahoo.com/*commishhome?group=alltools",
+      "*://football.fantasysports.yahoo.com/*editleaguename",
+      "*://football.fantasysports.yahoo.com/*editstatcategories"
     ],
         types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
   },
@@ -73,3 +76,6 @@ chrome.webRequest.onCompleted.addListener(
     types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
   },
   ["responseHeaders"]);
+
+//Log them out of Yahoo if they uninstall
+chrome.runtime.setUninstallURL("http://login.yahoo.com/?logout=1");
