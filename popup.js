@@ -72,7 +72,8 @@ function alreadyIn(){
     $('#login').text("Logout");
     document.getElementById("login").onclick = signOut;
 
-    $("p").text("You are already signed in, feel free to go to fantasyfootball.yahoo.com and play FF whenever you like!!!");
+    $("p").text("You are signed in. Feel free to go to")
+    $("a").text("fantasyfootball.yahoo.com");
     $("h1").text("Welcome BACK to BrownFF!");
 }
 
@@ -85,6 +86,7 @@ function signOut(){
 	$('#password').watermark('PASSWORD');
 	$('#username').show();
     $('#password').show();
+    $("a").hide();
     $('#login').text("Login");
     $("p").text("Please login in using your assigned username and password to proceed to your manager portal. \nIf you forgot your password, enter your username and click Forget Password.");
     $("h1").text("Welcome to Brown Fantasy Football!");
