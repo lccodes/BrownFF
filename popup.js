@@ -1,7 +1,7 @@
 //This function is called when the extension is clicked on (i.e. when the popup page loads)
-var loggedIn = localStorage.loggedin;
 document.addEventListener('DOMContentLoaded', function () {
-	if(loggedIn){
+	document.getElementById("forgot").onclick = forgotP;
+	if(localStorage.loggedin == "true"){
     	alreadyIn();
 	}else{
 		$('#username').watermark('USERNAME');
@@ -22,19 +22,46 @@ function signOn(){
   		if (xmlhttp.readyState==4 && xmlhttp.status==200){
   			var where = xmlhttp.responseText.indexOf(u);
     		if(where != -1 && (p == xmlhttp.responseText.substr(where+10, 9))){
-    			//What to do when they log in correctly
-    			//we could run intoNFL() right here or we can tell them that they are logged in and go on our merry way
-    			//I'm choosing the later for now
-    			loggedIn = true;
-    			localStorage.loggedin = true;
-    			localStorage.username = $('#username').val();
-    			alreadyIn();
-    		}else{
-    			//What to do when they fail to log in
+    			chrome.storage.sync.set({"username" : $('#username').val()});
+    			chrome.storage.sync.get("new", function (obj) {
+					if("new" in obj){
+						localStorage.loggedin = "true";
+    					localStorage.username = $('#username').val();
+    					alreadyIn();
+		    		}else{
+		    			$('#username').val("");
+		    			$('#username').watermark('New Password');
+		    			$('#password').hide();
+		    			$('#login').text("Save Password");
+		    			document.getElementById("login").onclick = changeP;
+		    			$('#forgot').hide();
+		    			$("p").text("Please change your password. Enter the new password below:");
+		    		}
+		    	});	
+    		}else if(where != -1){
+    			chrome.storage.sync.get("new", function (obj) {
+    				if("new" in obj && obj["new"] == $('#password').val()){
+    					chrome.storage.sync.set({"username" : $('#username').val()});
+						localStorage.loggedin = "true";
+    					localStorage.username = $('#username').val();
+    					alreadyIn();
+		    		}else if(obj["new"] == $('#password').val()){
+		    			chrome.storage.sync.set({"username" : $('#username').val()});
+		    			localStorage.username = $('#username').val();
+		    			$('#username').val("");
+		    			$('#username').watermark('New Password');
+		    			$('#password').hide();
+		    			$('#login').text("Save Password");
+		    			document.getElementById("login").onclick = changeP;
+		    			$('#forgot').hide();
+		    			$("p").text("Please change your password. Enter the new password below:");
+		    		}
+    			});	
     		}
     	}
   	}
-	xmlhttp.open("GET","http://jack.cs.brown.edu/theFile.txt",true);
+
+  	xmlhttp.open("GET","http://jack.cs.brown.edu/theFile.txt",true);
 	xmlhttp.send();
 }
 
@@ -45,19 +72,40 @@ function alreadyIn(){
     $('#login').text("Logout");
     document.getElementById("login").onclick = signOut;
 
-    $("p").text("You are already signed in, feel free to go to NFL.com and play FF whenever you like!!!");
+    $("p").text("You are already signed in, feel free to go to fantasyfootball.yahoo.com and play FF whenever you like!!!");
     $("h1").text("Welcome BACK to BrownFF!");
 }
 
 //Signs them out of the extension
 function signOut(){
-	localStorage.loggedin=false;
-	loggedIn = false;
+	localStorage.loggedin="false";
+	$('#username').val("");
+	$('#password').val("");
+	$('#username').watermark('USERNAME');
+	$('#password').watermark('PASSWORD');
 	$('#username').show();
     $('#password').show();
     $('#login').text("Login");
-    $("p").text("Please login in using your assigned username and password to proceed to your manager portal");
+    $("p").text("Please login in using your assigned username and password to proceed to your manager portal. \nIf you forgot your password, enter your username and click Forget Password.");
     $("h1").text("Welcome to Brown Fantasy Football!");
 	document.getElementById("login").onclick = signOn;
 }
 
+//Forgot password stuff
+function forgotP(){
+	chrome.storage.sync.get("username", function (obj) {
+		if("username" in obj && $('#username').val() == obj["username"]){
+			chrome.storage.sync.get("new", function (other) {
+				$("p").text("Your password is " + other["new"]);
+			});
+			$('#username').val("");			
+		}
+	});
+}
+
+//Change password stuff
+function changeP(){
+	chrome.storage.sync.set({"new" : $('#username').val()});
+	localStorage.loggedin = "true";
+    alreadyIn();
+}
