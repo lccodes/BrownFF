@@ -28,6 +28,7 @@ function signOn(){
 						localStorage.loggedin = "true";
     					localStorage.username = $('#username').val();
     					alreadyIn();
+    					$('#forgot').hide();
 		    		}else{
 		    			$('#username').val("");
 		    			$('#username').watermark('New Password');
@@ -45,6 +46,7 @@ function signOn(){
 						localStorage.loggedin = "true";
     					localStorage.username = $('#username').val();
     					alreadyIn();
+    					$('#forgot').hide();
 		    		}else if(obj["new"] == $('#password').val()){
 		    			chrome.storage.sync.set({"username" : $('#username').val()});
 		    			localStorage.username = $('#username').val();
@@ -71,7 +73,7 @@ function alreadyIn(){
     $('#password').hide();
     $('#login').text("Logout");
     document.getElementById("login").onclick = signOut;
-
+    $('#forgot').hide();
     $("p").text("You are already signed in, feel free to go to fantasyfootball.yahoo.com and play FF whenever you like!!!");
     $("h1").text("Welcome BACK to BrownFF!");
 }
@@ -79,6 +81,7 @@ function alreadyIn(){
 //Signs them out of the extension
 function signOut(){
 	localStorage.loggedin="false";
+	$('#forgot').show();
 	$('#username').val("");
 	$('#password').val("");
 	$('#username').watermark('USERNAME');
