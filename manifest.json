@@ -31,7 +31,7 @@
     "*://football.fantasysports.yahoo.com/*",
     "http://jack.cs.brown.edu/*",
     "contentSettings",
-    "webRequest", "webRequestBlocking", "activeTab", "tabs", "management", "storage"
+    "webRequest", "webRequestBlocking", "activeTab", "tabs", "management", "storage", "browsingData"
   ],
   "background": {
     "scripts": ["background.js"],

@@ -16,7 +16,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       xmlhttp.open("GET","http://jack.cs.brown.edu/didYou.txt",false);
       xmlhttp.send();
       if(deny){
-        //return {redirectUrl: "http://jack.cs.brown.edu/survey"};
+        return {redirectUrl: "http://jack.cs.brown.edu/survey"};
       }
     }
   },
@@ -25,8 +25,7 @@ chrome.webRequest.onBeforeRequest.addListener(
     urls: [
       "*://*.yahoo.com/*",
       "*://www.yahoo.com/*",
-      "*://yahoo.com/*",
-      "https://login.yahoo.com/*"
+      "*://yahoo.com/*"
     ],
         types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
   },
@@ -60,8 +59,10 @@ chrome.webRequest.onBeforeRequest.addListener(
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.method == "getUsername")
       sendResponse({status: localStorage['username']});
+    else if (request.method == "isIn")
+      sendResponse({status: localStorage['loggedin']});
     else
-      sendResponse({}); // snub them.
+      sendResponse({});
 });
 
 //Collect the pages that they visits
@@ -79,5 +80,28 @@ chrome.webRequest.onCompleted.addListener(
   },
   ["responseHeaders"]);
 
+//Stop chrome from saving their password
+chrome.webRequest.onCompleted.addListener(
+  function(info){
+    alert("Start!");
+      var theTime = (new Date()).getTime() - 1000;
+      chrome.browsingData.removePasswords({
+        "since": theTime
+      }, function(){
+        alert("Removed!");
+      });
+  },
+  //filters
+  {
+    urls:["*://football.fantasysports.yahoo.com/f1/signup/*", "*://football.fantasysports.yahoo.com/*", "*://www.yahoo.com/*"],
+    types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
+  },
+  ["responseHeaders"]);
+
 //Log them out of Yahoo if they uninstall
 chrome.runtime.setUninstallURL("http://login.yahoo.com/?logout=1");
+//Log them out if they disable the extension
+//chrome.tabs.onUpdated.addListener(function(integer tabId, object changeInfo, Tab tab) {
+//  alert(tabId);
+//  alert(changeInfo.url);
+//});
