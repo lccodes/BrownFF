@@ -44,7 +44,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://football.fantasysports.yahoo.com/*settings",
       "*://football.fantasysports.yahoo.com/f1/reg/joinleague/*",
       "*://football.fantasysports.yahoo.com/*createleague",
-      "*://football.fantasysports.yahoo.com/*commishhome?group=alltools",
+      "*://football.fantasysports.yahoo.com/*commishhome*",
       "*://football.fantasysports.yahoo.com/*editleaguename",
       "*://football.fantasysports.yahoo.com/*editstatcategories",
       "*://football.fantasysports.yahoo.com/*editteaminfo"
@@ -59,9 +59,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 //Lets the content scripts access info
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.method == "getUsername")
-      sendResponse({status: localStorage['username']});
-    else if (request.method == "isIn")
-      sendResponse({status: localStorage['loggedin']});
+      sendResponse({status: localStorage['username']});// else if (request.method == "isIn")   sendResponse({status: localStorage['loggedin']});
     else
       sendResponse({});
 });
