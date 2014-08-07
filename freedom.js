@@ -10,11 +10,11 @@ function onLoad(){
 			}
 		}
 		if(allow){
-			chrome.runtime.sendMessage({method: "getUsername"}, function(response) {
+			chrome.storage.sync.get("username", function (obj) {
 				var xmlhttp = new XMLHttpRequest();
 	      		xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
 	      		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	      		xmlhttp.send("type=free&username="+response.status);
+	      		xmlhttp.send("type=free&username="+obj['username']);
       		});
 		}
 	});

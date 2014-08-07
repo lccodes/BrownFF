@@ -7,7 +7,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       xmlhttp.onreadystatechange=function(){
         if (xmlhttp.readyState==4 && xmlhttp.status==200){
           var where = xmlhttp.responseText.indexOf(localStorage.username + ",");
-          if(where != -1 && ("t" == xmlhttp.responseText.substr(where+10, 1))){
+          if(where != -1 && ("f" == xmlhttp.responseText.substr(where+10, 1))){
             //Redirect if they need to fill out the survey
             deny = true;
           }
@@ -23,6 +23,7 @@ chrome.webRequest.onBeforeRequest.addListener(
   // filters
   {
     urls: [
+      "*://football.fantasysports.yahoo.com/*",
       "*://*.yahoo.com/*"
     ],
         types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
@@ -42,14 +43,14 @@ chrome.webRequest.onBeforeRequest.addListener(
     urls: [
       "*://football.fantasysports.yahoo.com/*deleteteams",
       "*://football.fantasysports.yahoo.com/*settings",
-      "*://football.fantasysports.yahoo.com/f1/reg/joinleague/*",
+      "*://football.fantasysports.yahoo.com/*joinleague/*",
       "*://football.fantasysports.yahoo.com/*createleague",
       "*://football.fantasysports.yahoo.com/*commishhome*",
       "*://football.fantasysports.yahoo.com/*editleaguename",
       "*://football.fantasysports.yahoo.com/*editstatcategories",
-      "*://football.fantasysports.yahoo.com/*editteaminfo"
+      "*://football.fantasysports.yahoo.com/*editteaminfo",
       "*://football.fantasysports.yahoo.com/*invitecomanager",
-      "*://football.fantasysports.yahoo.com/*share_medal*"
+      "*://football.fantasysports.yahoo.com/*share_medal/*"
     ],
         types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
   },
@@ -63,8 +64,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     else
       sendResponse({});
 });
-
-chrome.we
 
 //Collect the pages that they visits
 chrome.webRequest.onCompleted.addListener(
@@ -94,7 +93,8 @@ chrome.webRequest.onCompleted.addListener(
   },
   //filters
   {
-    urls:["*://football.fantasysports.yahoo.com/f1/signup/*", "*://football.fantasysports.yahoo.com/*", "*://www.yahoo.com/*"],
+    urls:["*://football.fantasysports.yahoo.com/*", 
+          "*://www.yahoo.com/*"],
     types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
   },
   ["responseHeaders"]);

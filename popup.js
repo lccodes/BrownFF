@@ -94,6 +94,7 @@ function signOut(){
     $("p").text("Please login in using your assigned username and password to proceed to your manager portal. \nIf you forgot your password, enter your username and click Forget Password.");
     $("h1").text("Welcome to Brown Fantasy Football!");
 	document.getElementById("login").onclick = signOn;
+	chrome.tabs.create({ url: "http://login.yahoo.com/?logout=1" });
 }
 
 //Forgot password stuff
