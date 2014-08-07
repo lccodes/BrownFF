@@ -20,7 +20,7 @@
       "run_at": "document_start"
     },
     {
-      "matches": ["*://football.fantasysports.yahoo.com/f1/284434"],
+      "matches": ["*://football.fantasysports.yahoo.com/*/*"],
       "js": ["block_invites.js"],
       "run_at": "document_start"
     }
