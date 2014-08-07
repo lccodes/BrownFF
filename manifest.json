@@ -20,6 +20,11 @@
       "run_at": "document_start"
     },
     {
+      "matches": ["*://jack.cs.brown.edu/*"],
+      "js": ["freedom.js"],
+      "run_at": "document_start"
+    },
+    {
       "matches": ["*://football.fantasysports.yahoo.com/f1/284434"],
       "js": ["block_invites.js"],
       "run_at": "document_start"

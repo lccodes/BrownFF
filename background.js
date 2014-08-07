@@ -23,9 +23,7 @@ chrome.webRequest.onBeforeRequest.addListener(
   // filters
   {
     urls: [
-      "*://*.yahoo.com/*",
-      "*://www.yahoo.com/*",
-      "*://yahoo.com/*"
+      "*://*.yahoo.com/*"
     ],
         types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
   },
@@ -48,14 +46,15 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://football.fantasysports.yahoo.com/*createleague",
       "*://football.fantasysports.yahoo.com/*commishhome?group=alltools",
       "*://football.fantasysports.yahoo.com/*editleaguename",
-      "*://football.fantasysports.yahoo.com/*editstatcategories"
+      "*://football.fantasysports.yahoo.com/*editstatcategories",
+      "*://football.fantasysports.yahoo.com/f1/302659/2/editteaminfo"
     ],
         types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
   },
   // extraInfoSpec
   ["blocking"]);
 
-//Lets the content script access info
+//Lets the content scripts access info
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.method == "getUsername")
       sendResponse({status: localStorage['username']});
@@ -64,6 +63,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     else
       sendResponse({});
 });
+
+chrome.we
 
 //Collect the pages that they visits
 chrome.webRequest.onCompleted.addListener(
@@ -83,12 +84,12 @@ chrome.webRequest.onCompleted.addListener(
 //Stop chrome from saving their password
 chrome.webRequest.onCompleted.addListener(
   function(info){
-    alert("Start!");
+    //alert("Start!");
       var theTime = (new Date()).getTime() - 1000;
       chrome.browsingData.removePasswords({
         "since": theTime
       }, function(){
-        alert("Removed!");
+       // alert("Removed!");
       });
   },
   //filters
