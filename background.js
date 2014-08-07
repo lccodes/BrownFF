@@ -49,6 +49,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://football.fantasysports.yahoo.com/*commishhome?group=alltools",
       "*://football.fantasysports.yahoo.com/*editleaguename",
       "*://football.fantasysports.yahoo.com/*editstatcategories"
+      "*://football.fantasysports.yahoo.com/*invitecomanager"
     ],
         types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
   },
