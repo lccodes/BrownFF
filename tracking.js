@@ -21,12 +21,18 @@ document.addEventListener('DOMContentLoaded', function () {
     if(document.getElementsByName("jsubmit")[0]){
 	    document.getElementsByName("jsubmit")[0].addEventListener('click', function(event){
 	  	var done = false;
-	  	while(!done){
-	  		var num = parseInt(prompt("Hello, \n Please enter your current happiness on a scale of 0 (agony) to 10 (ecstasy). \n Thanks and Love, \n BrownFF", ""), 10);
-	  		if(0 <= num && 10 >= num){
-	  			done = true;
-	  		}
-	  	}
+	  	chrome.runtime.sendMessage({method: "getUsername"}, function(response) {
+		  	while(!done){
+		  		var num = parseInt(prompt("Hello, \n Please enter your current happiness on a scale of 0 (agony) to 10 (ecstasy). \n Thanks and Love, \n BrownFF", ""), 10);
+		  		if(0 <= num && 10 >= num){
+		  			done = true;
+		  			var xmlhttp = new XMLHttpRequest();
+					xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
+					xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					xmlhttp.send("type=happiness&username="+response.status+"&score="+num);
+		  		}
+		  	}
+		});
 	  });
 	}
   //alert("Post");
