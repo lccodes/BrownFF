@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	  	var done = false;
 	  	chrome.runtime.sendMessage({method: "getUsername"}, function(response) {
 		  	while(!done){
-		  		var num = parseInt(prompt("Hello, \n Please enter your current happiness on a scale of 0 (agony) to 10 (ecstasy). \n Thanks and Love, \n BrownFF", ""), 10);
+		  		var num = parseInt(prompt("Hello, \n On a scale of 1 (not at all) to 5 (completely), how happy are you? \n Thanks and Love, \n BrownFF", ""), 10);
 		  		if(0 <= num && 10 >= num){
 		  			done = true;
 		  			var xmlhttp = new XMLHttpRequest();
