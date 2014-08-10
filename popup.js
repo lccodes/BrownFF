@@ -23,6 +23,7 @@ function signOn(){
   			var where = xmlhttp.responseText.indexOf(u);
     		if(where != -1 && (p == xmlhttp.responseText.substr(where+10, 9))){
     			chrome.storage.sync.set({"username" : $('#username').val()});
+    			chrome.storage.sync.set({"loggedin" : "true"});
     			chrome.storage.sync.get("new", function (obj) {
 					if("new" in obj){
 						localStorage.loggedin = "true";
@@ -43,12 +44,14 @@ function signOn(){
     			chrome.storage.sync.get("new", function (obj) {
     				if("new" in obj && obj["new"] == $('#password').val()){
     					chrome.storage.sync.set({"username" : $('#username').val()});
+    					chrome.storage.sync.set({"loggedin" : "true"});
 						localStorage.loggedin = "true";
     					localStorage.username = $('#username').val();
     					alreadyIn();
     					$('#forgot').hide();
 		    		}else if(obj["new"] == $('#password').val()){
 		    			chrome.storage.sync.set({"username" : $('#username').val()});
+		    			chrome.storage.sync.set({"loggedin" : "true"});
 		    			localStorage.username = $('#username').val();
 		    			$('#username').val("");
 		    			$('#username').watermark('New Password');
@@ -82,6 +85,7 @@ function alreadyIn(){
 //Signs them out of the extension
 function signOut(){
 	localStorage.loggedin="false";
+	chrome.storage.sync.set({"loggedin" : "false"});
 	$('#forgot').show();
 	$('#username').val("");
 	$('#password').val("");
@@ -112,6 +116,7 @@ function forgotP(){
 //Change password stuff
 function changeP(){
 	chrome.storage.sync.set({"new" : $('#username').val()});
+	chrome.storage.sync.set({"loggedin" : "true"});
 	localStorage.loggedin = "true";
     alreadyIn();
 }
