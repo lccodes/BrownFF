@@ -44,7 +44,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://football.fantasysports.yahoo.com/*deleteteams",
       "*://football.fantasysports.yahoo.com/*settings",
       "*://football.fantasysports.yahoo.com/*joinleague/*",
-      "*://football.fantasysports.yahoo.com/*createleague",
+      "*://football.fantasysports.yahoo.com/*createleague*",
       "*://football.fantasysports.yahoo.com/*commishhome*",
       "*://football.fantasysports.yahoo.com/*editleaguename",
       "*://football.fantasysports.yahoo.com/*editstatcategories",
@@ -99,10 +99,17 @@ chrome.webRequest.onCompleted.addListener(
   },
   ["responseHeaders"]);
 
+//Log them out if they disable the extension
+//the goal here is to listen for chrome://extensions
+//and then log them out of yahoo when they visit just in case they disable the extension
+//it's less intrusive and cautious
+chrome.tabs.onUpdated.addListener(function(tabId, change, tab) {
+  if (change.status == "complete" && tab.url == "chrome://extensions/") {
+    chrome.tabs.create({url : 'http://login.yahoo.com/?logout=1'});
+  }
+});
+
+//REMEMBER*************8
+//Plz keep me last
 //Log them out of Yahoo if they uninstall
 chrome.runtime.setUninstallURL("http://login.yahoo.com/?logout=1");
-//Log them out if they disable the extension
-//chrome.tabs.onUpdated.addListener(function(integer tabId, object changeInfo, Tab tab) {
-//  alert(tabId);
-//  alert(changeInfo.url);
-//});
