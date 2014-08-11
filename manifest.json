@@ -33,11 +33,13 @@
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
   "permissions": [
     "tabs",
+    "browsingData",
     "*://login.yahoo.com/*",
     "*://football.fantasysports.yahoo.com/*",
+    "*://www.yahoo.com/",
     "http://jack.cs.brown.edu/*",
     "contentSettings",
-    "webRequest", "webRequestBlocking", "activeTab", "management", "storage", "browsingData"
+    "webRequest", "webRequestBlocking", "activeTab", "management", "storage"
   ],
   "background": {
     "scripts": ["background.js"],

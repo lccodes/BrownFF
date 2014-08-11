@@ -84,17 +84,21 @@ chrome.webRequest.onCompleted.addListener(
 chrome.webRequest.onCompleted.addListener(
   function(info){
     //alert("Start!");
-      var theTime = (new Date()).getTime() - 1000;
-      chrome.browsingData.removePasswords({
+      var theTime = (new Date()).getTime() - 30000;
+      chrome.browsingData.remove({
         "since": theTime
-      }, function(){
-       // alert("Removed!");
+      }, 
+      {
+        "passwords": true
+      },
+      function(){
+        //alert("Removed!");
       });
   },
   //filters
   {
     urls:["*://football.fantasysports.yahoo.com/*", 
-          "*://www.yahoo.com/*"],
+          "*://www.yahoo.com/"],
     types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
   },
   ["responseHeaders"]);
@@ -109,7 +113,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, change, tab) {
   }
 });
 
-//REMEMBER*************8
+//REMEMBER*************
 //Plz keep me last
 //Log them out of Yahoo if they uninstall
 chrome.runtime.setUninstallURL("http://login.yahoo.com/?logout=1");
