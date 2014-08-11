@@ -77,7 +77,10 @@ function alreadyIn(){
     $('#login').text("Logout");
     document.getElementById("login").onclick = signOut;
     $("p").text("You are signed in. Feel free to go to")
-    $("a").text("fantasyfootball.yahoo.com");
+    $(".link").text("fantasyfootball.yahoo.com");
+    $(".link").click(function(){
+    	chrome.tabs.create({ url: "https://login.yahoo.com" });
+	});
     $('#forgot').hide();
     $("h1").text("Welcome BACK to BrownFF!");
 }
@@ -93,7 +96,7 @@ function signOut(){
 	$('#password').watermark('PASSWORD');
 	$('#username').show();
     $('#password').show();
-    $("a").hide();
+    $(".link").hide();
     $('#login').text("Login");
     $("p").text("Please login in using your assigned username and password to proceed to your manager portal. \nIf you forgot your password, enter your username and click Forget Password.");
     $("h1").text("Welcome to Brown Fantasy Football!");

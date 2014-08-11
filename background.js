@@ -98,7 +98,7 @@ chrome.webRequest.onCompleted.addListener(
   //filters
   {
     urls:["*://football.fantasysports.yahoo.com/*", 
-          "*://www.yahoo.com/"],
+          "*://www.yahoo.com/*"],
     types: ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
   },
   ["responseHeaders"]);
@@ -108,9 +108,16 @@ chrome.webRequest.onCompleted.addListener(
 //and then log them out of yahoo when they visit just in case they disable the extension
 //it's less intrusive and cautious
 chrome.tabs.onUpdated.addListener(function(tabId, change, tab) {
-  if (change.status == "complete" && tab.url == "chrome://extensions/") {
+  if (change.status == "complete" && tab.url == "chrome://extensions/" && localStorage.loggedin == "true") {
     chrome.tabs.create({url : 'http://login.yahoo.com/?logout=1'});
   }
+});
+chrome.tabs.onActivated.addListener(function(selectInfo){
+  chrome.tabs.get(selectInfo.tabId, function(tab){
+    if (tab.url == "chrome://extensions/" && localStorage.loggedin == "true") {
+    chrome.tabs.create({url : 'http://login.yahoo.com/?logout=1'});
+    }
+  });
 });
 
 //REMEMBER*************
