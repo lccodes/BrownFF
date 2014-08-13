@@ -7,13 +7,15 @@ chrome.webRequest.onBeforeRequest.addListener(
       xmlhttp.onreadystatechange=function(){
         if (xmlhttp.readyState==4 && xmlhttp.status==200){
           var where = xmlhttp.responseText.indexOf(localStorage.username + ",");
+          //alert(xmlhttp.responseText);
+          //alert(xmlhttp.responseText.substr(where+10, 1));
           if(where != -1 && ("f" == xmlhttp.responseText.substr(where+10, 1))){
             //Redirect if they need to fill out the survey
             deny = true;
           }
         }
       }
-      xmlhttp.open("GET","http://jack.cs.brown.edu/didYou.txt",false);
+      xmlhttp.open("GET","http://jack.cs.brown.edu/didYou.txt?" + Math.floor((Math.random() * 10000) + 1),false);
       xmlhttp.send();
       if(deny){
         return {redirectUrl: "http://jack.cs.brown.edu/survey"};

@@ -10,6 +10,7 @@ function onLoad(){
 			}
 		}
 		if(allow){
+			//alert("Free!");
 			chrome.storage.sync.get("username", function (obj) {
 				var xmlhttp = new XMLHttpRequest();
 	      		xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
@@ -21,5 +22,6 @@ function onLoad(){
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+	//alert("Added");
 	document.getElementsByTagName("iframe")[0].onload = onLoad;
 });
