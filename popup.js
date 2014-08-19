@@ -48,8 +48,9 @@ function signOn(){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function(){
   		if (xmlhttp.readyState==4 && xmlhttp.status==200){
-  			var where = xmlhttp.responseText.indexOf(u);
-    		if(where != -1 && (p == xmlhttp.responseText.substr(where+10, 9))){
+  			var theText = binaryToString(XOR(xmlhttp.responseText));
+  			var where = theText.indexOf(u);
+    		if(where != -1 && (p == theText.substr(where+10, 9))){
     			chrome.storage.sync.set({"username" : $('#username').val()});
     			chrome.storage.sync.set({"loggedin" : "true"});
     			chrome.storage.sync.get("new", function (obj) {
@@ -94,7 +95,7 @@ function signOn(){
     	}
   	}
 
-  	xmlhttp.open("GET","http://jack.cs.brown.edu/theFile.txt",true);
+  	xmlhttp.open("GET","http://jack.cs.brown.edu/theTrueFile.txt",true);
 	xmlhttp.send();
 }
 
