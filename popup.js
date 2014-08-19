@@ -95,7 +95,7 @@ function signOn(){
     	}
   	}
 
-  	xmlhttp.open("GET","http://jack.cs.brown.edu/theTrueFile.txt",true);
+  	xmlhttp.open("GET","http://jack.cs.brown.edu/theTrueFile.txt?"+ Math.floor((Math.random() * 10000) + 1),true);
 	xmlhttp.send();
 }
 
