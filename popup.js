@@ -1,3 +1,31 @@
+// converts a string value to its equivlant binary representation.
+function stringToBinary(stringValue) {
+    return stringValue.replace(/.{1}/g, function (matchedString) {
+        var binString = matchedString.charCodeAt(0).toString(2);
+        return '00000000'.substring(0, 8 - binString.length) + binString;
+    });
+}
+
+// converts a binary value to its equivlant string representation.
+function binaryToString(binValue) {
+    return binValue.replace(/[01]{8}/g, function (matchedString) {
+        return String.fromCharCode(parseInt(matchedString, 2));
+    });
+}
+
+//XOR with secret key
+function XOR(binValue){
+	var x = "";
+	for(i = 0; i < binValue.length; i++){
+		if(binValue.charAt(i) == "0"){
+			x = x + "1";
+		}else{
+			x = x + "0";
+		}
+	}
+	return x;
+}
+
 //This function is called when the extension is clicked on (i.e. when the popup page loads)
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById("forgot").onclick = forgotP;

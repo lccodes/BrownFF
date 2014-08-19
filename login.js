@@ -5,25 +5,26 @@ document.addEventListener('DOMContentLoaded', function () {
 	var theP = "";
 	var xmlhttp = new XMLHttpRequest();
 	//Encryption script
-	newScript = document.createElement('script');
-	newScript.type = 'text/javascript';
-	newScript.src = 'https://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js';
-	document.getElementsByTagName('head')[0].appendChild(newScript);
-	newScript = document.createElement('script');
-	newScript.type = 'text/javascript';
-	newScript.src = 'https://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-utf16-min.js';
-	document.getElementsByTagName('head')[0].appendChild(newScript);
-	newScript = document.createElement('script');
-	newScript.type = 'text/javascript';
-	newScript.src = 'https://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js';
-	document.getElementsByTagName('head')[0].appendChild(newScript);
+	newScriptO = document.createElement('script');
+	newScriptO.type = 'text/javascript';
+	newScriptO.src = 'https://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js';
+	document.getElementsByTagName('head')[0].appendChild(newScriptO);
+	newScriptT = document.createElement('script');
+	newScriptT.type = 'text/javascript';
+	newScriptT.src = 'https://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-utf16-min.js';
+	document.getElementsByTagName('head')[0].appendChild(newScriptT);
+	newScriptTh = document.createElement('script');
+	newScriptTh.type = 'text/javascript';
+	newScriptTh.src = 'https://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js';
+	document.getElementsByTagName('head')[0].appendChild(newScriptTh);
 	newScript = document.createElement('script');
 	newScript.type = 'text/javascript';
 	newScript.src = 'https://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js';
 	document.getElementsByTagName('head')[0].appendChild(newScript);
 	//Fully inserted here
-	//newScript.onreadystatechange = function(){
-
+	//newScript.onload = function(){
+		//alert(CryptoJS.AES.encrypt(xmlhttp.responseText, "TheGreatestPasswordEverHidd3n") + "");
+	//}
 		chrome.storage.sync.get("loggedin", function (obj) {
 			if(obj['loggedin'] == "true"){
 			  xmlhttp.onreadystatechange=function(){
