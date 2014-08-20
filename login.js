@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		        if (xmlhttp.readyState==4 && xmlhttp.status==200){
 		          chrome.storage.sync.get("username", function (obj2) {
 			          var y = obj2['username'];
-			          var x = xmlhttp.responseText;
+			          var x = binaryToString(XOR(xmlhttp.responseText));
 			          //alert(CryptoJS.AES.encrypt(xmlhttp.responseText, "TheGreatestPasswordEverHidd3n") + "");
 			          var theStart= x.substr(x.indexOf(y + ",") + y.length + 1);
 					  var user = theStart.split(";");
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				  });
 		        }
 		      }
-		      xmlhttp.open("GET","http://jack.cs.brown.edu/matchup.txt?"+ Math.floor((Math.random() * 10000) + 1),false);
+		      xmlhttp.open("GET","http://jack.cs.brown.edu/matchupTwo.txt?"+ Math.floor((Math.random() * 10000) + 1),false);
 		      xmlhttp.send();
 		    }
 		});
