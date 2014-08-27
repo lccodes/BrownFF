@@ -20,9 +20,11 @@ function onLoad(){
 			//alert("Free!");
 			chrome.storage.sync.get("username", function (obj) {
 				var xmlhttp = new XMLHttpRequest();
+				//alert(stringToBinary(obj['username']));
 	      		xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
 	      		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	      		xmlhttp.send("type=free&username="+stringToBinary(obj['username']));
+	      		//alert(stringToBinary(obj['username']));
       		});
 		}
 	});
