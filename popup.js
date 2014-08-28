@@ -29,6 +29,7 @@ function XOR(binValue){
 //This function is called when the extension is clicked on (i.e. when the popup page loads)
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById("forgot").onclick = forgotP;
+	$("#wrong").hide();
 	if(localStorage.loggedin == "true"){
     	alreadyIn();
 	}else{
@@ -54,7 +55,7 @@ function signOn(){
     			chrome.storage.sync.set({"username" : $('#username').val()});
     			chrome.storage.sync.set({"loggedin" : "true"});
     			chrome.storage.sync.get("new", function (obj) {
-					if("new" in obj){
+				if("new" in obj){
 						localStorage.loggedin = "true";
     					localStorage.username = $('#username').val();
     					alreadyIn();
@@ -88,9 +89,13 @@ function signOn(){
 			    			document.getElementById("login").onclick = changeP;
 			    			$('#forgot').hide();
 			    			$("p").text("Please change your password. Enter the new password below:");
+			    		}else{
+			    			$("#wrong").show();
 			    		}
 		    		});
     			});	
+    		}else{
+    			$("#wrong").show();	
     		}
     	}
   	}
