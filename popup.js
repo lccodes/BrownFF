@@ -71,25 +71,25 @@ function signOn(){
 		    	});	
     		}else if(where != -1){
     			chrome.storage.sync.get("new", function (obj) {
-    				if("new" in obj && obj["new"] == $('#password').val()){
-    					chrome.storage.sync.set({"username" : $('#username').val()});
-    					chrome.storage.sync.set({"loggedin" : "true"});
-						localStorage.loggedin = "true";
-    					localStorage.username = $('#username').val();
-    					alreadyIn();
-    					$('#forgot').hide();
-		    		}else if(obj["new"] == $('#password').val()){
-		    			chrome.storage.sync.set({"username" : $('#username').val()});
-		    			chrome.storage.sync.set({"loggedin" : "true"});
-		    			localStorage.username = $('#username').val();
-		    			$('#username').val("");
-		    			$('#username').watermark('New Password');
-		    			$('#password').hide();
-		    			$('#login').text("Save Password");
-		    			document.getElementById("login").onclick = changeP;
-		    			$('#forgot').hide();
-		    			$("p").text("Please change your password. Enter the new password below:");
-		    		}
+    				chrome.storage.sync.get("username", function (other) {
+	    				if("new" in obj && obj["new"] == $('#password').val() && other["username"] == $('#username').val()){
+	    					chrome.storage.sync.set({"loggedin" : "true"});
+							localStorage.loggedin = "true";
+	    					localStorage.username = $('#username').val();
+	    					alreadyIn();
+	    					$('#forgot').hide();
+			    		}else if(obj["new"] == $('#password').val() && other["username"] == $('#username').val()){
+			    			chrome.storage.sync.set({"loggedin" : "true"});
+			    			localStorage.username = $('#username').val();
+			    			$('#username').val("");
+			    			$('#username').watermark('New Password');
+			    			$('#password').hide();
+			    			$('#login').text("Save Password");
+			    			document.getElementById("login").onclick = changeP;
+			    			$('#forgot').hide();
+			    			$("p").text("Please change your password. Enter the new password below:");
+			    		}
+		    		});
     			});	
     		}
     	}
