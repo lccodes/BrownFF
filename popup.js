@@ -56,10 +56,11 @@ function signOn(){
     			chrome.storage.sync.set({"loggedin" : "true"});
     			chrome.storage.sync.get("new", function (obj) {
 				if("new" in obj){
-						localStorage.loggedin = "true";
+					localStorage.loggedin = "true";
     					localStorage.username = $('#username').val();
     					alreadyIn();
     					$('#forgot').hide();
+    					$("#wrong").hide();
 		    		}else{
 		    			$('#username').val("");
 		    			$('#username').watermark('New Password');
@@ -68,6 +69,7 @@ function signOn(){
 		    			document.getElementById("login").onclick = changeP;
 		    			$('#forgot').hide();
 		    			$("p").text("Please change your password. Enter the new password below:");
+		    			$("#wrong").hide();
 		    		}
 		    	});	
     		}else if(where != -1){
@@ -79,6 +81,7 @@ function signOn(){
 	    					localStorage.username = $('#username').val();
 	    					alreadyIn();
 	    					$('#forgot').hide();
+	    					$("#wrong").hide();
 			    		}else if(obj["new"] == $('#password').val() && other["username"] == $('#username').val()){
 			    			chrome.storage.sync.set({"loggedin" : "true"});
 			    			localStorage.username = $('#username').val();
@@ -89,6 +92,7 @@ function signOn(){
 			    			document.getElementById("login").onclick = changeP;
 			    			$('#forgot').hide();
 			    			$("p").text("Please change your password. Enter the new password below:");
+			    			$("#wrong").hide();
 			    		}else{
 			    			$("#wrong").show();
 			    		}
