@@ -1,4 +1,4 @@
-//Username variable so we can all see it
+//Username var
 var us = "";
 // converts a string value to its equivlant binary representation.
 function stringToBinary(stringValue) {
@@ -14,35 +14,33 @@ function onLoad(){
 	document.getElementById("ss-submit").addEventListener('click', function(event){
 		//alert("Success!");
 		var all = document.getElementsByTagName("input");
-		all[0].value = us;
 		var allow = true;
-		for(var i = 0; i < all.length; i++){
-			if(all[i].value == ""){
-				allow = false;
+			all[0].value = us;
+			//alert(obj2['username']);
+		
+			for(var i = 0; i < all.length; i++){
+				if(all[i].value == ""){
+					allow = false;
+				}
 			}
-		}
-		if(allow){
-			//alert("Free!");
-			chrome.storage.sync.get("username", function (obj) {
+			if(allow){
+				//alert("Free!");
 				var xmlhttp = new XMLHttpRequest();
 				//alert(stringToBinary(obj['username']));
-	      		xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
-	      		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	      		xmlhttp.send("type=free&username="+stringToBinary(obj['username']));
-	      		//alert(stringToBinary(obj['username']));
-      		});
-		}
+	      			xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
+	      			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	      			xmlhttp.send("type=free&username="+stringToBinary(us);
+			}
 	});
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-	//Gets their username early to save time
-	chrome.storage.sync.get("username", function (obj2) {
-	us = obj2['username'];
-	alert(us);
-	});
+	//Get the usrename early to save time
+       chrome.storage.sync.get("username", function(obj){
+		us = obj['username'];
+       });
 
-        //alert("Added");
+	//alert("Added");
 	window.onload = onLoad;
 	//alert("sfsd");	
 });
