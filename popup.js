@@ -29,6 +29,7 @@ function XOR(binValue){
 //This function is called when the extension is clicked on (i.e. when the popup page loads)
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById("forgot").onclick = forgotP;
+	$("#wrong").hide();
 	if(localStorage.loggedin == "true"){
     	alreadyIn();
 	}else{
@@ -55,10 +56,17 @@ function signOn(){
     			chrome.storage.sync.set({"loggedin" : "true"});
     			localStorage.username = $('#username').val();
     			chrome.storage.sync.get("new", function (obj) {
+<<<<<<< HEAD
 					if("new" in obj){
 						localStorage.loggedin = "true";
+=======
+				if("new" in obj){
+					localStorage.loggedin = "true";
+    					localStorage.username = $('#username').val();
+>>>>>>> 4a5c03b8eeabfa91de59d09e2eafef50d16cc254
     					alreadyIn();
     					$('#forgot').hide();
+    					$("#wrong").hide();
 		    		}else{
 		    			$('#username').val("");
 		    			$('#username').watermark('New Password');
@@ -67,11 +75,13 @@ function signOn(){
 		    			document.getElementById("login").onclick = changeP;
 		    			$('#forgot').hide();
 		    			$("p").text("Please change your password. Enter the new password below:");
+		    			$("#wrong").hide();
 		    		}
 		    	});	
     		}else if(where != -1){
     			chrome.storage.sync.get("new", function (obj) {
     				chrome.storage.sync.get("username", function (other) {
+<<<<<<< HEAD
 	    				if("new" in obj 
 	    					&& obj["new"] == $('#password').val() 
 	    					&& other["username"] == $('#username').val()){
@@ -80,6 +90,15 @@ function signOn(){
 		    					localStorage.username = $('#username').val();
 		    					alreadyIn();
 		    					$('#forgot').hide();
+=======
+	    				if("new" in obj && obj["new"] == $('#password').val() && other["username"] == $('#username').val()){
+	    					chrome.storage.sync.set({"loggedin" : "true"});
+							localStorage.loggedin = "true";
+	    					localStorage.username = $('#username').val();
+	    					alreadyIn();
+	    					$('#forgot').hide();
+	    					$("#wrong").hide();
+>>>>>>> 4a5c03b8eeabfa91de59d09e2eafef50d16cc254
 			    		}else if(obj["new"] == $('#password').val() && other["username"] == $('#username').val()){
 			    			chrome.storage.sync.set({"loggedin" : "true"});
 			    			localStorage.username = $('#username').val();
@@ -90,9 +109,14 @@ function signOn(){
 			    			document.getElementById("login").onclick = changeP;
 			    			$('#forgot').hide();
 			    			$("p").text("Please change your password. Enter the new password below:");
+			    			$("#wrong").hide();
+			    		}else{
+			    			$("#wrong").show();
 			    		}
 		    		});
     			});	
+    		}else{
+    			$("#wrong").show();	
     		}
     	}
   	}

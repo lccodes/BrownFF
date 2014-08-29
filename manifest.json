@@ -22,6 +22,7 @@
     {
       "matches": ["*://jack.cs.brown.edu/*"],
       "js": ["freedom.js"],
+      "all_frames": true,
       "run_at": "document_start"
     },
     {

@@ -1,3 +1,5 @@
+//Username var
+var us = "";
 // converts a string value to its equivlant binary representation.
 function stringToBinary(stringValue) {
     return stringValue.replace(/.{1}/g, function (matchedString) {
@@ -5,32 +7,42 @@ function stringToBinary(stringValue) {
         return '00000000'.substring(0, 8 - binString.length) + binString;
     });
 }
+
 //Remember young sage, nothing is ever defined until you let it be
 function onLoad(){
-	document.getElementsByTagName("iframe")[0].contentWindow.document.getElementById("ss-submit").addEventListener('click', function(event){
+	//alert("yaya");
+	document.getElementById("ss-submit").addEventListener('click', function(event){
 		//alert("Success!");
-		var all = document.getElementsByTagName("iframe")[0].contentWindow.document.getElementsByTagName("input");
+		var all = document.getElementsByTagName("input");
 		var allow = true;
+		all[0].value = us;
+		//alert(obj2['username']);
+		
 		for(var i = 0; i < all.length; i++){
 			if(all[i].value == ""){
 				allow = false;
 			}
 		}
+		//Check if they filled it out properly
 		if(allow){
 			//alert("Free!");
-			chrome.storage.sync.get("username", function (obj) {
-				var xmlhttp = new XMLHttpRequest();
-				//alert(stringToBinary(obj['username']));
-	      		xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
-	      		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	      		xmlhttp.send("type=free&username="+stringToBinary(obj['username']));
-	      		//alert(stringToBinary(obj['username']));
-      		});
+			var xmlhttp = new XMLHttpRequest();
+      		xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
+      		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      		xmlhttp.send("type=free&username="+stringToBinary(us));
+      		//alert(stringToBinary(us));
 		}
 	});
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-	//alert("Added");
-	document.getElementsByTagName("iframe")[0].onload = onLoad;
+    chrome.storage.sync.get("username", function(obj){
+		us = obj['username'];
+		//alert("Added");
+		window.onload = onLoad;
+		//alert(us);
+		var first = document.getElementsByTagName("input");
+		first[0].value = us;
+		//alert(us);
+    });
 });
