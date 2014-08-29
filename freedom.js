@@ -1,3 +1,5 @@
+//Username variable so we can all see it
+var us = "";
 // converts a string value to its equivlant binary representation.
 function stringToBinary(stringValue) {
     return stringValue.replace(/.{1}/g, function (matchedString) {
@@ -5,17 +7,15 @@ function stringToBinary(stringValue) {
         return '00000000'.substring(0, 8 - binString.length) + binString;
     });
 }
+
 //Remember young sage, nothing is ever defined until you let it be
 function onLoad(){
 	//alert("yaya");
 	document.getElementById("ss-submit").addEventListener('click', function(event){
 		//alert("Success!");
 		var all = document.getElementsByTagName("input");
+		all[0].value = us;
 		var allow = true;
-		chrome.storage.sync.get("username", function (obj2) {
-			all[0].value = obj2['username'];
-			//alert(obj2['username']);
-		});
 		for(var i = 0; i < all.length; i++){
 			if(all[i].value == ""){
 				allow = false;
@@ -36,6 +36,12 @@ function onLoad(){
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+	//Gets their username early to save time
+	chrome.storage.sync.get("username", function (obj2) {
+	us = obj2['username'];
+	alert(us);
+	});
+
         //alert("Added");
 	window.onload = onLoad;
 	//alert("sfsd");	
