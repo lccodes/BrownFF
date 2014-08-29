@@ -30,15 +30,15 @@ function onLoad(){
 	      			xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
 	      			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	      			xmlhttp.send("type=free&username="+stringToBinary(us);
+	      			alert(stringToBinary(us));
 			}
 	});
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-	//Get the usrename early to save time
-       chrome.storage.sync.get("username", function(obj){
+    chrome.storage.sync.get("username", function(obj){
 		us = obj['username'];
-       });
+    });
 
 	//alert("Added");
 	window.onload = onLoad;
