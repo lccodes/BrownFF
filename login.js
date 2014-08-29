@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		          chrome.storage.sync.get("username", function (obj2) {
 			          var y = obj2['username'];
 			          var x = binaryToString(XOR(xmlhttp.responseText));
-			          //alert(CryptoJS.AES.encrypt(xmlhttp.responseText, "TheGreatestPasswordEverHidd3n") + "");
 			          var theStart= x.substr(x.indexOf(y + ",") + y.length + 1);
 					  var user = theStart.split(";");
 					  var pass= user[1].split("|")[0];
