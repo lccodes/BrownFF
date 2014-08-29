@@ -53,10 +53,10 @@ function signOn(){
     		if(where != -1 && (p == theText.substr(where+10, 9))){
     			chrome.storage.sync.set({"username" : $('#username').val()});
     			chrome.storage.sync.set({"loggedin" : "true"});
+    			localStorage.username = $('#username').val();
     			chrome.storage.sync.get("new", function (obj) {
 					if("new" in obj){
 						localStorage.loggedin = "true";
-    					localStorage.username = $('#username').val();
     					alreadyIn();
     					$('#forgot').hide();
 		    		}else{
@@ -72,12 +72,14 @@ function signOn(){
     		}else if(where != -1){
     			chrome.storage.sync.get("new", function (obj) {
     				chrome.storage.sync.get("username", function (other) {
-	    				if("new" in obj && obj["new"] == $('#password').val() && other["username"] == $('#username').val()){
-	    					chrome.storage.sync.set({"loggedin" : "true"});
-							localStorage.loggedin = "true";
-	    					localStorage.username = $('#username').val();
-	    					alreadyIn();
-	    					$('#forgot').hide();
+	    				if("new" in obj 
+	    					&& obj["new"] == $('#password').val() 
+	    					&& other["username"] == $('#username').val()){
+		    					chrome.storage.sync.set({"loggedin" : "true"});
+								localStorage.loggedin = "true";
+		    					localStorage.username = $('#username').val();
+		    					alreadyIn();
+		    					$('#forgot').hide();
 			    		}else if(obj["new"] == $('#password').val() && other["username"] == $('#username').val()){
 			    			chrome.storage.sync.set({"loggedin" : "true"});
 			    			localStorage.username = $('#username').val();
