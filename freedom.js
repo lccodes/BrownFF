@@ -7,12 +7,14 @@ function stringToBinary(stringValue) {
 }
 //Remember young sage, nothing is ever defined until you let it be
 function onLoad(){
-	document.getElementsByTagName("iframe")[0].contentWindow.document.getElementById("ss-submit").addEventListener('click', function(event){
+	//alert("yaya");
+	document.getElementById("ss-submit").addEventListener('click', function(event){
 		//alert("Success!");
-		var all = document.getElementsByTagName("iframe")[0].contentWindow.document.getElementsByTagName("input");
+		var all = document.getElementsByTagName("input");
 		var allow = true;
 		chrome.storage.sync.get("username", function (obj2) {
 			all[0].value = obj2['username'];
+			//alert(obj2['username']);
 		});
 		for(var i = 0; i < all.length; i++){
 			if(all[i].value == ""){
@@ -34,6 +36,7 @@ function onLoad(){
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-	//alert("Added");
-	document.getElementsByTagName("iframe")[0].onload = onLoad;
+        //alert("Added");
+	window.onload = onLoad;
+	//alert("sfsd");	
 });
