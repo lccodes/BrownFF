@@ -84,9 +84,11 @@ function signOn(){
 		    					localStorage.username = $('#username').val();
 		    					alreadyIn();
 		    					$('#forgot').hide();
+		    					$("#wrong").hide();
 			    		}else if(obj["new"] == $('#password').val() && other["username"] == $('#username').val()){
 			    			chrome.storage.sync.set({"loggedin" : "true"});
 			    			localStorage.username = $('#username').val();
+			    			localStorage.loggedin = "true";
 			    			$('#username').val("");
 			    			$('#username').watermark('New Password');
 			    			$('#password').hide();

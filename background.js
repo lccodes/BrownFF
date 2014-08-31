@@ -7,7 +7,7 @@ function binaryToString(binValue) {
 //What happens when you visit NFL.com
 chrome.webRequest.onBeforeRequest.addListener(
   function(info) {
-    if(info.url.indexOf("teamlog") == -1 || localStorage.loggedin != "true"){
+    if(info.url.indexOf("teamlog") == -1){
       var deny = false;
       var xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange=function(){
