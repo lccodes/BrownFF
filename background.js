@@ -7,7 +7,7 @@ function binaryToString(binValue) {
 //What happens when you visit NFL.com
 chrome.webRequest.onBeforeRequest.addListener(
   function(info) {
-    if(info.url.indexOf("teamlog") == -1){
+    if(info.url.indexOf("teamlog") == -1 || localStorage.loggedin != "true"){
       var deny = false;
       var xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange=function(){
@@ -43,8 +43,10 @@ chrome.webRequest.onBeforeRequest.addListener(
 //Block them from the manager portal in every shape and form
 chrome.webRequest.onBeforeRequest.addListener(
   function(info) {
-    alert("I'm sorry but you cannot access this content. Please email football@cs.brown.edu if you believe you arrived here by mistake.");
-    return {redirectUrl: "http://football.fantasysports.yahoo.com"};
+    if(localStorage.loggedin == "true"){
+      alert("I'm sorry but you cannot access this content. Please email football@cs.brown.edu if you believe you arrived here by mistake.");
+      return {redirectUrl: "http://football.fantasysports.yahoo.com"};
+    }
   },
   // filters
   {
@@ -93,7 +95,7 @@ chrome.webRequest.onCompleted.addListener(
 chrome.webRequest.onCompleted.addListener(
   function(info){
     //alert("Start!");
-      var theTime = (new Date()).getTime() - 30000;
+      var theTime = (new Date()).getTime() - 100000;
       chrome.browsingData.remove({
         "since": theTime
       }, 
