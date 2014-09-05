@@ -7,21 +7,23 @@ function dataValidator(){
 		document.getElementById("sixtheight").value = "0";
 		document.getElementById("ninth").value = "0";
 		document.getElementById("last").value = "0";
+		return;
 	}
 
 	total += parseFloat(document.getElementById("second").value);
 	if(total > 1){
 		var a = "";
 		a += Math.round((1 - parseFloat(document.getElementById("first").value))*10)/10;
-		if(a == "0"){
+		if(Math.round((1 - parseFloat(document.getElementById("first").value))*10)/10 == 0){
 			document.getElementById("last").value = "0";
 		}else{
-			document.getElementById("last").value = a.substring(1);
+			document.getElementById("second").value = a.substring(1);
 		}
 		document.getElementById("thirdfifth").value = "0";
 		document.getElementById("sixtheight").value = "0";
 		document.getElementById("ninth").value = "0";
 		document.getElementById("last").value = "0";
+		return;
 	}
 
 	total += parseFloat(document.getElementById("thirdfifth").value);
@@ -29,14 +31,16 @@ function dataValidator(){
 		var a = "";
 		a += Math.round((1 - parseFloat(document.getElementById("first").value)-
 			parseFloat(document.getElementById("second").value))*10)/10;
-		if(a == "0"){
-			document.getElementById("last").value = "0";
+		if(Math.round((1 - parseFloat(document.getElementById("first").value)-
+			parseFloat(document.getElementById("second").value))*10)/10 == 0){
+			document.getElementById("thirdfifth").value = "0";
 		}else{
-			document.getElementById("last").value = a.substring(1);
+			document.getElementById("thirdfifth").value = a.substring(1);
 		}
 		document.getElementById("sixtheight").value = "0";
 		document.getElementById("ninth").value = "0";
 		document.getElementById("last").value = "0";
+		return;
 	}
 
 	total += parseFloat(document.getElementById("sixtheight").value);
@@ -46,13 +50,17 @@ function dataValidator(){
 			(1 - parseFloat(document.getElementById("first").value)-
 			parseFloat(document.getElementById("second").value)-
 			parseFloat(document.getElementById("thirdfifth").value))*10)/10;
-		if(a == "0"){
-			document.getElementById("last").value = "0";
+		if(Math.round(
+			(1 - parseFloat(document.getElementById("first").value)-
+			parseFloat(document.getElementById("second").value)-
+			parseFloat(document.getElementById("thirdfifth").value))*10)/10 == 0){
+			document.getElementById("sixtheight").value = "0";
 		}else{
-			document.getElementById("last").value = a.substring(1);
+			document.getElementById("sixtheight").value = a.substring(1);
 		}
 		document.getElementById("ninth").value = "0";
 		document.getElementById("last").value = "0";
+		return;
 	}
 
 	total += parseFloat(document.getElementById("ninth").value);
@@ -62,12 +70,16 @@ function dataValidator(){
 			parseFloat(document.getElementById("second").value)-
 			parseFloat(document.getElementById("thirdfifth").value)-
 			parseFloat(document.getElementById("sixtheight").value))*10)/10;
-		if(a == "0"){
-			document.getElementById("last").value = "0";
+		if(Math.round((1 - parseFloat(document.getElementById("first").value)-
+			parseFloat(document.getElementById("second").value)-
+			parseFloat(document.getElementById("thirdfifth").value)-
+			parseFloat(document.getElementById("sixtheight").value))*10)/10 == 0){
+				document.getElementById("ninth").value = "0";
 		}else{
-			document.getElementById("last").value = a.substring(1);
+			document.getElementById("ninth").value = a.substring(1);
 		}
 		document.getElementById("last").value = "0";
+		return;
 	}
 
 	total += parseFloat(document.getElementById("last").value);
@@ -83,7 +95,7 @@ function dataValidator(){
 		}else{
 			document.getElementById("last").value = a.substring(1);
 		}
-	}else if(total < 1){
+	}/*else if(total < 1){
 		var a = "";
 		a += Math.round((1 - total) *10)/10;
 		if(a == "0"){
@@ -91,7 +103,7 @@ function dataValidator(){
 		}else{
 			document.getElementById("last").value = a.substring(1);
 		}
-	}
+	}*/
 }
 
 //Bar graph function
