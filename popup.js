@@ -181,5 +181,6 @@ function survey(){
 	}else if(2 == d.getDay() && localStorage.complete != d.toString){
 		localStorage.survey = "false";
 		chrome.browserAction.setPopup({popup: "survey.html"});
+		window.location.href="survey.html";
 	}
 }

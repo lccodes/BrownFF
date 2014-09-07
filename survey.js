@@ -15,6 +15,7 @@ function submit(){
 	var d = new Date();
 	localStorage.complete = d.toString();
 	chrome.browserAction.setPopup({popup: "popup.html"});
+	window.location.href="popup.html";
 	//XMLHttp thing to submit the data
 }
 //Makes sure that it all sums to 1
