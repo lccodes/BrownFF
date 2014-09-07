@@ -1,12 +1,32 @@
+//Updates the box
+//Val is the new num, which is what to update
+function updateBox(val, which) {
+      document.getElementById(which).value= parseFloat(val)/100;
+}
+//Updates the slider
+//Val is the new num, which is what to update
+function updateBar(val, which) {
+      document.getElementById(which).value=parseFloat(val)*100;
+}
+
+//What happens when they submit
+function submit(){
+	localStorage.survey = "true";
+	var d = new Date();
+	localStorage.complete = d.toString();
+	chrome.browserAction.setPopup({popup: "popup.html"});
+	//XMLHttp thing to submit the data
+}
+//Makes sure that it all sums to 1
 function dataValidator(){
 	var total = 0;
 	total += parseFloat(document.getElementById("first").value);
 	if(total >= 1){
-		document.getElementById("second").value = "0";
-		document.getElementById("thirdfifth").value = "0";
-		document.getElementById("sixtheight").value = "0";
-		document.getElementById("ninth").value = "0";
-		document.getElementById("last").value = "0";
+		document.getElementById("second").value = 0;
+		document.getElementById("thirdfifth").value = 0;
+		document.getElementById("sixtheight").value = 0;
+		document.getElementById("ninth").value = 0;
+		document.getElementById("last").value = 0;
 		return;
 	}
 
@@ -239,7 +259,7 @@ function BarGraph(ctx) {
 		ctx.textAlign = "center";
 		// Use try / catch to stop IE 8 from going to error town
 		try {
-		  ctx.fillText(Math.round(arr[i]*10)/10,
+		  ctx.fillText(Math.round(arr[i]*100)/100,
 			i * that.width / numOfBars + (that.width / numOfBars) / 2,
 			graphAreaHeight - barHeight - 10);
 		} catch (ex) {}
@@ -292,6 +312,7 @@ function BarGraph(ctx) {
 }//end bar graph
 
 document.addEventListener('DOMContentLoaded', function () {
+	document.getElementById("submit").onclick = submit;
 	(function () {
 	
 		function createCanvas(divName) {
@@ -315,14 +336,14 @@ document.addEventListener('DOMContentLoaded', function () {
 		graph.xAxisLabelArr = ["First", "Second", "3-5", "6-8", "9th", "Last"];
 		setInterval(function () {
 			//Validate data
-			dataValidator();
+			//dataValidator();
 			//Update
-			graph.update([parseFloat(document.getElementById("first").value),
-							parseFloat(document.getElementById("second").value), 
-							parseFloat(document.getElementById("thirdfifth").value), 
-							parseFloat(document.getElementById("sixtheight").value),
-							parseFloat(document.getElementById("ninth").value),
-							parseFloat(document.getElementById("last").value)]);
+			graph.update([parseFloat(document.getElementById("first").value/100),
+							parseFloat(document.getElementById("second").value/100), 
+							parseFloat(document.getElementById("thirdfifth").value/100), 
+							parseFloat(document.getElementById("sixtheight").value/100),
+							parseFloat(document.getElementById("ninth").value/100),
+							parseFloat(document.getElementById("last").value/100)]);
 		}, 1000);
 
 	}());

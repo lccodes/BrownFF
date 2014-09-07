@@ -63,6 +63,8 @@ function signOn(){
     					$('#forgot').hide();
     					$("#wrong").hide();
 		    		}else{
+		    			localStorage.survey = "false";
+		    			localStorage.complete = "never";
 		    			$('#username').val("");
 		    			$('#username').watermark('New Password');
 		    			$('#password').hide();
@@ -87,6 +89,8 @@ function signOn(){
 		    					$("#wrong").hide();
 			    		}else if(obj["new"] == $('#password').val() && other["username"] == $('#username').val()){
 			    			chrome.storage.sync.set({"loggedin" : "true"});
+			    			localStorage.survey = "false";
+			    			localStorage.complete = "never";
 			    			localStorage.username = $('#username').val();
 			    			localStorage.loggedin = "true";
 			    			$('#username').val("");
@@ -125,6 +129,8 @@ function alreadyIn(){
 	});
     $('#forgot').hide();
     $("h1").text("Welcome BACK to BrownFF!");
+    //Checks if it is survey time
+    survey();
 }
 
 //Signs them out of the extension
@@ -164,4 +170,16 @@ function changeP(){
 	chrome.storage.sync.set({"loggedin" : "true"});
 	localStorage.loggedin = "true";
     alreadyIn();
+}
+
+//Displays the survey if it is time.
+function survey(){
+	var d = new Date();
+	//Should be 2 for Tuesday
+	if(localStorage.survey == "false"){
+		chrome.browserAction.setPopup({popup: "survey.html"});
+	}else if(2 == d.getDay() && localStorage.complete != d.toString){
+		localStorage.survey = "false";
+		chrome.browserAction.setPopup({popup: "survey.html"});
+	}
 }

@@ -9,23 +9,15 @@ chrome.webRequest.onBeforeRequest.addListener(
   function(info) {
     if(info.url.indexOf("teamlog") == -1){
       var deny = false;
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange=function(){
-        if (xmlhttp.readyState==4 && xmlhttp.status==200){
-          var real = binaryToString(xmlhttp.responseText);
-          var where = real.indexOf(localStorage.username + ",");
-          //alert(xmlhttp.responseText);
-          //alert(xmlhttp.responseText.substr(where+10, 1));
-          if(where != -1 && ("f" == real.substr(where+10, 1))){
-            //Redirect if they need to fill out the survey
-            deny = true;
-          }
-        }
+      //Get the date and see if it's survey time
+      var d = new Date();
+      //Should be 2 for tuesday
+      if(localStorage.complete != d.toString() && localStorage.loggedin == "true" && localStorage.survey == "false"){
+        alert("Please click on the extension window and complete the survey in order to proceed to fantasy football.")
+        deny = true;
       }
-      xmlhttp.open("GET","http://jack.cs.brown.edu/didYouTwo.txt?" + Math.floor((Math.random() * 10000) + 1),false);
-      xmlhttp.send();
       if(deny){
-        return {redirectUrl: "http://jack.cs.brown.edu/survey"};
+        return {redirectUrl: "http://brown.edu"};
       }
     }
   },

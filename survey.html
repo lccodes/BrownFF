@@ -5,95 +5,30 @@
 <body>
 	<div id="graphDiv1"></div>
 	<!-- 10 person league-->
+	<p>Please fill in this probability distribution according to how you think you will perform for the rest of the season</p>
 	<label for="first">Please select the probability that you get first:</label>
-	<select id="first">
-	  <option value="0">0</option>
-	  <option value=".1">.1</option>
-	  <option value=".2">.2</option>
-	  <option value=".3">.3</option>
-	  <option value=".4">.4</option>
-	  <option value=".5">.5</option>
-	  <option value=".6">.6</option>
-	  <option value=".7">.7</option>
-	  <option value=".8">.8</option>
-	  <option value=".9">.9</option>
-	  <option value="1">1</option>
-	</select><br>
+	<input type="range" name="first" id="first" min="0" max="100" step="1" value="0" onchange="updateBox(this.value,'firstT');">
+	<input type="text" id="firstT" value="0" style="width:30px;" onchange="updateBar(this.value,'first');"><br>
 
 	<label for="second">Please select the probability that you get second:</label>
-	<select id="second">
-	  <option value="0">0</option>
-	  <option value=".1">.1</option>
-	  <option value=".2">.2</option>
-	  <option value=".3">.3</option>
-	  <option value=".4">.4</option>
-	  <option value=".5">.5</option>
-	  <option value=".6">.6</option>
-	  <option value=".7">.7</option>
-	  <option value=".8">.8</option>
-	  <option value=".9">.9</option>
-	  <option value="1">1</option>
-	</select><br>
+	<input type="range" name="second" id="second" min="0" max="100" step="1" value="0" onchange="updateBox(this.value,'secondT');">
+	<input type="text" id="secondT" value="0" style="width:30px;" onchange="updateBar(this.value,'second');"><br>
 
 	<label for="thirdfifth">Please select the probability that you get third through fifth:</label>
-	<select id="thirdfifth">
-	  <option value="0">0</option>
-	  <option value=".1">.1</option>
-	  <option value=".2">.2</option>
-	  <option value=".3">.3</option>
-	  <option value=".4">.4</option>
-	  <option value=".5">.5</option>
-	  <option value=".6">.6</option>
-	  <option value=".7">.7</option>
-	  <option value=".8">.8</option>
-	  <option value=".9">.9</option>
-	  <option value="1">1</option>
-	</select><br>
+	<input type="range" name="thirdfifth" id="thirdfifth" min="0" max="100" step="1" value="0" onchange="updateBox(this.value,'thirdfifthT');">
+	<input type="text" id="thirdfifthT" value="0" style="width:30px;" onchange="updateBar(this.value,'thirdfifth');"><br>
 
 	<label for="sixtheight">Please select the probability that you get sixth through eighth:</label>
-	<select id="sixtheight">
-	  <option value="0">0</option>
-	  <option value=".1">.1</option>
-	  <option value=".2">.2</option>
-	  <option value=".3">.3</option>
-	  <option value=".4">.4</option>
-	  <option value=".5">.5</option>
-	  <option value=".6">.6</option>
-	  <option value=".7">.7</option>
-	  <option value=".8">.8</option>
-	  <option value=".9">.9</option>
-	  <option value="1">1</option>
-	</select><br>
+	<input type="range" name="sixtheight" id="sixtheight" min="0" max="100" step="1" value="0" onchange="updateBox(this.value,'sixtheightT');">
+	<input type="text" id="sixtheightT" value="0" style="width:30px;" onchange="updateBar(this.value,'sixtheight');"><br>
 
 	<label for="ninth">Please select the probability that you get ninth:</label>
-	<select id="ninth">
-	  <option value="0">0</option>
-	  <option value=".1">.1</option>
-	  <option value=".2">.2</option>
-	  <option value=".3">.3</option>
-	  <option value=".4">.4</option>
-	  <option value=".5">.5</option>
-	  <option value=".6">.6</option>
-	  <option value=".7">.7</option>
-	  <option value=".8">.8</option>
-	  <option value=".9">.9</option>
-	  <option value="1">1</option>
-	</select><br>
+	<input type="range" name="ninth" id="ninth" min="0" max="100" step="1" value="0" onchange="updateBox(this.value,'ninthT');">
+	<input type="text" id="ninthT" value="0" style="width:30px;" onchange="updateBar(this.value,'ninth');"><br>
 
 	<label for="last">Please select the probability that you get last:</label>
-	<select id="last">
-	  <option value="0">0</option>
-	  <option value=".1">.1</option>
-	  <option value=".2">.2</option>
-	  <option value=".3">.3</option>
-	  <option value=".4">.4</option>
-	  <option value=".5">.5</option>
-	  <option value=".6">.6</option>
-	  <option value=".7">.7</option>
-	  <option value=".8">.8</option>
-	  <option value=".9">.9</option>
-	  <option value="1">1</option>
-	</select><br>
+	<input type="range" name="last" id="last" min="0" max="100" step="1" value="0" onchange="updateBox(this.value,'lastT');">
+	<input type="text" id="lastT" value="0" style="width:30px;" onchange="updateBar(this.value,'last');"><br>
 
 	<button id="submit">Submit!</button>
 </body>
