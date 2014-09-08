@@ -20,26 +20,7 @@ function submit(){
 }
 //Makes sure that it all sums to 1
 function dataValidator(){
-	
 	var total = 0;
-	var last = remEls[0];
-	var remEls = [document.getElementById("first"), document.getElementById("second"), 
-		      document.getElementById("thirdfifth"), document.getElementById("sixtheight")
-		      document.getElementById("ninth"), document.getElementById("last")];
-	while(total <= 1 && remEls.length != 0){
-		total += remEls[0].value;
-		last = remEls[0];
-		delete remEls[0];
-	}
-	if(total > 1){
-		for(el in remEls){
-			el.value = 0;
-		}
-		last.value = total - 1;
-	}
-	
-	
-	/*var total = 0;
 	total += parseFloat(document.getElementById("first").value);
 	if(total >= 1){
 		document.getElementById("second").value = 0;
@@ -135,7 +116,7 @@ function dataValidator(){
 		}else{
 			document.getElementById("last").value = a.substring(1);
 		}
-	}else if(total < 1){
+	}/*else if(total < 1){
 		var a = "";
 		a += Math.round((1 - total) *10)/10;
 		if(a == "0"){
@@ -333,6 +314,23 @@ function BarGraph(ctx) {
 
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById("submit").onclick = submit;
+	document.getElementById("first").onchange = function(){updateBox(document.getElementById("first").value,'firstT');};
+	document.getElementById("firstT").onchange = function(){updateBar(document.getElementById("firstT").value,'first');};
+	//Second
+	document.getElementById("second").onchange = function(){updateBox(document.getElementById("second").value,'secondT');};
+	document.getElementById("secondT").onchange = function(){updateBar(document.getElementById("secondT").value,'second');};
+	//Third
+	document.getElementById("thirdfifth").onchange = function(){updateBox(document.getElementById("thirdfifth").value,'thirdfifthT');};
+	document.getElementById("thirdfifthT").onchange = function(){updateBar(document.getElementById("thirdfifthT").value,'thirdfifth');};
+	//Fourth
+	document.getElementById("sixtheight").onchange = function(){updateBox(document.getElementById("sixtheight").value,'sixtheightT');};
+	document.getElementById("sixtheightT").onchange = function(){updateBar(document.getElementById("sixtheightT").value,'sixtheight');};
+	//Fifth
+	document.getElementById("ninth").onchange = function(){updateBox(document.getElementById("ninth").value,'ninthT');};
+	document.getElementById("ninthT").onchange = function(){updateBar(document.getElementById("ninth").value,'last');};
+	//Fifth
+	document.getElementById("last").onchange = function(){updateBox(document.getElementById("last").value,'lastT');};
+	document.getElementById("lastT").onchange = function(){updateBar(document.getElementById("lastT").value,'last');};
 	(function () {
 	
 		function createCanvas(divName) {
@@ -356,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		graph.xAxisLabelArr = ["First", "Second", "3-5", "6-8", "9th", "Last"];
 		setInterval(function () {
 			//Validate data
-			dataValidator();
+			//dataValidator();
 			//Update
 			graph.update([parseFloat(document.getElementById("first").value/100),
 							parseFloat(document.getElementById("second").value/100), 
