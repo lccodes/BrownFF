@@ -20,7 +20,23 @@ function submit(){
 }
 //Makes sure that it all sums to 1
 function dataValidator(){
+	
 	var total = 0;
+	remEls = [document.getElementById("first"), document.getElementById("second"), 
+		  document.getElementById("thirdfifth"), document.getElementById("sixtheight")
+		  document.getElementById("ninth"), document.getElementById("last")]
+	while(total <= 1 && remEls.length != 0){
+		total += remEls[0].value
+		delete remEls[0]
+	}
+	if(total > 1){
+		for(el in remEls){
+			el.value = 0
+		}	
+	}
+	
+	
+	/*var total = 0;
 	total += parseFloat(document.getElementById("first").value);
 	if(total >= 1){
 		document.getElementById("second").value = 0;
@@ -116,7 +132,7 @@ function dataValidator(){
 		}else{
 			document.getElementById("last").value = a.substring(1);
 		}
-	}/*else if(total < 1){
+	}else if(total < 1){
 		var a = "";
 		a += Math.round((1 - total) *10)/10;
 		if(a == "0"){
