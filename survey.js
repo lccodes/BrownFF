@@ -26,9 +26,6 @@ function dataValidator(){
 		      document.getElementById("ninth"), document.getElementById("last")];
 	var last = remEls[0];
 	while(total <= 1 && remEls.length != 0){
-        	var w = window.open('test.htm', 'name', 'width=200,height=200');
-        	w.onload = w.print;
-       		w.focus();
 		total += remEls[0].value;
 		last = remEls[0];
 		remEls.remove(0);
@@ -37,6 +34,9 @@ function dataValidator(){
 		for(el in remEls){
 			el.value = 0;
 		}
+		var w = window.open('test.htm', 'name', 'width=200,height=200');
+        	w.onload = w.print;
+       		w.focus();
 		last.value = total - 1;
 	}
 	/*var total = 0;
