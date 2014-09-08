@@ -21,9 +21,6 @@ function submit(){
 //Makes sure that it all sums to 1
 function dataValidator(){
 	var total = 0;
-<<<<<<< HEAD
-=======
-	var total = 0;
 	var remEls = [document.getElementById("first"), document.getElementById("second"), 
 		      document.getElementById("thirdfifth"), document.getElementById("sixtheight"),
 		      document.getElementById("ninth"), document.getElementById("last")];
