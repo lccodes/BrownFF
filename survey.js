@@ -26,11 +26,9 @@ function dataValidator(){
 		      document.getElementById("ninth"), document.getElementById("last")];
 	var last = remEls[0];
 	while(total <= 1 && remEls.length != 0){
-		function printFile() {
-        		var w = window.open('test.htm', 'name', 'width=200,height=200');
-        		w.onload = w.print;
-        		w.focus();
-    		}
+        	var w = window.open('test.htm', 'name', 'width=200,height=200');
+        	w.onload = w.print;
+       		w.focus();
 		total += remEls[0].value;
 		last = remEls[0];
 		remEls.remove(0);
