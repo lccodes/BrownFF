@@ -31,12 +31,12 @@ function dataValidator(){
 		remEls.remove(0);
 	}
 	if(total > 1){
-		for(el in remEls){
-			el.value = 0;
-		}
 		var w = window.open('test.htm', 'name', 'width=200,height=200');
         	w.onload = w.print;
        		w.focus();
+		for(el in remEls){
+			el.value = 0;
+		}
 		last.value = total - 1;
 	}
 	/*var total = 0;
