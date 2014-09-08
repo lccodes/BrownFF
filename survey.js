@@ -24,7 +24,7 @@ function dataValidator(){
 	var total = 0;
 	var last = remEls[0];
 	var remEls = [document.getElementById("first"), document.getElementById("second"), 
-		      document.getElementById("thirdfifth"), document.getElementById("sixtheight")
+		      document.getElementById("thirdfifth"), document.getElementById("sixtheight"),
 		      document.getElementById("ninth"), document.getElementById("last")];
 	while(total <= 1 && remEls.length != 0){
 		total += remEls[0].value;
