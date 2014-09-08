@@ -23,10 +23,11 @@ function dataValidator(){
 	var total = 0;
 <<<<<<< HEAD
 =======
-	var last = remEls[0];
+	var total = 0;
 	var remEls = [document.getElementById("first"), document.getElementById("second"), 
 		      document.getElementById("thirdfifth"), document.getElementById("sixtheight"),
 		      document.getElementById("ninth"), document.getElementById("last")];
+	var last = remEls[0];
 	while(total <= 1 && remEls.length != 0){
 		total += remEls[0].value;
 		last = remEls[0];
@@ -38,8 +39,6 @@ function dataValidator(){
 		}
 		last.value = total - 1;
 	}
-	
-	
 	/*var total = 0;
 >>>>>>> 5aae95689079b221cb743bb139cab17ff23ffe3a
 	total += parseFloat(document.getElementById("first").value);
