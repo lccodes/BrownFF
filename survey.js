@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		graph.xAxisLabelArr = ["First", "Second", "3-5", "6-8", "9th", "Last"];
 		setInterval(function () {
 			//Validate data
-			//dataValidator();
+			dataValidator();
 			//Update
 			graph.update([parseFloat(document.getElementById("first").value/100),
 							parseFloat(document.getElementById("second").value/100), 
