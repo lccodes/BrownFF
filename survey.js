@@ -28,7 +28,7 @@ function dataValidator(){
 	while(total <= 1 && remEls.length != 0){
 		total += remEls[0].value;
 		last = remEls[0];
-		delete remEls[0];
+		remEls.remove(0);
 	}
 	if(total > 1){
 		for(el in remEls){
