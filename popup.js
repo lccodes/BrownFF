@@ -176,11 +176,11 @@ function changeP(){
 function survey(){
 	var d = new Date();
 	//Should be 2 for Tuesday
-	if(localStorage.survey == "false"){
-		chrome.browserAction.setPopup({popup: "survey.html"});
-	}else if(2 == d.getDay() && localStorage.complete != d.toString){
+	//if(localStorage.survey == "false"){
+	//	chrome.browserAction.setPopup({popup: "survey.html"});
+	//}else if(2 == d.getDay() && localStorage.complete != d.toString()){
 		localStorage.survey = "false";
 		chrome.browserAction.setPopup({popup: "survey.html"});
 		window.location.href="survey.html";
-	}
+	//}
 }
