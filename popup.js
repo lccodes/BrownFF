@@ -28,7 +28,6 @@ function XOR(binValue){
 
 //This function is called when the extension is clicked on (i.e. when the popup page loads)
 document.addEventListener('DOMContentLoaded', function () {
-	localStorage.survey = "false";
 	document.getElementById("forgot").onclick = forgotP;
 	$("#wrong").hide();
 	if(localStorage.loggedin == "true"){
