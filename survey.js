@@ -11,9 +11,11 @@ function updateBar(val, which) {
 
 //What happens when they submit
 function submit(){
-	localStorage.survey = "true";
+	//localStorage.survey = "true";
 	var d = new Date();
-	localStorage.complete = d.toString();
+	localStorage.lastM = d.getMonth();
+	localStorage.lastD = d.getDate();
+	//localStorage.complete = d.toString();
 	chrome.browserAction.setPopup({popup: "popup.html"});
 	window.location.href="popup.html";
 	//XMLHttp thing to submit the data
