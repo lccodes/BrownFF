@@ -17,24 +17,20 @@ function submit(){
 	chrome.browserAction.setPopup({popup: "popup.html"});
 	window.location.href="popup.html";
 	//XMLHttp thing to submit the data
-	chrome.runtime.sendMessage({method: "getUsername"}, function(response) {
-		var username = response.status;
-		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
-		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.send("type=survey&username="+localStorage.username+"&results="+"|2.1:"+document.getElementById("first").value+
-			"|2.2:"+document.getElementById("second").value+"|2.3:"+document.getElementById("third").value+
-			"|2.4:"+document.getElementById("fourth").value+"|2.5:"+document.getElementById("fifth").value+
-			"|2.6:"+document.getElementById("sixth").value+"|2.7:"+document.getElementById("seventh").value+
-			"|2.8:"+document.getElementById("eighth").value+"|2.9:"+document.getElementById("ninth").value+
-			"|2.10:"+document.getElementById("tenth").value+"|3.1:"+document.getElementById("first").value+
-			"|3.2:"+document.getElementById("second").value+"|3.3:"+document.getElementById("third").value+
-			"|3.4:"+document.getElementById("fourth").value+"|3.5:"+document.getElementById("fifth").value+
-			"|3.6:"+document.getElementById("sixth").value+"|3.7:"+document.getElementById("seventh").value+
-			"|3.8:"+document.getElementById("eighth").value+"|3.9:"+document.getElementById("ninth").value+
-			"|3.10:"+document.getElementById("tenth").value);
-	});
-	alert("Thanks!");
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
+	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xmlhttp.send("type=survey&username="+localStorage.username+"&results="+"|2.1:"+document.getElementById("first").value+
+		"|2.2:"+document.getElementById("second").value+"|2.3:"+document.getElementById("third").value+
+		"|2.4:"+document.getElementById("fourth").value+"|2.5:"+document.getElementById("fifth").value+
+		"|2.6:"+document.getElementById("sixth").value+"|2.7:"+document.getElementById("seventh").value+
+		"|2.8:"+document.getElementById("eighth").value+"|2.9:"+document.getElementById("ninth").value+
+		"|2.10:"+document.getElementById("tenth").value+"|3.1:"+document.getElementById("first").value+
+		"|3.2:"+document.getElementById("second").value+"|3.3:"+document.getElementById("third").value+
+		"|3.4:"+document.getElementById("fourth").value+"|3.5:"+document.getElementById("fifth").value+
+		"|3.6:"+document.getElementById("sixth").value+"|3.7:"+document.getElementById("seventh").value+
+		"|3.8:"+document.getElementById("eighth").value+"|3.9:"+document.getElementById("ninth").value+
+		"|3.10:"+document.getElementById("tenth").value);
 }
 //Makes sure that it all sums to 1
 function dataValidator(){
