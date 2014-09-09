@@ -28,7 +28,7 @@ function submit(){
 		"|10:"+document.getElementById("tenth").value);
 }
 //Makes sure that it all sums to 1
-function dataValidator(){
+function dataValidatorTwo(){
 	var total = 0;
 	var fir = false;
 	var remEls = [document.getElementById("first"), document.getElementById("second"), 
@@ -39,6 +39,40 @@ function dataValidator(){
 		      document.getElementById("thirdT"), document.getElementById("fourthT"),document.getElementById("fifthT"),
 		      document.getElementById("sixthT"), document.getElementById("seventhT"),document.getElementById("eighthT"),
 		      document.getElementById("ninthT"),document.getElementById("tenthT")];
+	for(i=0;i<remEls.length;i++){
+		total+= parseInt(remEls[i].value);
+		if(total > 100 && !fir){
+			var semi=0;
+			for(x=0;x<i;x++){
+				semi+= parseFloat(remEls[x].value);
+			}
+			remEls[i].value = (100 - semi);
+			cremEls[i].value = (parseFloat(1 - semi/100)).toString();
+			fir = true;
+		}
+		if(total >= 100){
+			for(a=i+1;a<remEls.length;a++){
+				remEls[a].value = 0;
+				cremEls[a].value = "0";
+			}
+			return;
+		}
+	}
+}
+
+//Makes sure that it all sums to 1
+//in the second graph
+function dataValidatorTwo(){
+	var total = 0;
+	var fir = false;
+	var remEls = [document.getElementById("first2"), document.getElementById("second2"), 
+		      document.getElementById("third2"), document.getElementById("fourth2"),document.getElementById("fifth2"),
+		      document.getElementById("sixth2"), document.getElementById("seventh2"),document.getElementById("eighth2"),
+		      document.getElementById("ninth2"),document.getElementById("tenth2")];
+	var cremEls = [document.getElementById("firstT2"), document.getElementById("secondT2"), 
+		      document.getElementById("thirdT2"), document.getElementById("fourthT2"),document.getElementById("fifthT2"),
+		      document.getElementById("sixthT2"), document.getElementById("seventhT2"),document.getElementById("eighthT2"),
+		      document.getElementById("ninthT2"),document.getElementById("tenthT2")];
 	for(i=0;i<remEls.length;i++){
 		total+= parseInt(remEls[i].value);
 		if(total > 100 && !fir){
@@ -247,6 +281,7 @@ function BarGraph(ctx) {
 
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById("submit").onclick = submit;
+	//First graph
 	document.getElementById("first").onchange = function(){updateBox(document.getElementById("first").value,'firstT');};
 	document.getElementById("firstT").onchange = function(){updateBar(document.getElementById("firstT").value,'first');};
 	//Second
@@ -276,6 +311,37 @@ document.addEventListener('DOMContentLoaded', function () {
 	//Fifth
 	document.getElementById("tenth").onchange = function(){updateBox(document.getElementById("tenth").value,'tenthT');};
 	document.getElementById("tenthT").onchange = function(){updateBar(document.getElementById("tenthT").value,'tenth');};
+	//
+	//Second graph
+	document.getElementById("first2").onchange = function(){updateBox(document.getElementById("first2").value,'firstT2');};
+	document.getElementById("firstT2").onchange = function(){updateBar(document.getElementById("firstT2").value,'first2');};
+	//Second
+	document.getElementById("second2").onchange = function(){updateBox(document.getElementById("second2").value,'secondT2');};
+	document.getElementById("secondT2").onchange = function(){updateBar(document.getElementById("secondT2").value,'second2');};
+	//Third
+	document.getElementById("third2").onchange = function(){updateBox(document.getElementById("third2").value,'thirdT2');};
+	document.getElementById("thirdT2").onchange = function(){updateBar(document.getElementById("thirdT2").value,'third2');};
+	//Fourth
+	document.getElementById("fourth2").onchange = function(){updateBox(document.getElementById("fourth2").value,'fourthT2');};
+	document.getElementById("fourthT2").onchange = function(){updateBar(document.getElementById("fourthT2").value,'fourth2');};
+	//Second
+	document.getElementById("fifth2").onchange = function(){updateBox(document.getElementById("fifth2").value,'fifthT2');};
+	document.getElementById("fifthT2").onchange = function(){updateBar(document.getElementById("fifthT2").value,'fifth2');};
+	//Third
+	document.getElementById("sixth2").onchange = function(){updateBox(document.getElementById("sixth2").value,'sixthT2');};
+	document.getElementById("sixthT2").onchange = function(){updateBar(document.getElementById("sixthT2").value,'sixth2');};
+	//Fourth
+	document.getElementById("seventh2").onchange = function(){updateBox(document.getElementById("seventh2").value,'seventhT2');};
+	document.getElementById("seventhT2").onchange = function(){updateBar(document.getElementById("seventhT2").value,'seventh2');};
+	//Fourth
+	document.getElementById("eighth2").onchange = function(){updateBox(document.getElementById("eighth2").value,'eighthT2');};
+	document.getElementById("eighthT2").onchange = function(){updateBar(document.getElementById("eighthT2").value,'eighth2');};
+	//Fifth
+	document.getElementById("ninth2").onchange = function(){updateBox(document.getElementById("ninth2").value,'ninthT2');};
+	document.getElementById("ninthT2").onchange = function(){updateBar(document.getElementById("ninthT2").value,'ninth2');};
+	//Fifth
+	document.getElementById("tenth2").onchange = function(){updateBox(document.getElementById("tenth2").value,'tenthT2');};
+	document.getElementById("tenthT2").onchange = function(){updateBar(document.getElementById("tenthT2").value,'tenth2');};
 	(function () {
 	
 		function createCanvas(divName) {
@@ -319,8 +385,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		var graph2 = new BarGraph(ctx2);
 		graph2.maxValue = 1;
 		graph2.margin = 2;
-		graph2.colors = ["#49a0d8", "#d353a0", "#ffc527", "#0000FF","#df4427","#dffc27",
-						"#c21c27","#d93c27","#fdfc97","#dccc27"];
+		graph2.colors = ["#a990d8", "#d153b0", "#ffc527", "#cf00FF","#df4427","#dffc27",
+						"#c2ac27","#dd3c27","#fdfc97","#fccc27"];
 		graph2.xAxisLabelArr = ["First", "2nd", "3rd", "4th", "5th", "6th","7th","8th","9th","10th"];
 		setInterval(function () {
 			//Validate data
