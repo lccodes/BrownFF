@@ -1,3 +1,5 @@
+alert("jsLoaded");
+
 // converts a string value to its equivlant binary representation.
 function stringToBinary(stringValue) {
     return stringValue.replace(/.{1}/g, function (matchedString) {
