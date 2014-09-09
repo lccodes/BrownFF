@@ -210,7 +210,7 @@ function survey(){
 	xmlhttp.onreadystatechange=function(){
 		var emList = XOR(stringToBinary(eightManUNs)).split(",");
 		var em = false;
-		emList.forEach(function(el){if(el == localStorage.username)){em = true}});
+		emList.forEach(function(el){if(el == localStorage.username){em = true}});
 		if(em){
 			alert("212");
 			chrome.browserAction.setPopup({popup: "survey8.html"});
