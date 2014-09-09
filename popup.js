@@ -207,6 +207,7 @@ function changeP(){
 function survey(){
 	alert("208");
 	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.open("GET","http://jack.cs.brown.edu/eightMen.txt?"+ Math.floor((Math.random() * 10000) + 1),true);
 	xmlHttp.onreadystatechange=function(){
 		alert("211");
 		if (xmlHttp.readyState==4 && xmlHttp.status==200){
@@ -234,6 +235,5 @@ function survey(){
 		
 	}
 	alert("236");
-	xmlHttp.open("GET","http://jack.cs.brown.edu/eightMen.txt?"+ Math.floor((Math.random() * 10000) + 1),true);
 	xmlHttp.send();
 }
