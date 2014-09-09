@@ -114,6 +114,7 @@ function signOn(){
 		    		});
     			});	
     		}else{
+    			alert("line 117");
     			$("#wrong").show();	
     		}
     	}
