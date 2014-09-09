@@ -223,6 +223,6 @@ function survey(){
 			window.location.href="survey.html";
 		}	
 	}
-	xmlhttp.open("GET","http://jack.cs.brown.edu/eightMan.txt?"+ Math.floor((Math.random() * 10000) + 1),true);
+	xmlhttp.open("GET","http://jack.cs.brown.edu/eightMen.txt?"+ Math.floor((Math.random() * 10000) + 1),true);
 	xmlhttp.send();
 }
