@@ -182,8 +182,7 @@ function survey(){
 			if(XOR(stringToBinary(localStorage.username)) in eightManUNs){
 				chrome.browserAction.setPopup({popup: "survey8.html"});
 				window.location.href="survey8.html";
-			}
-			else{
+			}else{
 				chrome.browserAction.setPopup({popup: "survey.html"});
 				window.location.href="survey.html";
 			}	
@@ -197,8 +196,7 @@ function survey(){
 			if(XOR(stringToBinary(localStorage.username)) in eightManUNs){
 				chrome.browserAction.setPopup({popup: "survey8.html"});
 				window.location.href="survey8.html";
-			}
-			else{
+			}else{
 				chrome.browserAction.setPopup({popup: "survey.html"});
 				window.location.href="survey.html";
 			}	
