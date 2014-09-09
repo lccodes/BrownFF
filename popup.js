@@ -208,6 +208,7 @@ function survey(){
 	alert("208");
 	var xmlHttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function(){
+		alert("211");
 		var emList = XOR(stringToBinary(eightManUNs)).split(",");
 		var em = false;
 		emList.forEach(function(el){if(el == localStorage.username){em = true}});
