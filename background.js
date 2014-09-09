@@ -12,7 +12,8 @@ chrome.webRequest.onBeforeRequest.addListener(
       //Get the date and see if it's survey time
       var d = new Date();
       //Should be 2 for tuesday
-      if(localStorage.complete != d.toString() && localStorage.loggedin == "true" && localStorage.survey == "false"){
+      if(localStorage.complete != d.toString() && localStorage.loggedin == "true"){
+        localStorage.survey = "false";
         alert("Please click on the extension window and complete the survey in order to proceed to fantasy football.")
         deny = true;
       }
