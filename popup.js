@@ -159,7 +159,8 @@ function alreadyIn(){
 		var dDif = 100;
 	}
 	if((day >= 2 && day - dDif < 2) || (day < 2 && day - dDif < -5)){
-		survey()
+		alert("162");
+		survey();
 	}
 }
 
