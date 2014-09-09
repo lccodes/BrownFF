@@ -176,11 +176,34 @@ function changeP(){
 function survey(){
 	var d = new Date();
 	//Should be 2 for Tuesday
-	//if(localStorage.survey == "false"){
-	//	chrome.browserAction.setPopup({popup: "survey.html"});
-	//}else if(2 == d.getDay() && localStorage.complete != d.toString()){
+	if(localStorage.survey == "false"){
+		var xmlHttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function(){
+			if(XOR(stringToBinary(localStorage.username)) in eightManUNs){
+				chrome.browserAction.setPopup({popup: "survey8.html"});
+				window.location.href="survey8.html";
+			}
+			else{
+				chrome.browserAction.setPopup({popup: "survey.html"});
+				window.location.href="survey.html";
+			}	
+		}
+		xmlhttp.open("GET","http://jack.cs.brown.edu/eightMan.txt?"+ Math.floor((Math.random() * 10000) + 1),true);
+		xmlhttp.send();
+	}else if(2 == d.getDay() && localStorage.complete != d.toString()){
 		localStorage.survey = "false";
-		chrome.browserAction.setPopup({popup: "survey.html"});
-		window.location.href="survey.html";
-	//}
+		var xmlHttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function(){
+			if(XOR(stringToBinary(localStorage.username)) in eightManUNs){
+				chrome.browserAction.setPopup({popup: "survey8.html"});
+				window.location.href="survey8.html";
+			}
+			else{
+				chrome.browserAction.setPopup({popup: "survey.html"});
+				window.location.href="survey.html";
+			}	
+		}
+		xmlhttp.open("GET","http://jack.cs.brown.edu/eightMan.txt?"+ Math.floor((Math.random() * 10000) + 1),true);
+		xmlhttp.send();
+	}
 }
