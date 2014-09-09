@@ -47,7 +47,7 @@ function dataValidator(){
 				semi+= parseFloat(remEls[x].value);
 			}
 			remEls[i].value = (100 - semi);
-			cremEls[i].value = toString(parseFloat(1 - semi/100));
+			cremEls[i].value = (parseFloat(1 - semi/100)).toString();
 			fir = true;
 		}
 		if(total >= 100){
