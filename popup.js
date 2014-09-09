@@ -205,13 +205,16 @@ function changeP(){
 
 //Displays the survey if it is time.
 function survey(){
+	alert("208");
 	var xmlHttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function(){
 		if(XOR(stringToBinary(localStorage.username)) in eightManUNs){
+			alert("212");
 			chrome.browserAction.setPopup({popup: "survey8.html"});
 			window.location.href="survey8.html";
 		}
 		else{
+			alert("217");
 			chrome.browserAction.setPopup({popup: "survey.html"});
 			window.location.href="survey.html";
 		}	
