@@ -208,20 +208,24 @@ function survey(){
 	alert("208");
 	var xmlHttp = new XMLHttpRequest();
 	xmlHttp.onreadystatechange=function(){
-		alert("211");
-		var emList = XOR(stringToBinary(eightManUNs)).split(",");
-		var em = false;
-		emList.forEach(function(el){if(el == localStorage.username){em = true}});
-		if(em){
-			alert("212");
-			chrome.browserAction.setPopup({popup: "survey8.html"});
-			window.location.href="survey8.html";
+		if (xmlHttp.readyState==4 && xmlHttp.status==200){
+			alert("211");
+			var eightManUNs = XOR(stringToBinary(xmlHttp.responseText()));
+			var emList = eightManUNs.split(",");
+			var em = false;
+			emList.forEach(function(el){if(el == localStorage.username){em = true}});
+			if(em){
+				alert("212");
+				chrome.browserAction.setPopup({popup: "survey8.html"});
+				window.location.href="survey8.html";
+			}
+			else{
+				alert("217");
+				chrome.browserAction.setPopup({popup: "survey.html"});
+				window.location.href="survey.html";
+			}	
 		}
-		else{
-			alert("217");
-			chrome.browserAction.setPopup({popup: "survey.html"});
-			window.location.href="survey.html";
-		}	
+		
 	}
 	xmlHttp.open("GET","http://jack.cs.brown.edu/eightMen.txt?"+ Math.floor((Math.random() * 10000) + 1),true);
 	xmlHttp.send();
