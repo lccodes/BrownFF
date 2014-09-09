@@ -130,7 +130,23 @@ function alreadyIn(){
     $('#forgot').hide();
     $("h1").text("Welcome BACK to BrownFF!");
     //Checks if it is survey time
-    survey();
+    var m = getMonth();
+	var date = getDate();
+	var day = getDay();
+	var monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+	var mDif = m - parseInt(localStorage.lastM);
+	if((mDif == 1) || (mDif == -1) || (mDif == -11)){
+		var dDif = monthDays[parseInt(localStorage.lastM)] - localStorage.lastD + date;
+	}
+	else if(mDif == 0){
+		var dDif = date - parseInt(localStorage.lastD);
+	}
+	else{
+		var dDif = 100;
+	}
+	if((day >= 2 && day - dDif < 2) || (day < 2 && day - dDif < -5)){
+		survey()
+	}
 }
 
 //Signs them out of the extension
@@ -174,34 +190,17 @@ function changeP(){
 
 //Displays the survey if it is time.
 function survey(){
-	var d = new Date();
-	//Should be 2 for Tuesday
-	if(localStorage.survey == "false"){
-		var xmlHttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange=function(){
-			if(XOR(stringToBinary(localStorage.username)) in eightManUNs){
-				chrome.browserAction.setPopup({popup: "survey8.html"});
-				window.location.href="survey8.html";
-			}else{
-				chrome.browserAction.setPopup({popup: "survey.html"});
-				window.location.href="survey.html";
-			}	
+	var xmlHttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function(){
+		if(XOR(stringToBinary(localStorage.username)) in eightManUNs){
+			chrome.browserAction.setPopup({popup: "survey8.html"});
+			window.location.href="survey8.html";
 		}
-		xmlhttp.open("GET","http://jack.cs.brown.edu/eightMan.txt?"+ Math.floor((Math.random() * 10000) + 1),true);
-		xmlhttp.send();
-	}else if(2 == d.getDay() && localStorage.complete != d.toString()){
-		localStorage.survey = "false";
-		var xmlHttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange=function(){
-			if(XOR(stringToBinary(localStorage.username)) in eightManUNs){
-				chrome.browserAction.setPopup({popup: "survey8.html"});
-				window.location.href="survey8.html";
-			}else{
-				chrome.browserAction.setPopup({popup: "survey.html"});
-				window.location.href="survey.html";
-			}	
-		}
-		xmlhttp.open("GET","http://jack.cs.brown.edu/eightMan.txt?"+ Math.floor((Math.random() * 10000) + 1),true);
-		xmlhttp.send();
+		else{
+			chrome.browserAction.setPopup({popup: "survey.html"});
+			window.location.href="survey.html";
+		}	
 	}
+	xmlhttp.open("GET","http://jack.cs.brown.edu/eightMan.txt?"+ Math.floor((Math.random() * 10000) + 1),true);
+	xmlhttp.send();
 }
