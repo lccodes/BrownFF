@@ -63,7 +63,8 @@ function signOn(){
     					$('#forgot').hide();
     					$("#wrong").hide();
 		    		}else{
-		    			localStorage.lastM = ((getMonth() - 2) % 12).toString();
+		    			var d = new Date();
+		    			localStorage.lastM = ((d.getMonth() - 2) % 12).toString();
 		    			localStorage.lastD = 1.toString();
 		    			localStorage.survey = "false";
 		    			localStorage.complete = "never";
@@ -90,7 +91,8 @@ function signOn(){
 		    					$('#forgot').hide();
 		    					$("#wrong").hide();
 			    		}else if(obj["new"] == $('#password').val() && other["username"] == $('#username').val()){
-			    			localStorage.lastM = ((getMonth() - 2) % 12).toString();
+			    			var d = new Date();
+			    			localStorage.lastM = ((d.getMonth() - 2) % 12).toString();
 		    				localStorage.lastD = 1.toString();
 			    			chrome.storage.sync.set({"loggedin" : "true"});
 			    			localStorage.survey = "false";
@@ -134,9 +136,10 @@ function alreadyIn(){
     $('#forgot').hide();
     $("h1").text("Welcome BACK to BrownFF!");
     //Checks if it is survey time
-    var m = getMonth();
-	var date = getDate();
-	var day = getDay();
+    var d = new Date();
+    var m = d.getMonth();
+	var date = d.getDate();
+	var day = d.getDay();
 	var monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 	var mDif = m - parseInt(localStorage.lastM);
 	if((mDif == 1) || (mDif == -1) || (mDif == -11)){
