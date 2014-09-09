@@ -143,7 +143,7 @@ function alreadyIn(){
 	var monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 	var mDif = m - parseInt(localStorage.lastM);
 	if((mDif == 1) || (mDif == -1) || (mDif == -11)){
-		var dDif = monthDays[parseInt(localStorage.lastM)] - localStorage.lastD + date;
+		var dDif = monthDays[parseInt(localStorage.lastM)] - parseInt(localStorage.lastD) + date;
 	}
 	else if(mDif == 0){
 		var dDif = date - parseInt(localStorage.lastD);
