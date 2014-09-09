@@ -1,9 +1,9 @@
-<html style="width:800px">
+<html style="width:100%">
 <head>
 	<script src="partTwo.js"></script>
 	<style type="text/css">
 		#wrap {
-		   width:800px;
+		   width:700px;
 		   margin:0 auto;
 		}
 		#left_col {
@@ -14,6 +14,26 @@
 		   float:right;
 		   width:350px;
 		}
+
+		#submit{
+			border : solid 1px #1202a6;
+			border-radius : 3px 2px 3px 3px ;
+			moz-border-radius : 3px 2px 3px 3px ;
+			-webkit-box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
+			-moz-box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
+			box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
+			font-size : 22px;
+			color : #050504;
+			padding : 1px 10px;
+			background : #053494;
+			background : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#053494), color-stop(100%,#addbff));
+			background : -moz-linear-gradient(top, #053494 0%, #addbff 100%);
+			background : -webkit-linear-gradient(top, #053494 0%, #addbff 100%);
+			background : -o-linear-gradient(top, #053494 0%, #addbff 100%);
+			background : -ms-linear-gradient(top, #053494 0%, #addbff 100%);
+			background : linear-gradient(top, #053494 0%, #addbff 100%);
+			filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#053494', endColorstr='#addbff',GradientType=0 );
+		}
 	</style>
 </head>
 <body>
@@ -21,53 +41,53 @@
     <div id="left_col">
 		<div id="graphDiv1"></div>
 		<!-- 10 person league-->
-		<p>Please fill in this probability distribution according to how you think you will perform this season:</p>
+		<p><b>Please fill in this probability distribution according to how you think you will perform this season:</b></p>
 		<table style="width:100%">
 			<tr>
 				<td><label for="first">If you win your game this week, what is the probability that you come in first:</label></td>
-				<td><label for="first">0</label>
+				<td>
 					<input type="range" name="first" id="first" style="text-align:right" min="0" max="100" step="1" value="0">
-					<label for="first">1</label></td>
+				</td>
 				<td><input type="text" id="firstT" align="right" value="0" style="width:30px;text-align:center"><br></td>
 			</tr>
 
 			<tr>
 				<td><label for="second">If you win your game this week, what is the probability that you come in second:</label></td>
-				<td><label for="second">0</label>
+				<td>
 					<input type="range" name="second" id="second" style="text-align:right" min="0" max="100" step="1" value="0">
-					<label for="second">1</label></td>
+				</td>
 				<td><input type="text" id="secondT" align="right" value="0" style="width:30px;text-align:center"><br></td>
 			</tr>
 		
 			<tr>
 				<td><label for="third">If you win your game this week, what is the probability that you come in third:</label></td>
-				<td><label for="third">0</label>
+				<td>
 					<input type="range" name="third" id="third" style="text-align:right" min="0" max="100" step="1" value="0">
-					<label for="third">1</label></td>
+				</td>
 				<td><input type="text" id="thirdT" align="right" value="0" style="width:30px;text-align:center"><br></td>
 			</tr>
 
 			<tr>
 				<td><label for="fourth">If you win your game this week, what is the probability that you come in fourth:</label></td>
-				<td><label for="fourth">0</label>
+				<td>
 					<input type="range" name="fourth" id="fourth" align="right" min="0" max="100" step="1" value="0">
-					<label for="fourth">1</label></td>
+				</td>
 				<td><input type="text" id="fourthT" align="right" value="0" style="width:30px;text-align:center"><br></td>
 			</tr>
 
 			<tr>
 				<td><label for="fifth">If you win your game this week, what is the probability that you come in fifth:</label></td>
-				<td><label for="fifth">0</label>
+				<td>
 					<input type="range" name="fifth" id="fifth" align="right" min="0" max="100" step="1" value="0">
-					<label for="fifth">1</label></td>
+				</td>
 				<td><input type="text" id="fifthT" align="right" value="0" style="width:30px;text-align:center"><br></td>
 			</tr>
 		
 			<tr>
 				<td><label for="sixth">Please select the probability that you get sixth:</label></td>
-				<td><label for="sixth">0</label>
+				<td>
 					<input type="range" name="sixth" id="sixth" align="right" min="0" max="100" step="1" value="0">
-					<label for="sixth">1</label></td>
+				</td>
 				<td><input type="text" id="sixthT" align="right" value="0" style="width:30px;text-align:center"><br></td>
 			</tr>
 
@@ -102,8 +122,14 @@
 					<label for="tenth">1</label></td>
 				<td><input type="text" id="tenthT" align="right" value="0" style="width:30px;text-align:center"><br></td>
 			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>
+					<button id="submit" style="width:100px" align="right">Submit!</button>
+				</td>
+			</tr>
 		</table>
-			<button id="submit" style="width:100px" align="center">Submit!</button>
 		</div>
     <div id="right_col">
     	<div id="graphDiv2"></div>

@@ -14,15 +14,18 @@ function submit(){
 	chrome.browserAction.setPopup({popup: "partTwo.html"});
 	window.location.href="partTwo.html";
 	//XMLHttp thing to submit the data
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
-	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	xmlhttp.send("type=survey&username="+localStorage.username+"&results="+"1:"+document.getElementById("first").value+
-		"2:"+document.getElementById("second").value+"|3:"+document.getElementById("third").value+
-		"|4:"+document.getElementById("fourth").value+"|5:"+document.getElementById("fifth").value+
-		"|6:"+document.getElementById("sixth").value+"|7:"+document.getElementById("seventh").value+
-		"|8:"+document.getElementById("eighth").value+"|9:"+document.getElementById("ninth").value+
-		"|10:"+document.getElementById("tenth").value);
+	chrome.runtime.sendMessage({method: "getUsername"}, function(response) {
+		var username = response.status;
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send("type=survey&username="+username+"&results="+"|1:"+document.getElementById("first").value+
+			"|2:"+document.getElementById("second").value+"|3:"+document.getElementById("third").value+
+			"|4:"+document.getElementById("fourth").value+"|5:"+document.getElementById("fifth").value+
+			"|6:"+document.getElementById("sixth").value+"|7:"+document.getElementById("seventh").value+
+			"|8:"+document.getElementById("eighth").value+"|9:"+document.getElementById("ninth").value+
+			"|10:"+document.getElementById("tenth").value);
+	});
 }
 //Makes sure that it all sums to 1
 function dataValidator(){
