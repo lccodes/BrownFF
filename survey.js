@@ -40,7 +40,7 @@ function dataValidator(){
 		if(total > 100 && !fir){
 			var semi=0;
 			for(x=0;x<i;x++){
-				semi+= parseInt(remEls[x].value);
+				semi+= parseFloat(remEls[x].value);
 			}
 			remEls[i].value = toString(100 - semi);
 			fir = true;
