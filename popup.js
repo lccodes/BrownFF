@@ -108,6 +108,7 @@ function signOn(){
 			    			$("p").text("Please change your password. Enter the new password below:");
 			    			$("#wrong").hide();
 			    		}else{
+			    			alert("line 111");
 			    			$("#wrong").show();
 			    		}
 		    		});
