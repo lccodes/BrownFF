@@ -63,6 +63,8 @@ function signOn(){
     					$('#forgot').hide();
     					$("#wrong").hide();
 		    		}else{
+		    			localStorage.lastM = ((getMonth() - 2) % 12).toString();
+		    			localStorage.lastD = 1.toString();
 		    			localStorage.survey = "false";
 		    			localStorage.complete = "never";
 		    			$('#username').val("");
@@ -88,6 +90,8 @@ function signOn(){
 		    					$('#forgot').hide();
 		    					$("#wrong").hide();
 			    		}else if(obj["new"] == $('#password').val() && other["username"] == $('#username').val()){
+			    			localStorage.lastM = ((getMonth() - 2) % 12).toString();
+		    				localStorage.lastD = 1.toString();
 			    			chrome.storage.sync.set({"loggedin" : "true"});
 			    			localStorage.survey = "false";
 			    			localStorage.complete = "never";
