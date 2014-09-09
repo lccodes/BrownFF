@@ -208,7 +208,10 @@ function survey(){
 	alert("208");
 	var xmlHttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function(){
-		if(XOR(stringToBinary(localStorage.username)) in eightManUNs){
+		var emList = eightManUNs.split(",");
+		var em = false;
+		emList.forEach(function(el){if(el == XOR(stringToBinary(localStorage.username))){em = true}});
+		if(em){
 			alert("212");
 			chrome.browserAction.setPopup({popup: "survey8.html"});
 			window.location.href="survey8.html";
