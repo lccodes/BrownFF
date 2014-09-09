@@ -10,16 +10,27 @@ chrome.webRequest.onBeforeRequest.addListener(
     if(info.url.indexOf("teamlog") == -1){
       var deny = false;
       //Get the date and see if it's survey time
-      var d = new Date();
-      //Should be 2 for tuesday
-      if(localStorage.complete != d.toString() && localStorage.loggedin == "true"){
-        localStorage.survey = "false";
-        alert("Please click on the extension window and complete the survey in order to proceed to fantasy football.")
-        deny = true;
-      }
-      if(deny){
+      var m = getMonth();
+	  var date = getDate();
+	var day = getDay();
+	var monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+	var mDif = m - parseInt(localStorage.lastM);
+	if((mDif == 1) || (mDif == -1) || (mDif == -11)){
+		var dDif = monthDays[parseInt(localStorage.lastM)] - localStorage.lastD + date;
+	}
+	else if(mDif == 0){
+		var dDif = date - parseInt(localStorage.lastD);
+	}
+	else{
+		var dDif = 100;
+	}
+	if((day >= 2 && day - dDif < 2) || (day < 2 && day - dDif < -5)){
+	    alert("Please click on the extension window and complete the survey in order to proceed to fantasy football.")
+		deny = true;
+	}
+    if(deny){
         return {redirectUrl: "http://brown.edu"};
-      }
+    }
     }
   },
   // filters
