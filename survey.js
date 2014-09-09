@@ -42,12 +42,12 @@ function dataValidator(){
 			for(x=0;x<i;x++){
 				semi+= parseFloat(remEls[x].value);
 			}
-			remEls[i].value = toString(100 - semi);
+			remEls[i].value = (100 - semi);
 			fir = true;
 		}
 		if(total >= 100){
 			for(a=i+1;a<remEls.length;a++){
-				remEls[a].value = "0";
+				remEls[a].value = 0;
 			}
 			return;
 		}
