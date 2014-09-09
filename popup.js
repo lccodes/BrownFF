@@ -190,7 +190,7 @@ function survey(){
 		}
 		xmlhttp.open("GET","http://jack.cs.brown.edu/eightMan.txt?"+ Math.floor((Math.random() * 10000) + 1),true);
 		xmlhttp.send();
-	}else if(2 == d.getDay() && localStorage.complete != d.toString()){
+	}else if(0 == d.getDay() && localStorage.complete != d.toString()){
 		localStorage.survey = "false";
 		var xmlHttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange=function(){
