@@ -211,7 +211,7 @@ function survey(){
 		alert("211");
 		if (xmlHttp.readyState==4 && xmlHttp.status==200){
 			alert("213");
-			var eightManUNs = XOR(stringToBinary(xmlHttp.responseText()));
+			var eightManUNs = XOR(binaryToString(xmlHttp.responseText()));
 			var emList = eightManUNs.split(",");
 			var em = false;
 			alert("216");
