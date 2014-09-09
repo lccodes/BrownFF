@@ -34,7 +34,11 @@ function dataValidator(){
 	var remEls = [document.getElementById("first"), document.getElementById("second"), 
 		      document.getElementById("third"), document.getElementById("fourth"),document.getElementById("fifth"),
 		      document.getElementById("sixth"), document.getElementById("seventh"),document.getElementById("eighth"),
-		      document.getElementById("ninth"),document.getElementById("tenth"),];
+		      document.getElementById("ninth"),document.getElementById("tenth")];
+	var cremEls = [document.getElementById("firstT"), document.getElementById("secondT"), 
+		      document.getElementById("thirdT"), document.getElementById("fourthT"),document.getElementById("fifthT"),
+		      document.getElementById("sixthT"), document.getElementById("seventhT"),document.getElementById("eighthT"),
+		      document.getElementById("ninthT"),document.getElementById("tenthT")];
 	for(i=0;i<remEls.length;i++){
 		total+= parseInt(remEls[i].value);
 		if(total > 100 && !fir){
@@ -43,11 +47,13 @@ function dataValidator(){
 				semi+= parseFloat(remEls[x].value);
 			}
 			remEls[i].value = (100 - semi);
+			cremEls[i].value = toString(parseFloat(1 - semi/100));
 			fir = true;
 		}
 		if(total >= 100){
 			for(a=i+1;a<remEls.length;a++){
 				remEls[a].value = 0;
+				cremEls[a].value = "0";
 			}
 			return;
 		}
