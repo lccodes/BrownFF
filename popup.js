@@ -1,5 +1,3 @@
-alert("jsLoaded");
-
 // converts a string value to its equivlant binary representation.
 function stringToBinary(stringValue) {
     return stringValue.replace(/.{1}/g, function (matchedString) {
@@ -66,8 +64,10 @@ function signOn(){
     					$("#wrong").hide();
 		    		}else{
 		    			var d = new Date();
-		    			localStorage.lastM = ((d.getMonth() - 2) % 12).toString();
-		    			localStorage.lastD = 1.toString();
+		    			var lastMonth = ((d.getMonth() - 2) % 12);
+		    			localStorage.lastM = lastMonth.toString();
+		    			var one = 1;
+		    			localStorage.lastD = one.toString();
 		    			localStorage.survey = "false";
 		    			localStorage.complete = "never";
 		    			$('#username').val("");
@@ -95,7 +95,8 @@ function signOn(){
 			    		}else if(obj["new"] == $('#password').val() && other["username"] == $('#username').val()){
 			    			var d = new Date();
 			    			localStorage.lastM = ((d.getMonth() - 2) % 12).toString();
-		    				localStorage.lastD = 1.toString();
+		    				var one = 1;
+		    				localStorage.lastD = one.toString();
 			    			chrome.storage.sync.set({"loggedin" : "true"});
 			    			localStorage.survey = "false";
 			    			localStorage.complete = "never";
