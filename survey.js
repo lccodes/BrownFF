@@ -21,130 +21,28 @@ function submit(){
 //Makes sure that it all sums to 1
 function dataValidator(){
 	var total = 0;
+	var fir = false;
 	var remEls = [document.getElementById("first"), document.getElementById("second"), 
-		      document.getElementById("thirdfifth"), document.getElementById("sixtheight"),
-		      document.getElementById("ninth"), document.getElementById("last")];
-	var last = remEls[0];
-	while(total <= 1 && remEls.length != 0){
-		total += remEls[0].value;
-		last = remEls[0];
-		remEls.remove(0);
-		var w = window.open('test.htm', 'name', 'width=200,height=200');
-        	w.onload = w.print;
-       		w.focus();
-	}
-	if(total > 1){
-		for(el in remEls){
-			el.value = 0;
+		      document.getElementById("third"), document.getElementById("fourth"),document.getElementById("fifth"),
+		      document.getElementById("sixth"), document.getElementById("seventh"),document.getElementById("eighth"),
+		      document.getElementById("ninth"),document.getElementById("tenth"),];
+	for(i=0;i<remEls.length;i++){
+		total+= parseInt(remEls[i].value);
+		if(total > 100 && !fir){
+			var semi=0;
+			for(x=0;x<i;x++){
+				semi+= parseInt(remEls[x].value);
+			}
+			remEls[i].value = toString(100 - semi);
+			fir = true;
 		}
-		last.value = total - 1;
-	}
-	/*var total = 0;
->>>>>>> 5aae95689079b221cb743bb139cab17ff23ffe3a
-	total += parseFloat(document.getElementById("first").value);
-	if(total >= 1){
-		document.getElementById("second").value = 0;
-		document.getElementById("thirdfifth").value = 0;
-		document.getElementById("sixtheight").value = 0;
-		document.getElementById("ninth").value = 0;
-		document.getElementById("last").value = 0;
-		return;
-	}
-
-	total += parseFloat(document.getElementById("second").value);
-	if(total > 1){
-		var a = "";
-		a += Math.round((1 - parseFloat(document.getElementById("first").value))*10)/10;
-		if(Math.round((1 - parseFloat(document.getElementById("first").value))*10)/10 == 0){
-			document.getElementById("last").value = "0";
-		}else{
-			document.getElementById("second").value = a.substring(1);
+		if(total >= 100){
+			for(a=i+1;a<remEls.length;a++){
+				remEls[a].value = "0";
+			}
+			return;
 		}
-		document.getElementById("thirdfifth").value = "0";
-		document.getElementById("sixtheight").value = "0";
-		document.getElementById("ninth").value = "0";
-		document.getElementById("last").value = "0";
-		return;
 	}
-
-	total += parseFloat(document.getElementById("thirdfifth").value);
-	if(total > 1){
-		var a = "";
-		a += Math.round((1 - parseFloat(document.getElementById("first").value)-
-			parseFloat(document.getElementById("second").value))*10)/10;
-		if(Math.round((1 - parseFloat(document.getElementById("first").value)-
-			parseFloat(document.getElementById("second").value))*10)/10 == 0){
-			document.getElementById("thirdfifth").value = "0";
-		}else{
-			document.getElementById("thirdfifth").value = a.substring(1);
-		}
-		document.getElementById("sixtheight").value = "0";
-		document.getElementById("ninth").value = "0";
-		document.getElementById("last").value = "0";
-		return;
-	}
-
-	total += parseFloat(document.getElementById("sixtheight").value);
-	if(total > 1){
-		var a = "";
-		a += Math.round(
-			(1 - parseFloat(document.getElementById("first").value)-
-			parseFloat(document.getElementById("second").value)-
-			parseFloat(document.getElementById("thirdfifth").value))*10)/10;
-		if(Math.round(
-			(1 - parseFloat(document.getElementById("first").value)-
-			parseFloat(document.getElementById("second").value)-
-			parseFloat(document.getElementById("thirdfifth").value))*10)/10 == 0){
-			document.getElementById("sixtheight").value = "0";
-		}else{
-			document.getElementById("sixtheight").value = a.substring(1);
-		}
-		document.getElementById("ninth").value = "0";
-		document.getElementById("last").value = "0";
-		return;
-	}
-
-	total += parseFloat(document.getElementById("ninth").value);
-	if(total > 1){
-		var a = "";
-		a += Math.round((1 - parseFloat(document.getElementById("first").value)-
-			parseFloat(document.getElementById("second").value)-
-			parseFloat(document.getElementById("thirdfifth").value)-
-			parseFloat(document.getElementById("sixtheight").value))*10)/10;
-		if(Math.round((1 - parseFloat(document.getElementById("first").value)-
-			parseFloat(document.getElementById("second").value)-
-			parseFloat(document.getElementById("thirdfifth").value)-
-			parseFloat(document.getElementById("sixtheight").value))*10)/10 == 0){
-				document.getElementById("ninth").value = "0";
-		}else{
-			document.getElementById("ninth").value = a.substring(1);
-		}
-		document.getElementById("last").value = "0";
-		return;
-	}
-
-	total += parseFloat(document.getElementById("last").value);
-	if(total > 1){
-		var a = "";
-		a += Math.round((1 - parseFloat(document.getElementById("first").value)-
-			parseFloat(document.getElementById("second").value)-
-			parseFloat(document.getElementById("thirdfifth").value)-
-			parseFloat(document.getElementById("sixtheight").value)-
-			parseFloat(document.getElementById("ninth").value))*10)/10;
-		if(a == "0"){
-			document.getElementById("last").value = "0";
-		}else{
-			document.getElementById("last").value = a.substring(1);
-		}
-	}/*else if(total < 1){
-		var a = "";
-		a += Math.round((1 - total) *10)/10;
-		if(a == "0"){
-			document.getElementById("last").value = "0";
-		}else{
-			document.getElementById("last").value = a.substring(1);
-		}
-	}*/
 }
 
 //Bar graph function
@@ -300,7 +198,7 @@ function BarGraph(ctx) {
 	  };
 
   // Public properties and methods
-  this.width = 300;
+  this.width = 575;
   this.height = 150;	
   this.maxValue;
   this.margin = 5;
@@ -340,17 +238,29 @@ document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById("second").onchange = function(){updateBox(document.getElementById("second").value,'secondT');};
 	document.getElementById("secondT").onchange = function(){updateBar(document.getElementById("secondT").value,'second');};
 	//Third
-	document.getElementById("thirdfifth").onchange = function(){updateBox(document.getElementById("thirdfifth").value,'thirdfifthT');};
-	document.getElementById("thirdfifthT").onchange = function(){updateBar(document.getElementById("thirdfifthT").value,'thirdfifth');};
+	document.getElementById("third").onchange = function(){updateBox(document.getElementById("third").value,'thirdT');};
+	document.getElementById("thirdT").onchange = function(){updateBar(document.getElementById("thirdT").value,'third');};
 	//Fourth
-	document.getElementById("sixtheight").onchange = function(){updateBox(document.getElementById("sixtheight").value,'sixtheightT');};
-	document.getElementById("sixtheightT").onchange = function(){updateBar(document.getElementById("sixtheightT").value,'sixtheight');};
+	document.getElementById("fourth").onchange = function(){updateBox(document.getElementById("fourth").value,'fourthT');};
+	document.getElementById("fourthT").onchange = function(){updateBar(document.getElementById("fourthT").value,'fourth');};
+	//Second
+	document.getElementById("fifth").onchange = function(){updateBox(document.getElementById("fifth").value,'fifthT');};
+	document.getElementById("fifthT").onchange = function(){updateBar(document.getElementById("fifthT").value,'fifth');};
+	//Third
+	document.getElementById("sixth").onchange = function(){updateBox(document.getElementById("sixth").value,'sixthT');};
+	document.getElementById("sixthT").onchange = function(){updateBar(document.getElementById("sixthT").value,'sixth');};
+	//Fourth
+	document.getElementById("seventh").onchange = function(){updateBox(document.getElementById("seventh").value,'seventhT');};
+	document.getElementById("seventhT").onchange = function(){updateBar(document.getElementById("seventhT").value,'seventh');};
+	//Fourth
+	document.getElementById("eighth").onchange = function(){updateBox(document.getElementById("eighth").value,'eighthT');};
+	document.getElementById("eighthT").onchange = function(){updateBar(document.getElementById("eighthT").value,'eighth');};
 	//Fifth
 	document.getElementById("ninth").onchange = function(){updateBox(document.getElementById("ninth").value,'ninthT');};
-	document.getElementById("ninthT").onchange = function(){updateBar(document.getElementById("ninth").value,'last');};
+	document.getElementById("ninthT").onchange = function(){updateBar(document.getElementById("ninthT").value,'ninth');};
 	//Fifth
-	document.getElementById("last").onchange = function(){updateBox(document.getElementById("last").value,'lastT');};
-	document.getElementById("lastT").onchange = function(){updateBar(document.getElementById("lastT").value,'last');};
+	document.getElementById("tenth").onchange = function(){updateBox(document.getElementById("tenth").value,'tenthT');};
+	document.getElementById("tenthT").onchange = function(){updateBar(document.getElementById("tenthT").value,'tenth');};
 	(function () {
 	
 		function createCanvas(divName) {
@@ -370,19 +280,24 @@ document.addEventListener('DOMContentLoaded', function () {
 		var graph = new BarGraph(ctx);
 		graph.maxValue = 1;
 		graph.margin = 2;
-		graph.colors = ["#49a0d8", "#d353a0", "#ffc527", "#0000FF","#df4427","#dffc27"];
-		graph.xAxisLabelArr = ["First", "Second", "3-5", "6-8", "9th", "Last"];
+		graph.colors = ["#49a0d8", "#d353a0", "#ffc527", "#0000FF","#df4427","#dffc27",
+						"#c21c27","#d93c27","#fdfc97","#dccc27"];
+		graph.xAxisLabelArr = ["First", "2nd", "3rd", "4th", "5th", "6th","7th","8th","9th","10th"];
 		setInterval(function () {
 			//Validate data
 			dataValidator();
 			//Update
-			graph.update([parseFloat(document.getElementById("first").value/100),
-							parseFloat(document.getElementById("second").value/100), 
-							parseFloat(document.getElementById("thirdfifth").value/100), 
-							parseFloat(document.getElementById("sixtheight").value/100),
-							parseFloat(document.getElementById("ninth").value/100),
-							parseFloat(document.getElementById("last").value/100)]);
-		}, 1000);
+			graph.update([parseFloat(document.getElementById("first").value)/100,
+							parseFloat(document.getElementById("second").value)/100,
+							parseFloat(document.getElementById("third").value)/100,
+							parseFloat(document.getElementById("fourth").value)/100,
+							parseFloat(document.getElementById("fifth").value)/100,
+							parseFloat(document.getElementById("sixth").value)/100,
+							parseFloat(document.getElementById("seventh").value)/100,
+							parseFloat(document.getElementById("eighth").value)/100,
+							parseFloat(document.getElementById("ninth").value)/100,
+							parseFloat(document.getElementById("tenth").value/100)]);
+		}, 600);
 
 	}());
 });
