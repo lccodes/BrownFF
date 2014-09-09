@@ -213,7 +213,12 @@ function survey(){
 			var eightManUNs = XOR(stringToBinary(xmlHttp.responseText()));
 			var emList = eightManUNs.split(",");
 			var em = false;
-			emList.forEach(function(el){if(el == localStorage.username){em = true}});
+			alert("216");
+			for(i = 0; i < emList.length; i++){
+				if(emList[i] == localStorage.username){
+					em = true;
+				}
+			}
 			if(em){
 				alert("212");
 				chrome.browserAction.setPopup({popup: "survey8.html"});
