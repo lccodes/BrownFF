@@ -11,7 +11,7 @@ function updateBar(val, which) {
 
 //See if the numbers sum to 1
 function testSubmit(){
-	var els = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth"];
+	var els = ["firstT", "secondT", "thirdT", "fourthT", "fifthT", "sixthT", "seventhT", "eighthT"];
 	var tally1 = 0;
 	var tally2 = 0;
 	for(i = 0; i < 8; i++){
