@@ -199,8 +199,10 @@ function changeP(){
 //Displays the survey if it is time.
 function survey(){
 	alert("201");
+	alert("212");
+	alert("203");
 	//Should be 2 for Tuesday
-	var xmlHttp = new XMLHttpRequest();
+	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function(){
 		if(XOR(stringToBinary(localStorage.username)) in eightManUNs){
 			chrome.browserAction.setPopup({popup: "survey8.html"});
