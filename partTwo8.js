@@ -1,6 +1,3 @@
-alert("JS");
-alert("JS2");
-alert("JS3");
 //Updates the box
 //Val is the new num, which is what to update
 function updateBox(val, which) {
@@ -249,7 +246,7 @@ function BarGraph(ctx) {
 	  };
 
   // Public properties and methods
-  this.width = 250;
+  this.width = 400;
   this.height = 150;	
   this.maxValue;
   this.margin = 5;
@@ -307,8 +304,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	//Fourth
 	document.getElementById("eighth").onchange = function(){updateBox(document.getElementById("eighth").value,'eighthT');};
 	document.getElementById("eighthT").onchange = function(){updateBar(document.getElementById("eighthT").value,'eighth');};
-	//Fifth
-
 	//Second graph
 	document.getElementById("first2").onchange = function(){updateBox(document.getElementById("first2").value,'firstT2');};
 	document.getElementById("firstT2").onchange = function(){updateBar(document.getElementById("firstT2").value,'first2');};
@@ -367,8 +362,7 @@ document.addEventListener('DOMContentLoaded', function () {
 							parseFloat(document.getElementById("fifth").value)/100,
 							parseFloat(document.getElementById("sixth").value)/100,
 							parseFloat(document.getElementById("seventh").value)/100,
-							parseFloat(document.getElementById("eighth").value)/100,
-						
+							parseFloat(document.getElementById("eighth").value)/100]);
 		}, 600);
 
 		//Graph 2
@@ -377,7 +371,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		graph2.margin = 2;
 		graph2.colors = ["#a990d8", "#d153b0", "#ffc527", "#cf00FF","#df4427","#dffc27",
 						"#c2ac27","#dd3c27"];
-		graph2.xAxisLabelArr = ["First", "2nd", "3rd", "4th", "5th", "6th","7th","8th",];
+		graph2.xAxisLabelArr = ["First", "2nd", "3rd", "4th", "5th", "6th","7th","8th"];
 		setInterval(function () {
 			//Validate data
 			dataValidatorTwo();
@@ -389,8 +383,7 @@ document.addEventListener('DOMContentLoaded', function () {
 							parseFloat(document.getElementById("fifth2").value)/100,
 							parseFloat(document.getElementById("sixth2").value)/100,
 							parseFloat(document.getElementById("seventh2").value)/100,
-							parseFloat(document.getElementById("eighth2").value)/100,
+							parseFloat(document.getElementById("eighth2").value)/100]);
 		}, 600);
 	}());
 });
-Status API Training Shop Blog About © 2014 GitHub, Inc. Terms Privacy Security Contact 
