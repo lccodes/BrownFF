@@ -9,6 +9,20 @@ function updateBar(val, which) {
       document.getElementById(which).value=parseFloat(val)*100;
 }
 
+//See if the numbers sum to 1
+function testSubmit(){
+	var els = ["firstT", "secondT", "thirdT", "fourthT", "fifthT", "sixthT", "seventhT", "eighthT", "ninthT", "tenthT"];
+	var tally1 = 0;
+	var tally2 = 0;
+	for(i = 0; i < 8; i++){
+		tally1 += parseFloat(document.getElementById(els[i]).value);
+		tally2 += parseFloat(document.getElementById(els[i]+'2').value);
+	}
+	var one = 1;
+	if(tally1 == parseFloat(one) && tally2 == parseFloat(one)){
+		submit();
+	}
+}
 //What happens when they submit
 function submit(){
 	localStorage.survey = "true";
@@ -21,16 +35,16 @@ function submit(){
 	xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send("type=survey&username="+localStorage.username+"&results="+"|2.1:"+document.getElementById("first").value+
-		"|2.2:"+document.getElementById("second").value+"|2.3:"+document.getElementById("third").value+
-		"|2.4:"+document.getElementById("fourth").value+"|2.5:"+document.getElementById("fifth").value+
-		"|2.6:"+document.getElementById("sixth").value+"|2.7:"+document.getElementById("seventh").value+
-		"|2.8:"+document.getElementById("eighth").value+"|2.9:"+document.getElementById("ninth").value+
-		"|2.10:"+document.getElementById("tenth").value+"|3.1:"+document.getElementById("first").value+
-		"|3.2:"+document.getElementById("second").value+"|3.3:"+document.getElementById("third").value+
-		"|3.4:"+document.getElementById("fourth").value+"|3.5:"+document.getElementById("fifth").value+
-		"|3.6:"+document.getElementById("sixth").value+"|3.7:"+document.getElementById("seventh").value+
-		"|3.8:"+document.getElementById("eighth").value+"|3.9:"+document.getElementById("ninth").value+
-		"|3.10:"+document.getElementById("tenth").value);
+		"|2.2:"+document.getElementById("secondT").value+"|2.3:"+document.getElementById("thirdT").value+
+		"|2.4:"+document.getElementById("fourthT").value+"|2.5:"+document.getElementById("fifthT").value+
+		"|2.6:"+document.getElementById("sixthT").value+"|2.7:"+document.getElementById("seventhT").value+
+		"|2.8:"+document.getElementById("eighthT").value+"|2.9:"+document.getElementById("ninthT").value+
+		"|2.10:"+document.getElementById("tenthT").value+"|3.1:"+document.getElementById("firstT2").value+
+		"|3.2:"+document.getElementById("secondT2").value+"|3.3:"+document.getElementById("thirdT2").value+
+		"|3.4:"+document.getElementById("fourthT2").value+"|3.5:"+document.getElementById("fifthT2").value+
+		"|3.6:"+document.getElementById("sixthT2").value+"|3.7:"+document.getElementById("seventhT2").value+
+		"|3.8:"+document.getElementById("eighthT2").value+"|3.9:"+document.getElementById("ninthT2").value+
+		"|3.10:"+document.getElementById("tenthT2").value);
 }
 //Makes sure that it all sums to 1
 function dataValidator(){
