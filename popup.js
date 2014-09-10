@@ -209,28 +209,28 @@ function survey(){
 	var xmlHttp = new XMLHttpRequest();
 	xmlHttp.onreadystatechange=function(){
 		alert("211");
-		if (xmlHttp.readyState==4 && xmlHttp.status==200){
-			alert("213");
-			var eightManUNs = binaryToString(XOR(xmlHttp.responseText()));
-			var emList = eightManUNs.split(",");
-			var em = false;
-			alert("216");
-			for(i = 0; i < emList.length; i++){
-				if(emList[i] == localStorage.username){
-					em = true;
-				}
+		//if (xmlHttp.readyState==4 && xmlHttp.status==200){
+		alert("213");
+		var eightManUNs = binaryToString(XOR(xmlHttp.responseText()));
+		var emList = eightManUNs.split(",");
+		var em = false;
+		alert("216");
+		for(i = 0; i < emList.length; i++){
+			if(emList[i] == localStorage.username){
+				em = true;
 			}
-			if(em){
-				alert("212");
-				chrome.browserAction.setPopup({popup: "survey8.html"});
-				window.location.href="survey8.html";
-			}
-			else{
-				alert("217");
-				chrome.browserAction.setPopup({popup: "survey.html"});
-				window.location.href="survey.html";
-			}	
 		}
+		if(em){
+			alert("212");
+			chrome.browserAction.setPopup({popup: "survey8.html"});
+			window.location.href="survey8.html";
+		}
+		else{
+			alert("217");
+			chrome.browserAction.setPopup({popup: "survey.html"});
+			window.location.href="survey.html";
+		}	
+		//}
 		
 	}
 	alert("236");
