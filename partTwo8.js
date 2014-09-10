@@ -18,15 +18,6 @@ function testSubmit(){
 		tally1 += parseFloat(document.getElementById(els[i]).value);
 		tally2 += parseFloat(document.getElementById(els[i]+'2').value);
 	}
-	//alert("asdfa;lskdjf");
-	if(tally1 == 1){
-		alert("as;dlfkjas;ldfkj");
-	}
-	if(tally1 == 0){
-		alert("HEY");
-		alert("HI");
-		alert("WADDUP?");
-	}
 	var one = 1;
 	if(tally1 == parseFloat(one) && tally2 == parseFloat(one)){
 		submit();
