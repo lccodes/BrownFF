@@ -53,16 +53,18 @@ function signOn(){
   			var where = theText.indexOf(u);
   			var newUsername = false;
   			chrome.storage.sync.get("newU", function(nu){
-  				if(nu == u.substring(0, u.length - 1)){
-  					newUsername = true;
+  				if("newU" in nu){
+  					if(nu["newU"] == u.substring(0, u.length - 1)){
+  						newUsername = true;
+  					}
   				}
   			});
     		if((where != -1 || newUsername) && (p == theText.substr(where+10, 9))){
     			chrome.storage.sync.set({"username" : $('#username').val()});
     			chrome.storage.sync.set({"loggedin" : "true"});
     			localStorage.username = $('#username').val();
-    			chrome.storage.sync.get("new", function (obj) {
-				if("new" in obj){
+    			chrome.storage.sync.get("newP", function (obj) {
+				if("newP" in obj){
 						localStorage.loggedin = "true";
     					localStorage.username = $('#username').val();
     					alreadyIn();
@@ -83,18 +85,19 @@ function signOn(){
 		    		}
 		    	});	
     		}else if(where != -1 || newUsername){
-    			chrome.storage.sync.get("new", function (obj) {
+    			chrome.storage.sync.get("newP", function (obj) {
     				chrome.storage.sync.get("username", function (other) {
-	    				if("new" in obj 
-	    					&& obj["new"] == $('#password').val() 
-	    					&& other["username"] == $('#username').val()){
+	    				if("newP" in obj 
+	    					&& obj["newP"] == $('#password').val() 
+	    					//&& other["username"] == $('#username').val()
+	    					){
 		    					chrome.storage.sync.set({"loggedin" : "true"});
 								localStorage.loggedin = "true";
 		    					localStorage.username = $('#username').val();
 		    					alreadyIn();
 		    					$('#forgot').hide();
 		    					$("#wrong").hide();
-			    		}else if(obj["new"] == $('#password').val() && other["username"] == $('#username').val()){
+			    		}else if(obj["newP"] == $('#password').val()){
 			    			chrome.storage.sync.set({"loggedin" : "true"});
 			    			localStorage.survey = "false";
 			    			localStorage.complete = "never";
