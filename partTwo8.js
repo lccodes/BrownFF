@@ -1,20 +1,3 @@
-Skip to content
- This repository
-Explore
-Gist
-Blog
-Help
-Gabe-BF Gabe-BF
- 
-You don't have any verified emails. We recommend verifying at least one email.
-Email verification helps our support team verify ownership if you lose account access and allows you to receive all the notifications you ask for.
-2  Unwatch 
-  Star 0
- Fork 0lccodes/BrownFF PRIVATE
- branch: master  BrownFF / partTwo.js
-lccodeslccodes 8 hours ago Survey is so done and I'm happy
-1 contributor
-412 lines (380 sloc)  17.211 kb RawBlameHistory   
 //Updates the box
 //Val is the new num, which is what to update
 function updateBox(val, which) {
