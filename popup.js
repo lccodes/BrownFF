@@ -52,12 +52,12 @@ function signOn(){
   		if (xmlhttp.readyState==4 && xmlhttp.status==200){
   			var theText = binaryToString(XOR(xmlhttp.responseText));
   			var where = theText.indexOf(u);
-  		var newUsername = false;
-  		chrome.storage.sync.get("newU", function(nu){
-  			if(nu == u.substring(0, u.length - 1)){
-  				newUsername = true;
-  			}
-  		})};
+  			var newUsername = false;
+  			chrome.storage.sync.get("newU", function(nu){
+  				if(nu == u.substring(0, u.length - 1)){
+  					newUsername = true;
+  				}
+  			});
     		if((where != -1 || newUsername) && (p == theText.substr(where+10, 9)){
     			chrome.storage.sync.set({"username" : $('#username').val()});
     			chrome.storage.sync.set({"loggedin" : "true"});
