@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		$('#login').text("Login");
 		document.getElementById("login").onclick = signOn;
 	}
+	chrome.storage.sync.get("newU", function(nu){alert(nu['newU'])});
+	chrome.storage.sync.get("newP", function(nu){alert(nu['newP'])});
 });
 
 //Signs the user into our site, so that we can sign them into NFL.com
