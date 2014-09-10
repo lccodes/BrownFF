@@ -35,15 +35,15 @@ function submit(){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	xmlhttp.send("type=survey&username="+localStorage.username+"&results="+"|2.1:"+document.getElementById("first").value+
-		"|2.2:"+document.getElementById("second").value+"|2.3:"+document.getElementById("third").value+
-		"|2.4:"+document.getElementById("fourth").value+"|2.5:"+document.getElementById("fifth").value+
-		"|2.6:"+document.getElementById("sixth").value+"|2.7:"+document.getElementById("seventh").value+
-		"|2.8:"+document.getElementById("eighth").value+"|3.1:"+document.getElementById("firstT").value+
-		"|3.2:"+document.getElementById("secondT").value+"|3.3:"+document.getElementById("thirdT").value+
-		"|3.4:"+document.getElementById("fourthT").value+"|3.5:"+document.getElementById("fifthT").value+
-		"|3.6:"+document.getElementById("sixthT").value+"|3.7:"+document.getElementById("seventhT").value+
-		"|3.8:"+document.getElementById("eighthT").value);
+	xmlhttp.send("type=survey&username="+localStorage.username+"&results="+"|2.1:"+document.getElementById("firstT").value+
+		"|2.2:"+document.getElementById("secondT").value+"|2.3:"+document.getElementById("thirdT").value+
+		"|2.4:"+document.getElementById("fourthT").value+"|2.5:"+document.getElementById("fifth").value+
+		"|2.6:"+document.getElementById("sixthT").value+"|2.7:"+document.getElementById("seventhT").value+
+		"|2.8:"+document.getElementById("eighthT").value+"|3.1:"+document.getElementById("firstT2").value+
+		"|3.2:"+document.getElementById("secondT2").value+"|3.3:"+document.getElementById("thirdT2").value+
+		"|3.4:"+document.getElementById("fourthT2").value+"|3.5:"+document.getElementById("fifthT2").value+
+		"|3.6:"+document.getElementById("sixthT2").value+"|3.7:"+document.getElementById("seventhT2").value+
+		"|3.8:"+document.getElementById("eighthT2").value);
 }
 //Makes sure that it all sums to 1
 function dataValidator(){
