@@ -27,7 +27,8 @@ function testSubmit(){
 		alert("HI");
 		alert("WADDUP?");
 	}
-	if(tally1 == 1 && tally2 == 1){
+	var one = 1;
+	if(tally1 == parseFloat(one) && tally2 == parseFloat(one)){
 		submit();
 	}
 }
