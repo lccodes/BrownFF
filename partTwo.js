@@ -299,7 +299,7 @@ function BarGraph(ctx) {
 }//end bar graph
 
 document.addEventListener('DOMContentLoaded', function () {
-	document.getElementById("submit").onclick = submit;
+	document.getElementById("submit").onclick = testSubmit;
 	//First graph
 	document.getElementById("first").onchange = function(){updateBox(document.getElementById("first").value,'firstT');};
 	document.getElementById("firstT").onchange = function(){updateBar(document.getElementById("firstT").value,'first');};
