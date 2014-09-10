@@ -183,7 +183,7 @@ function signOut(){
 function forgotP(){
 	chrome.storage.sync.get("username", function (obj) {
 		if("username" in obj && $('#username').val() == obj["username"]){
-			chrome.storage.sync.get("new", function (other) {
+			chrome.storage.sync.get("newP", function (other) {
 				$("p").text("Your password is " + other["new"]);
 			});
 			$('#username').val("");			
