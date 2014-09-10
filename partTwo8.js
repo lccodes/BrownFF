@@ -22,7 +22,7 @@ function testSubmit(){
 	if(tally1 == 1){
 		alert("as;dlfkjas;ldfkj");
 	}
-	if(tally2 == 0){
+	if(tally1 == 0){
 		alert("HEY");
 		alert("HI");
 		alert("WADDUP?");
