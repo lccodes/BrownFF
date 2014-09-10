@@ -70,7 +70,9 @@ function signOn(){
     			localStorage.username = $('#username').val();
     			chrome.storage.sync.get("newP", function (obj) {
 				if("newP" in obj){
-						localStorage.loggedin = "true";
+					alert("73");
+					alert("74");
+					localStorage.loggedin = "true";
     					localStorage.username = $('#username').val();
     					alreadyIn();
     					$('#forgot').hide();
