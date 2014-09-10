@@ -53,10 +53,12 @@ function signOn(){
   			var where = theText.indexOf(u);
   			var newUsername = false;
   			chrome.storage.sync.get("newU", function(nu){
-  				alert("hey");
-  				alert("hey2");
   				if("newU" in nu){
+  					alert("hey");
+  					alert("hey2");
   					if(nu["newU"] + ',' == u){
+  						alert("hey3");
+  						alert("hey4");
   						newUsername = true;
   					}
   				}
