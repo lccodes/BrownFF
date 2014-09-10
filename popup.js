@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //Signs the user into our site, so that we can sign them into NFL.com
 function signOn(){
+	alert("45");
 	var u = $('#username').val() + ",";
 	var p = $('#password').val();
 
@@ -61,8 +62,8 @@ function signOn(){
     			chrome.storage.sync.set({"username" : $('#username').val()});
     			chrome.storage.sync.set({"loggedin" : "true"});
     			localStorage.username = $('#username').val();
-    			chrome.storage.sync.get("new", function (obj) {
-				if("new" in obj){
+    			chrome.storage.sync.get("newP", function (obj) {
+				if("newP" in obj){
 						localStorage.loggedin = "true";
     					localStorage.username = $('#username').val();
     					alreadyIn();
@@ -78,6 +79,7 @@ function signOn(){
 		    			localStorage.complete = "never";
 		    			$('#username').val("");
 		    			$('#username').watermark('New Username');
+		    			$('#password').val("");
 		    			$('#password').watermark('New Password');
 		    			$('#login').text("Save Username and Password");
 		    			document.getElementById("login").onclick = changeUP;
@@ -110,6 +112,7 @@ function signOn(){
 			    			localStorage.loggedin = "true";
 			    			$('#username').val("");
 			    			$('#username').watermark('New Username');
+			    			$('#password').val("");
 			    			$('#password').watermark('New Password');
 			    			$('#login').text("Save Username and Password");
 			    			document.getElementById("login").onclick = changeUP;
@@ -200,6 +203,7 @@ function forgotP(){
 
 //Change password stuff
 function changeUP(){
+	alert("204");
 	chrome.storage.sync.set({"newU" : $('#username').val()});
 	chrome.storage.sync.set({"newP" : $('#password').val()});
 	chrome.storage.sync.set({"loggedin" : "true"});
