@@ -206,7 +206,16 @@ function survey(){
 	//Should be 2 for Tuesday
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function(){
-		if(XOR(stringToBinary(localStorage.username)) in eightManUNs){
+		var eightManUNs = binaryToString(XOR(xmlhttp.responseText));
+		var emunList = eightManUNs.split(",");
+		var em = false;
+		for(i = 0; i < emunList.length; i++){
+			if(emunList[i] == localStorage.username){
+				em = true;
+			}
+		}
+		alert("217");
+		if(em){
 			chrome.browserAction.setPopup({popup: "survey8.html"});
 			window.location.href="survey8.html";
 		}else{
