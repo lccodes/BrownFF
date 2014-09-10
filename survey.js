@@ -29,7 +29,7 @@ function submit(){
 	//Set them free, Mr. Willy
 	//Well, almost
 	chrome.browserAction.setPopup({popup: "partTwo8.html"})
-	window.location.href="partTwo.html8";
+	window.location.href="partTwo8.html";
 }
 //Makes sure that it all sums to 1
 function dataValidator(){
