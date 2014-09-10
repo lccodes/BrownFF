@@ -18,6 +18,8 @@ function testSubmit(){
 		tally1 += document.getElementById(els[i]).value;
 		tally2 += document.getElementById(els[i] + 'T').value;
 	}
+	alert(tally1);
+	alert(tally2);
 	if(tally1 == 1 && tally2 == 1){
 		submit();
 	}
