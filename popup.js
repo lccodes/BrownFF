@@ -113,7 +113,7 @@ function signOn(){
 			    			$('#password').val("");
 			    			$('#password').watermark('New Password');
 			    			$('#login').text("Save Password");
-			    			document.getElementById("login").onclick = changeP;
+			    			document.getElementById("login").onclick = changeUP;
 			    			$('#forgot').hide();
 			    			$("p").text("Please change your username and password. Enter the new username and password below:");
 			    			$("#wrong").hide();
