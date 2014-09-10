@@ -28,8 +28,8 @@ function submit(){
 		"|10:"+document.getElementById("tenth").value);
 	//Set them free, Mr. Willy
 	//Well, almost
-	chrome.browserAction.setPopup({popup: "partTwo.html"})
-	window.location.href="partTwo.html";
+	chrome.browserAction.setPopup({popup: "partTwo8.html"})
+	window.location.href="partTwo.html8";
 }
 //Makes sure that it all sums to 1
 function dataValidator(){
