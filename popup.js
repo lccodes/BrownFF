@@ -141,20 +141,15 @@ function alreadyIn(){
 	var mDif = m - parseInt(localStorage.lastM);
 	var dDif = 0;
 	if((mDif == 1) || (mDif == -1) || (mDif == -11)){
-		alert("143");
 		dDif = monthDays[parseInt(localStorage.lastM)] - parseInt(localStorage.lastD) + date;
 	}
 	else if(mDif == 0){
-		alert("147");
 		dDif = date - parseInt(localStorage.lastD);
 	}
 	else{
-		alert("151");
 		dDif = 100;
 	}
-	alert(dDif);
 	if((day >= 2 && day - dDif < 2) || (day < 2 && day - dDif < -5)){
-		alert("155");
 		survey();
 	}
 }
@@ -200,23 +195,17 @@ function changeP(){
 
 //Displays the survey if it is time.
 function survey(){
-	alert("201");
-	alert("212");
-	alert("203");
 	//Should be 2 for Tuesday
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function(){
 		var eightManUNs = binaryToString(XOR(xmlhttp.responseText));
 		var emunList = eightManUNs.split(',');
-		alert("211");
 		var em = false;
-		alert("213");
 		for(i = 0; i < emunList.length; i++){
 			if(emunList[i] == localStorage.username){
 				em = true;
 			}
 		}
-		alert("217");
 		if(em){
 			chrome.browserAction.setPopup({popup: "survey8.html"});
 			window.location.href="survey8.html";
