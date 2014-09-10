@@ -15,9 +15,10 @@ function testSubmit(){
 	var tally1 = 0;
 	var tally2 = 0;
 	for(i = 0; i < 8; i++){
-		tally1 += document.getElementById(els[i]).value;
-		tally2 += document.getElementById(els[i] + 'T').value;
+		tally1 += parseFloat(document.getElementById(els[i]).value);
+		tally2 += parseFloat(document.getElementById(els[i] + 'T').value);
 	}
+	//alert("asdfa;lskdjf");
 	if(tally2 == 0){
 		alert("HEY");
 		alert("HI");
