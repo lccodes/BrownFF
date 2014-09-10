@@ -18,7 +18,7 @@ function testSubmit(){
 		tally1 += document.getElementById(els[i]).value;
 		tally2 += document.getElementById(els[i] + 'T').value;
 	}
-	if(tally1 == 1){
+	if(tally1 == 0){
 		alert("HEY");
 		alert("HI");
 		alert("WADDUP?");
