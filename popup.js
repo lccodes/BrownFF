@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //Signs the user into our site, so that we can sign them into NFL.com
 function signOn(){
-	alert("45");
 	var u = $('#username').val() + ",";
 	var p = $('#password').val();
 
@@ -58,29 +57,24 @@ function signOn(){
   					newUsername = true;
   				}
   			});
-    		if((where != -1 || newUsername) && (p == theText.substr(where+10, 9)){
+    		if(where != -1 && (p == theText.substr(where+10, 9))){
     			chrome.storage.sync.set({"username" : $('#username').val()});
     			chrome.storage.sync.set({"loggedin" : "true"});
     			localStorage.username = $('#username').val();
-    			chrome.storage.sync.get("newP", function (obj) {
-				if("newP" in obj){
+    			chrome.storage.sync.get("new", function (obj) {
+				if("new" in obj){
 						localStorage.loggedin = "true";
     					localStorage.username = $('#username').val();
     					alreadyIn();
     					$('#forgot').hide();
     					$("#wrong").hide();
 		    		}else{
-		    			var d = new Date();
-		    			var lastMonth = ((d.getMonth() - 2) % 12);
-		    			localStorage.lastM = lastMonth.toString();
-		    			var one = 1;
-		    			localStorage.lastD = one.toString();
 		    			localStorage.survey = "false";
 		    			localStorage.complete = "never";
 		    			$('#username').val("");
-		    			$('#username').watermark('New Username');
-		    			$('#password').val("");
-		    			$('#password').watermark('New Password');
+			    		$('#username').watermark('New Username');
+			    		$('#password').val("");
+			    		$('#password').watermark('New Password');
 		    			$('#login').text("Save Username and Password");
 		    			document.getElementById("login").onclick = changeUP;
 		    			$('#forgot').hide();
@@ -101,10 +95,6 @@ function signOn(){
 		    					$('#forgot').hide();
 		    					$("#wrong").hide();
 			    		}else if(obj["new"] == $('#password').val() && other["username"] == $('#username').val()){
-			    			var d = new Date();
-			    			localStorage.lastM = ((d.getMonth() - 2) % 12).toString();
-		    				var one = 1;
-		    				localStorage.lastD = one.toString();
 			    			chrome.storage.sync.set({"loggedin" : "true"});
 			    			localStorage.survey = "false";
 			    			localStorage.complete = "never";
@@ -114,8 +104,8 @@ function signOn(){
 			    			$('#username').watermark('New Username');
 			    			$('#password').val("");
 			    			$('#password').watermark('New Password');
-			    			$('#login').text("Save Username and Password");
-			    			document.getElementById("login").onclick = changeUP;
+			    			$('#login').text("Save Password");
+			    			document.getElementById("login").onclick = changeP;
 			    			$('#forgot').hide();
 			    			$("p").text("Please change your username and password. Enter the new username and password below:");
 			    			$("#wrong").hide();
