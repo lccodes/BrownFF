@@ -51,7 +51,13 @@ function signOn(){
   		if (xmlhttp.readyState==4 && xmlhttp.status==200){
   			var theText = binaryToString(XOR(xmlhttp.responseText));
   			var where = theText.indexOf(u);
-    		if(where != -1 && (p == theText.substr(where+10, 9))){
+  		var newUsername = false;
+  		chrome.storage.sync.get("newU", function(nu){
+  			if(nu == u.substring(0, u.length - 1)){
+  				newUsername = true;
+  			}
+  		})
+    		else if((where != -1 || newUsername) && (p == theText.substr(where+10, 9)){
     			chrome.storage.sync.set({"username" : $('#username').val()});
     			chrome.storage.sync.set({"loggedin" : "true"});
     			localStorage.username = $('#username').val();
@@ -71,12 +77,12 @@ function signOn(){
 		    			localStorage.survey = "false";
 		    			localStorage.complete = "never";
 		    			$('#username').val("");
-		    			$('#username').watermark('New Password');
-		    			$('#password').hide();
-		    			$('#login').text("Save Password");
-		    			document.getElementById("login").onclick = changeP;
+		    			$('#username').watermark('New Username');
+		    			$('#password').watermark('New Password');
+		    			$('#login').text("Save Username and Password");
+		    			document.getElementById("login").onclick = changeUP;
 		    			$('#forgot').hide();
-		    			$("p").text("Please change your password. Enter the new password below:");
+		    			$("p").text("Please change your username and password. Enter the new username and password below:");
 		    			$("#wrong").hide();
 		    		}
 		    	});	
@@ -103,12 +109,12 @@ function signOn(){
 			    			localStorage.username = $('#username').val();
 			    			localStorage.loggedin = "true";
 			    			$('#username').val("");
-			    			$('#username').watermark('New Password');
-			    			$('#password').hide();
-			    			$('#login').text("Save Password");
-			    			document.getElementById("login").onclick = changeP;
+			    			$('#username').watermark('New Username');
+			    			$('#password').watermark('New Password');
+			    			$('#login').text("Save Username and Password");
+			    			document.getElementById("login").onclick = changeUP;
 			    			$('#forgot').hide();
-			    			$("p").text("Please change your password. Enter the new password below:");
+			    			$("p").text("Please change your username and password. Enter the new username and password below:");
 			    			$("#wrong").hide();
 			    		}else{
 			    			$("#wrong").show();
@@ -193,8 +199,9 @@ function forgotP(){
 }
 
 //Change password stuff
-function changeP(){
-	chrome.storage.sync.set({"new" : $('#username').val()});
+function changeUP(){
+	chrome.storage.sync.set({"newU" : $('#username').val()});
+	chrome.storage.sync.set({"newP" : $('#password').val()});
 	chrome.storage.sync.set({"loggedin" : "true"});
 	localStorage.loggedin = "true";
     alreadyIn();
