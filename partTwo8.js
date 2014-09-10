@@ -24,8 +24,7 @@ function submit(){
 		"|2.2:"+document.getElementById("second").value+"|2.3:"+document.getElementById("third").value+
 		"|2.4:"+document.getElementById("fourth").value+"|2.5:"+document.getElementById("fifth").value+
 		"|2.6:"+document.getElementById("sixth").value+"|2.7:"+document.getElementById("seventh").value+
-		"|2.8:"+document.getElementById("eighth").value+"|2.9:"+document.getElementById("ninth").value+
-		"|2.10:"+document.getElementById("tenth").value+"|3.1:"+document.getElementById("first").value+
+		"|2.8:"+document.getElementById("eighth").value+"|3.1:"+document.getElementById("first").value+
 		"|3.2:"+document.getElementById("second").value+"|3.3:"+document.getElementById("third").value+
 		"|3.4:"+document.getElementById("fourth").value+"|3.5:"+document.getElementById("fifth").value+
 		"|3.6:"+document.getElementById("sixth").value+"|3.7:"+document.getElementById("seventh").value+
