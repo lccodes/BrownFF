@@ -119,7 +119,6 @@ function signOn(){
 		    		});
     			});	
     		}else{
-    			alert("you are wrong...bitch");
     			$("#wrong").show();	
     		}
     	}
