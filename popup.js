@@ -150,6 +150,7 @@ function alreadyIn(){
 		dDif = 100;
 	}
 	if((day >= 2 && day - dDif < 2) || (day < 2 && day - dDif < -5)){
+		localStorage.survey = "false";
 		survey();
 	}
 }
@@ -207,9 +208,11 @@ function survey(){
 			}
 		}
 		if(em){
+			localStorage.survey = "false";
 			chrome.browserAction.setPopup({popup: "survey8.html"});
 			window.location.href="survey8.html";
 		}else{
+			localStorage.survey = "false";
 			chrome.browserAction.setPopup({popup: "survey.html"});
 			window.location.href="survey.html";
 		}

@@ -28,8 +28,6 @@ function submit(){
 	localStorage.survey = "true";
 	var d = new Date();
 	localStorage.complete = d.toString();
-	chrome.browserAction.setPopup({popup: "popup.html"});
-	window.location.href="popup.html";
 	//XMLHttp thing to submit the data
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
@@ -45,6 +43,9 @@ function submit(){
 		"|3.6:"+document.getElementById("sixthT2").value+"|3.7:"+document.getElementById("seventhT2").value+
 		"|3.8:"+document.getElementById("eighthT2").value+"|3.9:"+document.getElementById("ninthT2").value+
 		"|3.10:"+document.getElementById("tenthT2").value);
+	//Back home
+	chrome.browserAction.setPopup({popup: "popup.html"});
+	window.location.href="popup.html";
 }
 //Makes sure that it all sums to 1
 function dataValidator(){

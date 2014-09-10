@@ -7,30 +7,32 @@ function binaryToString(binValue) {
 //What happens when you visit NFL.com
 chrome.webRequest.onBeforeRequest.addListener(
   function(info) {
-    if(info.url.indexOf("teamlog") == -1){
-      var deny = false;
-      //Get the date and see if it's survey time
-      var m = getMonth();
-	  var date = getDate();
-	var day = getDay();
-	var monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-	var mDif = m - parseInt(localStorage.lastM);
-	if((mDif == 1) || (mDif == -1) || (mDif == -11)){
-		var dDif = monthDays[parseInt(localStorage.lastM)] - localStorage.lastD + date;
-	}
-	else if(mDif == 0){
-		var dDif = date - parseInt(localStorage.lastD);
-	}
-	else{
-		var dDif = 100;
-	}
-	if((day >= 2 && day - dDif < 2) || (day < 2 && day - dDif < -5)){
-	    alert("Please click on the extension window and complete the survey in order to proceed to fantasy football.")
-		deny = true;
-	}
-    if(deny){
-        return {redirectUrl: "http://brown.edu"};
-    }
+    if(info.url.indexOf("teamlog") == -1 || info.url.indexOf("login") == -1){
+      //See if it's survey time
+      var d = new Date();
+      var m = d.getMonth();
+      var date = d.getDate();
+      var day = d.getDay();
+      var monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+      var mDif = m - parseInt(localStorage.lastM);
+      var dDif = 0;
+      if((mDif == 1) || (mDif == -1) || (mDif == -11)){
+        dDif = monthDays[parseInt(localStorage.lastM)] - parseInt(localStorage.lastD) + date;
+      }
+      else if(mDif == 0){
+        dDif = date - parseInt(localStorage.lastD);
+      }
+      else{
+        dDif = 100;
+      }
+      if((day >= 2 && day - dDif < 2) || (day < 2 && day - dDif < -5)){
+        alert("Please click on the extension window and complete the survey in order to proceed to fantasy football.");
+        deny = true;
+      }
+     
+        if(deny || localStorage.survey == "false"){
+            return {redirectUrl: "http://brown.edu"};
+        }
     }
   },
   // filters
