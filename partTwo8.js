@@ -19,6 +19,9 @@ function testSubmit(){
 		tally2 += parseFloat(document.getElementById(els[i] + 'T').value);
 	}
 	//alert("asdfa;lskdjf");
+	if(tally1 == 1){
+		alert("as;dlfkjas;ldfkj");
+	}
 	if(tally2 == 0){
 		alert("HEY");
 		alert("HI");
