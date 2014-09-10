@@ -223,8 +223,8 @@ function survey(){
 		}else{
 			chrome.browserAction.setPopup({popup: "survey.html"});
 			window.location.href="survey.html";
-		}	
+		}
+	}
 	xmlhttp.open("GET","http://jack.cs.brown.edu/eightMen.txt?"+ Math.floor((Math.random() * 10000) + 1),true);
 	xmlhttp.send();
-	}
 }
