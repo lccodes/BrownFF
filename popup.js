@@ -54,8 +54,7 @@ function signOn(){
   			var newUsername = false;
   			chrome.storage.sync.get("newU", function(nu){
   				if("newU" in nu){
-  					alert(u.substring(0, u.length - 1));
-  					if(nu["newU"] == u.substring(0, u.length - 1)){
+  					if(nu["newU"] + ',' == u){
   						newUsername = true;
   					}
   				}
