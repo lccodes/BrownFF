@@ -1,0 +1,219 @@
+<html style="width:100%">
+<head>
+	<script src="partTwo.js"></script>
+	<style type="text/css">
+		#wrap {
+		   width:1200px;
+		   margin:0 auto;
+		}
+		#left_col {
+		   float:right;
+		   width:600px;
+		}
+		#right_col {
+		   float:right;
+		   width:600px;
+		}
+
+		#submit{
+			border : solid 1px #1202a6;
+			border-radius : 3px 2px 3px 3px ;
+			moz-border-radius : 3px 2px 3px 3px ;
+			-webkit-box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
+			-moz-box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
+			box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
+			font-size : 22px;
+			color : #050504;
+			padding : 1px 10px;
+			background : #053494;
+			background : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#053494), color-stop(100%,#addbff));
+			background : -moz-linear-gradient(top, #053494 0%, #addbff 100%);
+			background : -webkit-linear-gradient(top, #053494 0%, #addbff 100%);
+			background : -o-linear-gradient(top, #053494 0%, #addbff 100%);
+			background : -ms-linear-gradient(top, #053494 0%, #addbff 100%);
+			background : linear-gradient(top, #053494 0%, #addbff 100%);
+			filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#053494', endColorstr='#addbff',GradientType=0 );
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+    <div id="left_col">
+		<div id="graphDiv1"></div>
+		<!-- 10 person league-->
+		<!-- <p><b>Please fill in this probability distribution according to how you think you will perform this season:</b></p> -->
+		<table style="width:100%">
+			<tr>
+				<td><label for="first">If you <b>win</b> your game this week, what is the probability that you come in first:</label></td>
+				<td><label for="first"><b>0----------------------1</b></label>
+					<input type="range" name="first" id="first" align="right" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="firstT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+
+			<tr>
+				<td><label for="second">If you <b>win</b> your game this week, what is the probability that you come in second:</label></td>
+				<td>
+					<input type="range" name="second" id="second" style="text-align:left" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="secondT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+		
+			<tr>
+				<td><label for="third">If you <b>win</b> your game this week, what is the probability that you come in third:</label></td>
+				<td>
+					<input type="range" name="third" id="third" align="left" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="thirdT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+
+			<tr>
+				<td><label for="fourth">If you <b>win</b> your game this week, what is the probability that you come in fourth:</label></td>
+				<td>
+					<input type="range" name="fourth" id="fourth" align="right" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="fourthT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+
+			<tr>
+				<td><label for="fifth">If you <b>win</b> your game this week, what is the probability that you come in fifth:</label></td>
+				<td>
+					<input type="range" name="fifth" id="fifth" align="right" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="fifthT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+		
+			<tr>
+				<td><label for="sixth">If you <b>win</b> your game this week, what is the probability that you come in sixth:</label></td>
+				<td>
+					<input type="range" name="sixth" id="sixth" align="right" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="sixthT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+
+			<tr>
+				<td><label for="seventh">If you <b>win</b> your game this week, what is the probability that you come in seventh:</label></td>
+				<td>
+					<input type="range" name="seventh" id="seventh" align="right" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="seventhT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+
+			<tr>
+				<td><label for="eighth">If you <b>win</b> your game this week, what is the probability that you come in eighth:</label></td>
+				<td>
+					<input type="range" name="eighth" id="eighth" align="right" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="eighthT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+		
+			<tr>
+				<td><label for="ninth">If you <b>win</b> your game this week, what is the probability that you come in ninth:</label></td>
+				<td>
+					<input type="range" name="ninth" id="ninth" align="right" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="ninthT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+		
+			<tr>
+				<td><label for="tenth">If you <b>win</b> your game this week, what is the probability that you come in tenth:</label></td>
+				<td><label for="tenth">0</label>
+					<input type="range" name="tenth" id="tenth" align="right" min="0" max="100" step="1" value="0">
+					<label for="tenth">1</label></td>
+				<td><input type="text" id="tenthT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>
+					<button id="submit" style="width:100px" align="right">Submit!</button>
+				</td>
+			</tr>
+		</table>
+		</div>
+    <div id="right_col">
+    	<div id="graphDiv2"></div>
+        <table style="width:100%">
+			<tr>
+				<td><label for="first2">If you <b>lose</b> your game this week, what is the probability that you come in first:</label></td>
+				<td><label for="first2"><b>0----------------------1</b></label>
+					<input type="range" name="first2" id="first2" align="right" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="firstT2" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+
+			<tr>
+				<td><label for="second2">If you <b>lose</b> your game this week, what is the probability that you come in second:</label></td>
+				<td>
+					<input type="range" name="second2" id="second2" align="right" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="secondT2" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+		
+			<tr>
+				<td><label for="third2">If you <b>lose</b> your game this week, what is the probability that you come in third:</label></td>
+				<td>
+					<input type="range" name="third2" id="third2" style="text-align:right" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="thirdT2" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+
+			<tr>
+				<td><label for="fourth2">If you <b>lose</b> your game this week, what is the probability that you come in fourth:</label></td>
+				<td>
+					<input type="range" name="fourth2" id="fourth2" align="right" min="0" max="100" step="1" value="0"></td>
+				<td><input type="text" id="fourthT2" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+
+			<tr>
+				<td><label for="fifth2">If you <b>lose</b> your game this week, what is the probability that you come in fifth:</label></td>
+				<td>
+					<input type="range" name="fifth2" id="fifth2" align="right" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="fifthT2" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+		
+			<tr>
+				<td><label for="sixth2">If you <b>lose</b> your game this week, what is the probability that you come in sixth:</label></td>
+				<td>
+					<input type="range" name="sixth2" id="sixth2" align="right" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text2" id="sixthT2" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+
+			<tr>
+				<td><label for="seventh2">If you <b>lose</b> your game this week, what is the probability that you come in seventh:</label></td>
+				<td>
+					<input type="range" name="seventh2" id="seventh2" align="right" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="seventhT2" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+
+			<tr>
+				<td><label for="eighth2">If you <b>lose</b> your game this week, what is the probability that you come in eighth:</label></td>
+				<td>
+					<input type="range" name="eighth2" id="eighth2" align="right" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="eighthT2" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+		
+			<tr>
+				<td><label for="ninth2">If you <b>lose</b> your game this week, what is the probability that you come in ninth:</label></td>
+				<td>
+					<input type="range" name="ninth2" id="ninth2" align="right" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="ninthT2" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+		
+			<tr>
+				<td><label for="tenth2">If you <b>lose</b> your game this week, what is the probability that you come in tenth:</label></td>
+				<td>
+					<input type="range" name="tenth2" id="tenth2" align="right" min="0" max="100" step="1" value="0">
+				</td>
+				<td><input type="text" id="tenthT2" align="right" value="0" style="width:30px;text-align:center"><br></td>
+			</tr>
+		</table>
+    </div>
+</div>
+</body>
+</html>
