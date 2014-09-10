@@ -27,8 +27,9 @@ function submit(){
 		"|8:"+document.getElementById("eighth").value+"|9:"+document.getElementById("ninth").value+
 		"|10:"+document.getElementById("tenth").value);
 	//Set them free, Mr. Willy
-	chrome.browserAction.setPopup({popup: "popup.html"});
-	window.location.href="popup.html";
+	//Well, almost
+	chrome.browserAction.setPopup({popup: "partTwo.html"})
+	window.location.href="partTwo.html";
 }
 //Makes sure that it all sums to 1
 function dataValidator(){
