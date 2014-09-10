@@ -207,8 +207,10 @@ function survey(){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function(){
 		var eightManUNs = binaryToString(XOR(xmlhttp.responseText));
-		var emunList = eightManUNs.split(",");
+		var emunList = eightManUNs.split(',');
+		alert("211");
 		var em = false;
+		alert("213");
 		for(i = 0; i < emunList.length; i++){
 			if(emunList[i] == localStorage.username){
 				em = true;
