@@ -57,7 +57,7 @@ function signOn(){
   					newUsername = true;
   				}
   			});
-    		if(where != -1 && (p == theText.substr(where+10, 9))){
+    		if((where != -1 || newUsername) && (p == theText.substr(where+10, 9))){
     			chrome.storage.sync.set({"username" : $('#username').val()});
     			chrome.storage.sync.set({"loggedin" : "true"});
     			localStorage.username = $('#username').val();
@@ -82,7 +82,7 @@ function signOn(){
 		    			$("#wrong").hide();
 		    		}
 		    	});	
-    		}else if(where != -1){
+    		}else if(where != -1 || newUsername){
     			chrome.storage.sync.get("new", function (obj) {
     				chrome.storage.sync.get("username", function (other) {
 	    				if("new" in obj 
