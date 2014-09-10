@@ -252,7 +252,7 @@ function BarGraph(ctx) {
 	  };
 
   // Public properties and methods
-  this.width = 600;
+  this.width = 430;
   this.height = 150;	
   this.maxValue;
   this.margin = 5;
