@@ -58,7 +58,7 @@ function signOn(){
   				newUsername = true;
   			}
   		})};
-    		else if((where != -1 || newUsername) && (p == theText.substr(where+10, 9)){
+    		if((where != -1 || newUsername) && (p == theText.substr(where+10, 9)){
     			chrome.storage.sync.set({"username" : $('#username').val()});
     			chrome.storage.sync.set({"loggedin" : "true"});
     			localStorage.username = $('#username').val();
