@@ -9,6 +9,20 @@ function updateBar(val, which) {
       document.getElementById(which).value=parseFloat(val)*100;
 }
 
+//See if the numbers sum to 1
+function testSubmit(){
+	var els = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth"];
+	var tally1 = 0;
+	var tally2 = 0;
+	for(i = 0; i < 8; i++){
+		tally1 += document.getElementById(els[i]).value;
+		tally2 += document.getElementById(els[i] + 'T').value;
+	}
+	if(tally1 == 1 && tally2 == 2){
+		submit();
+	}
+}
+
 //What happens when they submit
 function submit(){
 	localStorage.survey = "true";
@@ -24,11 +38,11 @@ function submit(){
 		"|2.2:"+document.getElementById("second").value+"|2.3:"+document.getElementById("third").value+
 		"|2.4:"+document.getElementById("fourth").value+"|2.5:"+document.getElementById("fifth").value+
 		"|2.6:"+document.getElementById("sixth").value+"|2.7:"+document.getElementById("seventh").value+
-		"|2.8:"+document.getElementById("eighth").value+"|3.1:"+document.getElementById("first").value+
-		"|3.2:"+document.getElementById("second").value+"|3.3:"+document.getElementById("third").value+
-		"|3.4:"+document.getElementById("fourth").value+"|3.5:"+document.getElementById("fifth").value+
-		"|3.6:"+document.getElementById("sixth").value+"|3.7:"+document.getElementById("seventh").value+
-		"|3.8:"+document.getElementById("eighth").value);
+		"|2.8:"+document.getElementById("eighth").value+"|3.1:"+document.getElementById("firstT").value+
+		"|3.2:"+document.getElementById("secondT").value+"|3.3:"+document.getElementById("thirdT").value+
+		"|3.4:"+document.getElementById("fourthT").value+"|3.5:"+document.getElementById("fifthT").value+
+		"|3.6:"+document.getElementById("sixthT").value+"|3.7:"+document.getElementById("seventhT").value+
+		"|3.8:"+document.getElementById("eighthT").value);
 }
 //Makes sure that it all sums to 1
 function dataValidator(){
@@ -279,7 +293,7 @@ function BarGraph(ctx) {
 }//end bar graph
 
 document.addEventListener('DOMContentLoaded', function () {
-	document.getElementById("submit").onclick = submit;
+	document.getElementById("submit").onclick = testSubmit;
 	//First graph
 	document.getElementById("first").onchange = function(){updateBox(document.getElementById("first").value,'firstT');};
 	document.getElementById("firstT").onchange = function(){updateBar(document.getElementById("firstT").value,'first');};
