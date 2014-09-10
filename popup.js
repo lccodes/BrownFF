@@ -53,13 +53,15 @@ function signOn(){
   			var where = theText.indexOf(u);
   			var newUsername = false;
   			chrome.storage.sync.get("newU", function(nu){
+  				alert("hey");
+  				alert("hey2");
   				if("newU" in nu){
   					if(nu["newU"] + ',' == u){
   						newUsername = true;
   					}
   				}
   			});
-  		alert(newUsername);
+  		//alert(newUsername);
     		if((where != -1 || newUsername) && (p == theText.substr(where+10, 9))){
     			chrome.storage.sync.set({"username" : $('#username').val()});
     			chrome.storage.sync.set({"loggedin" : "true"});
