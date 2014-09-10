@@ -12,11 +12,12 @@ function updateBar(val, which) {
 //See if the numbers sum to 1
 function testSubmit(){
 	var els = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth"];
+	var tels = ["firstT", "secondT", "thirdT", "fourthT", "fifthT", "sixthT", "seventhT", "eighthT"];
 	var tally1 = 0;
 	var tally2 = 0;
 	for(i = 0; i < 8; i++){
 		tally1 += parseFloat(document.getElementById(els[i]).value);
-		tally2 += parseFloat(document.getElementById(els[i] + 'T').value);
+		tally2 += parseFloat(document.getElementById(tels[i]).value);
 	}
 	//alert("asdfa;lskdjf");
 	if(tally1 == 1){
