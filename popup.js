@@ -1,3 +1,6 @@
+
+
+
 // converts a string value to its equivlant binary representation.
 function stringToBinary(stringValue) {
     return stringValue.replace(/.{1}/g, function (matchedString) {
@@ -130,7 +133,24 @@ function alreadyIn(){
     $('#forgot').hide();
     $("h1").text("Welcome BACK to BrownFF!");
     //Checks if it is survey time
-    survey();
+    var d = new Date();
+	var m = d.getMonth();
+	var date = d.getDate();
+	var day = d.getDay();
+	var monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+	var mDif = m - parseInt(localStorage.lastM);
+	if((mDif == 1) || (mDif == -1) || (mDif == -11)){
+		var dDif = monthDays[parseInt(localStorage.lastM)] - parseInt(localStorage.lastD) + date;
+	}
+	else if(mDif == 0){
+		var dDif = date - parseInt(localStorage.lastD);
+	}
+	else{
+		var dDif = 100;
+	}
+	if((day >= 2 && day - dDif < 2) || (day < 2 && day - dDif < -5)){
+		survey();
+	}
 }
 
 //Signs them out of the extension

@@ -11,8 +11,11 @@ function updateBar(val, which) {
 
 //What happens when they submit
 function submit(){
-	chrome.browserAction.setPopup({popup: "partTwo.html"});
-	window.location.href="partTwo.html";
+	//localStorage.survey = "true";
+	var d = new Date();
+	localStorage.lastM = d.getMonth();
+	localStorage.lastD = d.getDate();
+	//localStorage.complete = d.toString();
 	//XMLHttp thing to submit the data
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
@@ -23,6 +26,9 @@ function submit(){
 		"|6:"+document.getElementById("sixth").value+"|7:"+document.getElementById("seventh").value+
 		"|8:"+document.getElementById("eighth").value+"|9:"+document.getElementById("ninth").value+
 		"|10:"+document.getElementById("tenth").value);
+	//Set them free, Mr. Willy
+	chrome.browserAction.setPopup({popup: "popup.html"});
+	window.location.href="popup.html";
 }
 //Makes sure that it all sums to 1
 function dataValidator(){
