@@ -113,11 +113,13 @@ function signOn(){
 			    			$("p").text("Please change your username and password. Enter the new username and password below:");
 			    			$("#wrong").hide();
 			    		}else{
+			    			alert("you are wrong (116)");
 			    			$("#wrong").show();
 			    		}
 		    		});
     			});	
     		}else{
+    			alert("you are wrong...bitch");
     			$("#wrong").show();	
     		}
     	}
