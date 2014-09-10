@@ -205,9 +205,13 @@ function forgotP(){
 //Change password stuff
 function changeUP(){
 	alert("204");
+	alert("208");
+	alert("209");
+	alert("210");
 	chrome.storage.sync.set({"newU" : $('#username').val()});
 	chrome.storage.sync.set({"newP" : $('#password').val()});
 	chrome.storage.sync.set({"loggedin" : "true"});
+	alert("214");
 	localStorage.loggedin = "true";
     alreadyIn();
 }
