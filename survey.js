@@ -1,5 +1,3 @@
-alert("example");
-alert("example2");
 //Updates the box
 //Val is the new num, which is what to update
 function updateBox(val, which) {
