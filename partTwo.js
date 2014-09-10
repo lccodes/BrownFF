@@ -32,7 +32,7 @@ function submit(){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST","http://jack.cs.brown.edu/data.php",true);
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	xmlhttp.send("type=survey&username="+localStorage.username+"&results="+"|2.1:"+document.getElementById("first").value+
+	xmlhttp.send("type=survey&username="+localStorage.username+"&results="+"|2.1:"+document.getElementById("firstT").value+
 		"|2.2:"+document.getElementById("secondT").value+"|2.3:"+document.getElementById("thirdT").value+
 		"|2.4:"+document.getElementById("fourthT").value+"|2.5:"+document.getElementById("fifthT").value+
 		"|2.6:"+document.getElementById("sixthT").value+"|2.7:"+document.getElementById("seventhT").value+
