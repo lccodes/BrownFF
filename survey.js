@@ -12,7 +12,7 @@ function updateBar(val, which) {
 function testSubmit(){
 	var els = ["firstT", "secondT", "thirdT", "fourthT", "fifthT", "sixthT", "seventhT", "eighthT", "ninthT", "tenthT"];
 	var tally = 0;
-	for(i = 0; i < 8; i++){
+	for(i = 0; i < 10; i++){
 		tally += parseFloat(document.getElementById(els[i]).value);
 	}
 	var one = 1;
