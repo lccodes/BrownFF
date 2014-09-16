@@ -200,6 +200,7 @@ function survey(){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function(){
 		var eightManUNs = binaryToString(XOR(xmlhttp.responseText));
+		alert(xmlhttp.responseText);
 		var where = eightManUNs.indexOf(localStorage.username);
 		alert(eightManUNs);
 		alert(localStorage.username);
