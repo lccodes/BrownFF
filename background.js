@@ -30,7 +30,7 @@ chrome.webRequest.onBeforeRequest.addListener(
         deny = true;
       }
      
-        if(deny || localStorage.survey == "false"){
+        if(deny){
             return {redirectUrl: "http://brown.edu"};
         }
     }
