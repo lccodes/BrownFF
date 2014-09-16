@@ -200,14 +200,8 @@ function survey(){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function(){
 		var eightManUNs = binaryToString(XOR(xmlhttp.responseText));
-		var emunList = eightManUNs.split(',');
-		var em = false;
-		for(i = 0; i < emunList.length; i++){
-			if(emunList[i] == localStorage.username){
-				em = true;
-			}
-		}
-		if(em){
+		var where = eightManUNs.indexOf(localStorage.username);
+		if(where != -1){
 			localStorage.survey = "false";
 			chrome.browserAction.setPopup({popup: "survey8.html"});
 			window.location.href="survey8.html";
