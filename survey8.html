@@ -1,57 +1,102 @@
 <html style="width:600px">
 <head>
 	<script src="survey8.js"></script>
+	<style type="text/css">
+		#submit{
+			border : solid 1px #1202a6;
+			border-radius : 3px 2px 3px 3px ;
+			moz-border-radius : 3px 2px 3px 3px ;
+			-webkit-box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
+			-moz-box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
+			box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
+			font-size : 22px;
+			color : #050504;
+			padding : 1px 10px;
+			background : #053494;
+			background : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#053494), color-stop(100%,#addbff));
+			background : -moz-linear-gradient(top, #053494 0%, #addbff 100%);
+			background : -webkit-linear-gradient(top, #053494 0%, #addbff 100%);
+			background : -o-linear-gradient(top, #053494 0%, #addbff 100%);
+			background : -ms-linear-gradient(top, #053494 0%, #addbff 100%);
+			background : linear-gradient(top, #053494 0%, #addbff 100%);
+			filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#053494', endColorstr='#addbff',GradientType=0 );
+		}
+	</style>
 </head>
 <body>
 	<div id="graphDiv1"></div>
-	<!-- 8 person league-->
+	<!-- 10 person league-->
 	<p>Please fill in this probability distribution according to how you think you will perform this season:</p>
-	<label for="first">Please select the probability that you come in first:</label>
-	<div align="right">
-	<input type="range" name="first" id="first" style="text-align:right" min="0" max="100" step="1" value="0">
-	<input type="text" id="firstT" align="right" value="0" style="width:30px;text-align:right"><br>
-	</div>
+	<table style="width:100%">
+		<tr>
+			<td></td>
+			<td><label for="first"><br>0_______________1</br></label></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><label for="first">Please select the probability that you come in first:</label></td>
+			<td>
+				<input type="range" name="first" id="first" style="text-align:right" min="0" max="100" step="1" value="0">
+			</td>
+			<td><input type="text" id="firstT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+		</tr>
 
-	<label for="second">Please select the probability that you come in second:</label>
-	<div align="right">
-	<input type="range" name="second" id="second" style="text-align:right" min="0" max="100" step="1" value="0">
-	<input type="text" id="secondT" align="right" value="0" style="width:30px;text-align:right"><br>
-	</div>
+		<tr>
+			<td><label for="second">Please select the probability that you come in second:</label></td>
+			<td>
+				<input type="range" name="second" id="second" style="text-align:right" min="0" max="100" step="1" value="0">
+			</td>
+			<td><input type="text" id="secondT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+		</tr>
 	
-	<label for="third">Please select the probability that you come in third:</label>
-	<div align="right">
-	<input type="range" name="third" id="third" style="text-align:right" min="0" max="100" step="1" value="0">
-	<input type="text" id="thirdT" align="right" value="0" style="width:30px"><br>
-	</div>
+		<tr>
+			<td><label for="third">Please select the probability that you come in third:</label></td>
+			<td>
+				<input type="range" name="third" id="third" style="text-align:right" min="0" max="100" step="1" value="0">
+			</td>
+			<td><input type="text" id="thirdT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+		</tr>
 
-	<label for="fourth">Please select the probability that you come in fourth:</label>
-	<div align="right">
-	<input type="range" name="fourth" id="fourth" align="right" min="0" max="100" step="1" value="0">
-	<input type="text" id="fourthT" align="right" value="0" style="width:30px"><br>
-	</div>
-	
-	<label for="fifth">Please select the probability that you come in fifth:</label>
-	<div align="right">
-	<input type="range" name="fifth" id="fifth" align="right" min="0" max="100" step="1" value="0">
-	<input type="text" id="fifthT" align="right" value="0" style="width:30px"><br>
-	</div>
-	
-	<label for="sixth">Please select the probability that you get sixth:</label>
-	<div align="right">
-	<input type="range" name="sixth" id="sixth" align="right" min="0" max="100" step="1" value="0">
-	<input type="text" id="sixthT" align="right" value="0" style="width:30px"><br>
-	</div>
-	
-	<label for="seventh">Please select the probability that you get seventh:</label>
-	<div align="right">
-	<input type="range" name="seventh" id="seventh" align="right" min="0" max="100" step="1" value="0">
-	<input type="text" id="seventhT" align="right" value="0" style="width:30px"><br>
-	</div>
+		<tr>
+			<td><label for="fourth">Please select the probability that you come in fourth:</label></td>
+			<td>
+				<input type="range" name="fourth" id="fourth" align="right" min="0" max="100" step="1" value="0">
+			</td>
+			<td><input type="text" id="fourthT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+		</tr>
 
-	<label for="eighth">Please select the probability that you get eighth:</label>
-	<div align="right">
-	<input type="range" name="eighth" id="eighth" align="right" min="0" max="100" step="1" value="0" readonly="1">
-	<input type="text" id="eighthT" align="right" value="0" style="width:30px" readonly="1"><br>
+		<tr>
+			<td><label for="fifth">Please select the probability that you come in fifth:</label></td>
+			<td>
+				<input type="range" name="fifth" id="fifth" align="right" min="0" max="100" step="1" value="0">
+			</td>
+			<td><input type="text" id="fifthT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+		</tr>
+	
+		<tr>
+			<td><label for="sixth">Please select the probability that you come in sixth:</label></td>
+			<td>
+				<input type="range" name="sixth" id="sixth" align="right" min="0" max="100" step="1" value="0">
+			</td>
+			<td><input type="text" id="sixthT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+		</tr>
+
+		<tr>
+			<td><label for="seventh">Please select the probability that you come in seventh:</label></td>
+			<td>
+				<input type="range" name="seventh" id="seventh" align="right" min="0" max="100" step="1" value="0">
+			</td>
+			<td><input type="text" id="seventhT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+		</tr>
+
+		<tr>
+			<td><label for="eighth">Please select the probability that you come in eighth:</label></td>
+			<td>
+				<input type="range" name="eighth" id="eighth" align="right" min="0" max="100" step="1" value="0">
+			</td>
+			<td><input type="text" id="eighthT" align="right" value="0" style="width:30px;text-align:center"><br></td>
+		</tr>
+	</table>
 	</div>
 	<button id="submit">Submit!</button>
 </body>
