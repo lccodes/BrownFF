@@ -202,10 +202,12 @@ function survey(){
 		var eightManUNs = binaryToString(XOR(xmlhttp.responseText));
 		var where = eightManUNs.indexOf(localStorage.username);
 		if(where != -1){
+			alert("8");
 			localStorage.survey = "false";
 			chrome.browserAction.setPopup({popup: "survey8.html"});
 			window.location.href="survey8.html";
 		}else{
+			alert("10");
 			localStorage.survey = "false";
 			chrome.browserAction.setPopup({popup: "survey.html"});
 			window.location.href="survey.html";
