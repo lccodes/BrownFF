@@ -19,6 +19,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //Happiness dialog box
     if(document.getElementsByName("jsubmit")[0]){
+      //See if it's survey time
+      chrome.runtime.sendMessage({method: "getDay"}, function(response) {
+      	chrome.runtime.sendMessage({method: "getMonth"}, function(responseTwo) {
+      	  var lastD = response.status;
+      	  var lastM = responseTwo.status;
+	      var d = new Date();
+	      var m = d.getMonth();
+	      var date = d.getDate();
+	      var day = d.getDay();
+	      var monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+	      var mDif = m - parseInt(lastM);
+	      var dDif = 0;
+	      if((mDif == 1) || (mDif == -1) || (mDif == -11)){
+	        dDif = monthDays[parseInt(lastM)] - parseInt(lastD) + date;
+	      }
+	      else if(mDif == 0){
+	        dDif = date - parseInt(lastD);
+	      }
+	      else{
+	        dDif = 100;
+	      }
+	      if((day >= 2 && day - dDif < 2) || (day < 2 && day - dDif < -5)){
+	        alert("Please click on the extension window and complete the survey in order to proceed to setting your lineup.");
+	        deny = true;
+	      }
+	     
+	      if(deny){
+	        chrome.extension.sendRequest({redirect: "http://football.fantasysports.yahoo.com"});
+	      }
+		});
+      });
+
 	    document.getElementsByName("jsubmit")[0].addEventListener('click', function(event){
 	  	var done = false;
 	  	chrome.runtime.sendMessage({method: "getUsername"}, function(response) {

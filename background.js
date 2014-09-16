@@ -7,8 +7,8 @@ function binaryToString(binValue) {
 //What happens when you visit NFL.com
 chrome.webRequest.onBeforeRequest.addListener(
   function(info) {
-    alert(info.url);
-    if(info.url.indexOf("teamlog") == -1 && info.url != "http://login.yahoo.com"){
+/*
+    if(info.url.){
       //See if it's survey time
       var d = new Date();
       var m = d.getMonth();
@@ -34,7 +34,7 @@ chrome.webRequest.onBeforeRequest.addListener(
         if(deny){
             return {redirectUrl: "http://brown.edu"};
         }
-    }
+    }*/
   },
   // filters
   {
@@ -46,6 +46,11 @@ chrome.webRequest.onBeforeRequest.addListener(
   },
   // extraInfoSpec
   ["blocking"]);
+
+//Deals with redirect messages
+chrome.extension.onRequest.addListener(function(request, sender) {
+    chrome.tabs.update(sender.tab.id, {url: request.redirect});
+});
 
 //Block them from the manager portal in every shape and form
 chrome.webRequest.onBeforeRequest.addListener(
@@ -79,7 +84,11 @@ chrome.webRequest.onBeforeRequest.addListener(
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.method == "getUsername")
       sendResponse({status: localStorage['username']});// else if (request.method == "isIn")   sendResponse({status: localStorage['loggedin']});
-    else
+    else if (request.method == "getDay"){
+      sendResponse({status: localStorage['lastD']});
+    }if (request.method == "getMonth"){
+      sendResponse({status: localStorage['lastM']});
+    }else
       sendResponse({});
 });
 
