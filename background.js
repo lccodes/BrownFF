@@ -7,7 +7,8 @@ function binaryToString(binValue) {
 //What happens when you visit NFL.com
 chrome.webRequest.onBeforeRequest.addListener(
   function(info) {
-    if(info.url.indexOf("teamlog") == -1 || info.url.indexOf("login") == -1){
+    alert(info.url);
+    if(info.url.indexOf("teamlog") == -1 && info.url != "http://login.yahoo.com"){
       //See if it's survey time
       var d = new Date();
       var m = d.getMonth();
