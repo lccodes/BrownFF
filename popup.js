@@ -201,6 +201,8 @@ function survey(){
 	xmlhttp.onreadystatechange=function(){
 		var eightManUNs = binaryToString(XOR(xmlhttp.responseText));
 		var where = eightManUNs.indexOf(localStorage.username);
+		alert(eightManUNs);
+		alert(localStorage.username);
 		if(where != -1){
 			alert("8");
 			localStorage.survey = "false";
