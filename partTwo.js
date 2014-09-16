@@ -9,20 +9,6 @@ function updateBar(val, which) {
       document.getElementById(which).value=parseFloat(val)*100;
 }
 
-//See if the numbers sum to 1
-function testSubmit(){
-	var els = ["firstT", "secondT", "thirdT", "fourthT", "fifthT", "sixthT", "seventhT", "eighthT", "ninthT", "tenthT"];
-	var tally1 = 0;
-	var tally2 = 0;
-	for(i = 0; i < 8; i++){
-		tally1 += parseFloat(document.getElementById(els[i]).value);
-		tally2 += parseFloat(document.getElementById(els[i]+'2').value);
-	}
-	var one = 1;
-	if(tally1 == parseFloat(one) && tally2 == parseFloat(one)){
-		submit();
-	}
-}
 //What happens when they submit
 function submit(){
 	localStorage.survey = "true";
@@ -314,7 +300,7 @@ function BarGraph(ctx) {
 }//end bar graph
 
 document.addEventListener('DOMContentLoaded', function () {
-	document.getElementById("submit").onclick = testSubmit;
+	document.getElementById("submit").onclick = submit;
 	//First graph
 	document.getElementById("first").onchange = function(){updateBox(document.getElementById("first").value,'firstT');};
 	document.getElementById("firstT").onchange = function(){updateBar(document.getElementById("firstT").value,'first');};
