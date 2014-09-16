@@ -55,23 +55,29 @@ function dataValidator(){
 	var cremEls = [document.getElementById("firstT"), document.getElementById("secondT"), 
 		      document.getElementById("thirdT"), document.getElementById("fourthT"),document.getElementById("fifthT"),
 		      document.getElementById("sixthT"), document.getElementById("seventhT"),document.getElementById("eighthT")];
+	//Updated for sucker
 	for(i=0;i<remEls.length;i++){
-		total+= parseInt(remEls[i].value);
-		if(total > 100 && !fir){
-			var semi=0;
-			for(x=0;x<i;x++){
-				semi+= parseFloat(remEls[x].value);
+		if(i == remEls.length - 1 && total < 100){
+			remEls[i].value = 100 - total;
+			cremEls[i].value = (1 - total/100).toString();
+		}else{
+			total+= parseInt(remEls[i].value);
+			if(total > 100 && !fir){
+				var semi=0;
+				for(x=0;x<i;x++){
+					semi+= parseFloat(remEls[x].value);
+				}
+				remEls[i].value = (100 - semi);
+				cremEls[i].value = (parseFloat(1 - semi/100)).toString();
+				fir = true;
 			}
-			remEls[i].value = (100 - semi);
-			cremEls[i].value = (parseFloat(1 - semi/100)).toString();
-			fir = true;
-		}
-		if(total >= 100){
-			for(a=i+1;a<remEls.length;a++){
-				remEls[a].value = 0;
-				cremEls[a].value = "0";
+			if(total >= 100){
+				for(a=i+1;a<remEls.length;a++){
+					remEls[a].value = 0;
+					cremEls[a].value = "0";
+				}
+				return;
 			}
-			return;
 		}
 	}
 }
@@ -88,22 +94,27 @@ function dataValidatorTwo(){
 		      document.getElementById("thirdT2"), document.getElementById("fourthT2"),document.getElementById("fifthT2"),
 		      document.getElementById("sixthT2"), document.getElementById("seventhT2"),document.getElementById("eighthT2")];
 	for(i=0;i<remEls.length;i++){
-		total+= parseInt(remEls[i].value);
-		if(total > 100 && !fir){
-			var semi=0;
-			for(x=0;x<i;x++){
-				semi+= parseFloat(remEls[x].value);
+		if(i == remEls.length - 1 && total < 100){
+			remEls[i].value = 100 - total;
+			cremEls[i].value = (1 - total/100).toString();
+		}else{
+			total+= parseInt(remEls[i].value);
+			if(total > 100 && !fir){
+				var semi=0;
+				for(x=0;x<i;x++){
+					semi+= parseFloat(remEls[x].value);
+				}
+				remEls[i].value = (100 - semi);
+				cremEls[i].value = (parseFloat(1 - semi/100)).toString();
+				fir = true;
 			}
-			remEls[i].value = (100 - semi);
-			cremEls[i].value = (parseFloat(1 - semi/100)).toString();
-			fir = true;
-		}
-		if(total >= 100){
-			for(a=i+1;a<remEls.length;a++){
-				remEls[a].value = 0;
-				cremEls[a].value = "0";
+			if(total >= 100){
+				for(a=i+1;a<remEls.length;a++){
+					remEls[a].value = 0;
+					cremEls[a].value = "0";
+				}
+				return;
 			}
-			return;
 		}
 	}
 }
@@ -340,9 +351,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	//Fourth
 	document.getElementById("seventh2").onchange = function(){updateBox(document.getElementById("seventh2").value,'seventhT2');};
 	document.getElementById("seventhT2").onchange = function(){updateBar(document.getElementById("seventhT2").value,'seventh2');};
-	//Fourth
-	document.getElementById("eighth2").onchange = function(){updateBox(document.getElementById("eighth2").value,'eighthT2');};
-	document.getElementById("eighthT2").onchange = function(){updateBar(document.getElementById("eighthT2").value,'eighth2');};
+	//Deleted so they can't change
 	(function () {
 	
 		function createCanvas(divName) {

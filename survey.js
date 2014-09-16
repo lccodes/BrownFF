@@ -55,22 +55,27 @@ function dataValidator(){
 		      document.getElementById("sixthT"), document.getElementById("seventhT"),document.getElementById("eighthT"),
 		      document.getElementById("ninthT"),document.getElementById("tenthT")];
 	for(i=0;i<remEls.length;i++){
-		total+= parseInt(remEls[i].value);
-		if(total > 100 && !fir){
-			var semi=0;
-			for(x=0;x<i;x++){
-				semi+= parseFloat(remEls[x].value);
+		if(i == remEls.length - 1 && total < 100){
+			remEls[i].value = 100 - total;
+			cremEls[i].value = (1 - total/100).toString();
+		}else{
+			total+= parseInt(remEls[i].value);
+			if(total > 100 && !fir){
+				var semi=0;
+				for(x=0;x<i;x++){
+					semi+= parseFloat(remEls[x].value);
+				}
+				remEls[i].value = (100 - semi);
+				cremEls[i].value = (parseFloat(1 - semi/100)).toString();
+				fir = true;
 			}
-			remEls[i].value = (100 - semi);
-			cremEls[i].value = (parseFloat(1 - semi/100)).toString();
-			fir = true;
-		}
-		if(total >= 100){
-			for(a=i+1;a<remEls.length;a++){
-				remEls[a].value = 0;
-				cremEls[a].value = "0";
+			if(total >= 100){
+				for(a=i+1;a<remEls.length;a++){
+					remEls[a].value = 0;
+					cremEls[a].value = "0";
+				}
+				return;
 			}
-			return;
 		}
 	}
 }
@@ -288,9 +293,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	//Fifth
 	document.getElementById("ninth").onchange = function(){updateBox(document.getElementById("ninth").value,'ninthT');};
 	document.getElementById("ninthT").onchange = function(){updateBar(document.getElementById("ninthT").value,'ninth');};
-	//Fifth
-	document.getElementById("tenth").onchange = function(){updateBox(document.getElementById("tenth").value,'tenthT');};
-	document.getElementById("tenthT").onchange = function(){updateBar(document.getElementById("tenthT").value,'tenth');};
+
 	(function () {
 	
 		function createCanvas(divName) {
